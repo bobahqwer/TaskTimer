@@ -1,0 +1,9 @@
+﻿@model TaskTimer.Models.FAQ
+
+@using (Html.BeginForm())
+            {
+                @Html.Label("New answer:")
+                @Html.TextAreaFor(m => m.Answer)
+                @Html.HiddenFor(m => m.ID)
+                <input type="submit" value="Save" />
+            }

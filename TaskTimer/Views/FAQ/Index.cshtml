@@ -1,0 +1,179 @@
+﻿@model PagedList.IPagedList<TaskTimer.Models.FAQ>
+@{
+    ViewBag.Title = "FAQ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/nicEdit/nicEdit.js"></script>
+<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+
+<script>
+    $(function () {
+        var editors = nicEditors.allTextAreas();
+        $('form').submit(function () {
+            var form = $(this);
+            var answer = form.closest('.faqElement').find('.answerBody');
+            /* nicEditors */
+            var id = form.find('textarea').attr('id')
+            var editor = nicEditors.findEditor(id);
+            var answerText = escape(editor.getContent());
+            $(this).find('textarea').val(answerText);
+            /* end nicEditors */
+            if ($(this).valid()) {
+                $.ajax({
+                    url: this.action,
+                    type: this.method,
+                    data: $(this).serialize(),
+                    success: function (result) {
+                        $(answer).html(unescape(result));
+                        form.toggle("slow");
+                    }
+                });
+            }
+            return false;
+        });
+    });
+    function ToggleForm(elem) {
+        var faqElement = $(elem).closest('.faqElement');
+        var form = faqElement.find('form');
+        var textHtml = faqElement.find('.answerBody').html();
+        /* nicEditors */
+        var id = form.find('textarea').attr('id')
+        var editor = nicEditors.findEditor(id).setContent(textHtml);
+        /* end nicEditors */
+        form.toggle("slow");
+    }
+    function DiscardForm(elem) {
+        var form = $(elem).closest('.faqElement').find('form');
+        form.toggle("slow");
+    }
+    function DeleteQuestion(elem, id) {
+        var element = $(elem).parent();
+        @if (User.Identity.IsAuthenticated)
+        {
+            <text>
+        var $myDialog = $('<div></div>')
+            .html('Delete question?')
+            .dialog({
+                title: 'Conformation',
+                autoOpen: false,
+                width: 300,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Delete": function () {
+                        $.ajax({
+                            url: '/FAQ/Delete',
+                            type: 'POST',
+                            data: { id: id },
+                            success: function (result) {
+                                element.toggle("slow");
+                            }
+                        });
+                        $(this).dialog("close");
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                },
+            });
+        $myDialog.dialog('open');
+            </text>
+        }
+        else
+        {
+            <text>
+        element.toggle("slow");
+            </text>
+        }
+    }
+</script>
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+        </div>
+    </section>
+}
+<h3 class="addNewQuestion">
+    @Html.ActionLink("Add new question", "AddNew")
+</h3>
+    <div class="message-user">
+        You must be logged in for adding a new answers.
+    </div>
+<ul class="faqElements">
+    @foreach (var question in Model.AsQueryable())
+    {
+        <li class="faqElement">
+            <div><span class="title">Question number:</span> @question.ID</div>
+            <div><span class="title">Date:</span> @question.Date</div>
+            <div><span class="title">Title:</span> @question.Title</div>
+            <div class="row"><span class="cell title">Question:</span><div class="cell body">@Html.Raw(question.Question)</div></div>
+            @if (!String.IsNullOrEmpty(question.Answer)) { 
+                <div class="row"><span class="cell title">Answer:</span><div class="cell body answerBody">@Html.Raw(question.Answer)</div></div>
+            }
+            @if (User.Identity.IsAuthenticated)
+            {
+                using (Html.BeginForm("Index", "FAQ", FormMethod.Post, new { @class = "newAnswer" }))
+                {
+                    <div class="editForm">
+                        <div class="title">New answer:</div>
+                        <div>
+                            @Html.TextArea("answer", question.Answer, new { id = @question.ID })
+                            @Html.Hidden("id", question.ID)
+                        </div>
+                        <input class="formBtn" type="submit" value="Save" />
+                        <div class="formBtn" onclick="DiscardForm(this)">Discard</div>
+                    </div>
+                }
+                if (String.IsNullOrEmpty(question.Answer))
+                {
+                    <div class="editFormBtn" onclick="ToggleForm(this)">Add answer</div>
+                }
+                else
+                { 
+                    <div class="editFormBtn" onclick="ToggleForm(this)">Edit answer</div>
+                }
+            }
+            <div class="deleteQuestion" onclick="DeleteQuestion(this, @question.ID)"></div>
+        </li>
+    }
+</ul>
+<div class="pagination">
+    <div class="nextprev">
+        @if (Model.HasPreviousPage)
+        {
+            @Html.ActionLink("<<", "Index", new { page = 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+            @Html.Raw(" ");
+            @Html.ActionLink("< Prev", "Index", new { page = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter=ViewBag.CurrentFilter  })
+        }
+        else
+        {
+            @:<<
+            @Html.Raw(" ");
+            @:< Prev
+        }
+     
+        @if (Model.HasNextPage)
+        {
+            @Html.ActionLink("Next >", "Index", new { page = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter=ViewBag.CurrentFilter  })
+            @Html.Raw(" ");
+            @Html.ActionLink(">>", "Index", new { page = Model.PageCount, sortOrder = ViewBag.CurrentSort, currentFilter=ViewBag.CurrentFilter  })
+        }
+        else
+        {
+            @:Next >
+            @Html.Raw(" ")
+            @:>>
+        }
+    </div>
+    <div class="pageof">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+        of @Model.PageCount
+    </div>
+</div>

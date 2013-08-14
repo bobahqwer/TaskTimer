@@ -1,0 +1,8 @@
+﻿<ul class="flags">
+     <li>
+        @Html.ActionLink(".", "ChangeCulture", "Home", new { lang = "en", returnUrl = this.Request.RawUrl }, new { @class = "flag en" })
+    </li>
+    <li>
+        @Html.ActionLink(".", "ChangeCulture", "Home", new { lang = "he", returnUrl = this.Request.RawUrl }, new { @class = "flag he" })
+    </li>
+</ul>

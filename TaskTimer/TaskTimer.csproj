@@ -1,0 +1,690 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3F29B244-42C0-4786-AA69-C5B044B531AB}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TaskTimer</RootNamespace>
+    <AssemblyName>TaskTimer</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Google.GData.Apps, Version=2.1.0.0, Culture=neutral, PublicKeyToken=e6feebfe441b89cb, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.GData.Apps.2.1.0.0\lib\Google.GData.Apps.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Client, Version=2.1.0.0, Culture=neutral, PublicKeyToken=04a59ca9b0273830, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.GData.Client.2.1.0.0\lib\Google.GData.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Extensions, Version=2.1.0.0, Culture=neutral, PublicKeyToken=0b4c5df2ebf20876, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.GData.Extensions.2.1.0.0\lib\Google.GData.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Spreadsheets, Version=2.1.0.0, Culture=neutral, PublicKeyToken=3f77feb76ff0d9a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.GData.Spreadsheets.2.1.0.0\lib\Google.GData.Spreadsheets.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Helpers">
+      <HintPath>..\packages\microsoft-web-helpers.2.1.20710.2\lib\net40\Microsoft.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcSiteMapProvider, Version=3.3.4.0, Culture=neutral, PublicKeyToken=1923abe4657913cc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MvcSiteMapProvider.3.3.4.0\lib\net40\MvcSiteMapProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.15.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0-rc\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20505.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20505.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20505.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20505.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20505.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20505.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20505.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0-beta2\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.0\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20505.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20505.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20505.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20505.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.0.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.0.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.2.0.20710.0\lib\net40\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.2.0.20710.0\lib\net40\WebMatrix.WebData.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="App_GlobalResources\MvcSitemap.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MvcSitemap.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\MvcSitemap.he.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MvcSitemap.he.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Models\AdminModels.cs" />
+    <Compile Include="Areas\Admin\UsefulClasses\ModelsHelper.cs" />
+    <Compile Include="Controllers\MapsController.cs" />
+    <Compile Include="Controllers\VideoController.cs" />
+    <Compile Include="Models\ShopItem.cs">
+      <DependentUpon>CustomMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SiteMainPages.cs">
+      <DependentUpon>CustomMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>CustomMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Models\Account\FieldsNames.he.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FieldsNames.he.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Models\Account\FieldsNames.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FieldsNames.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Models\Account\ValidationStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ValidationStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Models\Account\ValidationStrings.he.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ValidationStrings.he.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\FAQController.cs" />
+    <Compile Include="Models\Applications.cs">
+      <DependentUpon>CustomMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomMembership.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomMembership.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomMembership.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomMembership.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomMembership.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FAQ.cs">
+      <DependentUpon>CustomMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FAQModels.cs" />
+    <Compile Include="Models\Images.cs">
+      <DependentUpon>CustomMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Memberships.cs">
+      <DependentUpon>CustomMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Profiles.cs">
+      <DependentUpon>CustomMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Roles.cs">
+      <DependentUpon>CustomMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Users.cs">
+      <DependentUpon>CustomMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\Account\Strings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\Account\Strings.he.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings.he.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\Shared\LayoutPartual.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LayoutPartual.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\Shared\LayoutPartual.he.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LayoutPartual.he.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UsefulClasses\GlobalErrorHandler.cs" />
+    <Compile Include="UsefulClasses\Helper.cs" />
+    <Compile Include="Models\UserRepository.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Security\MyMembershipProvider.cs" />
+    <Compile Include="Security\MyRoleProvider.cs" />
+    <Compile Include="UsefulClasses\HtmlHelperExtensions.cs" />
+    <Content Include="Areas\Admin\Content\admin.css" />
+    <Content Include="Areas\Admin\Content\Images\adminbg.jpg" />
+    <Content Include="Content\CSS3.css" />
+    <Content Include="Content\dropdown\dropdown.css" />
+    <Content Include="Content\dropdown\dropdown.vertical.css" />
+    <Content Include="Content\dropdown\dropdown.vertical.rtl.css" />
+    <Content Include="Content\dropdown\themes\default\default.css" />
+    <Content Include="Content\dropdown\themes\default\images\nav-arrow-down-white.png" />
+    <Content Include="Content\dropdown\themes\default\images\nav-arrow-down.png" />
+    <Content Include="Content\dropdown\themes\default\images\nav-arrow-left-white.png" />
+    <Content Include="Content\dropdown\themes\default\images\nav-arrow-left.png" />
+    <Content Include="Content\dropdown\themes\default\images\nav-arrow-right-white.png" />
+    <Content Include="Content\dropdown\themes\default\images\nav-arrow-right.png" />
+    <Content Include="Content\dropdown\themes\default\images\nav-arrow-top-white.png" />
+    <Content Include="Content\dropdown\themes\default\images\nav-arrow-top.png" />
+    <Content Include="Content\FAQ.css" />
+    <Content Include="Content\GoogleDoc.css" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ConfigurationController.cs" />
+    <Compile Include="Controllers\GoogleDocumentController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\ConfigurationModels.cs" />
+    <Compile Include="Models\GoogleDocumentModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\sitebg.jpg" />
+    <Content Include="Images\bg.gif" />
+    <Content Include="Images\bluebg.jpg" />
+    <Content Include="favicon.ico" />
+    <Content Include="Images\Flags\flag-en.png" />
+    <Content Include="Images\Flags\flag-he.png" />
+    <Content Include="Images\Flags\flag-ru.png" />
+    <Content Include="Images\krest.jpg" />
+    <Content Include="Images\krest_over.jpg" />
+    <Content Include="Images\logo.jpg" />
+    <Content Include="Images\tablesbg_1px.jpg" />
+    <Content Include="App_GlobalResources\MvcSitemap.he.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MvcSitemap.he.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\MvcSitemap.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MvcSitemap.Designer.cs</LastGenOutput>
+    </Content>
+    <EmbeddedResource Include="Resources\Models\Account\FieldsNames.he.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FieldsNames.he.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources.Models.Account</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Models\Account\FieldsNames.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FieldsNames.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources.Models.Account</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Models\Account\ValidationStrings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ValidationStrings.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources.Models.Account</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Models\Account\ValidationStrings.he.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ValidationStrings.he.designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources.Models.Account</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Account\Strings.he.resx">
+      <CustomToolNamespace>Resources.Views.Account</CustomToolNamespace>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.he.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Account\Strings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources.Views.Account</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Shared\LayoutPartual.he.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LayoutPartual.he.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources.Views.Shared</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Shared\LayoutPartual.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LayoutPartual.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources.Views.Shared</CustomToolNamespace>
+    </EmbeddedResource>
+    <EntityDeploy Include="Models\CustomMembership.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CustomMembership.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\CustomMembership.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CustomMembership.edmx</DependentUpon>
+      <LastGenOutput>CustomMembership.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\CustomMembership.edmx.diagram">
+      <DependentUpon>CustomMembership.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\CustomMembership.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CustomMembership.edmx</DependentUpon>
+      <LastGenOutput>CustomMembership.cs</LastGenOutput>
+    </Content>
+    <Content Include="Mvc.sitemap">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Web.config" />
+    <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\SiteMapHelperModel.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.cshtml" />
+    <Content Include="Areas\Admin\Mvc.sitemap">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Areas\Admin\Views\Admin\_UsersPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\_ImagesPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\_MainPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\EditorTemplates\UserEditor.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\_UserPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\EditorTemplates\RolesEditor.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\_PagesPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\_PagesNewPartial.cshtml" />
+    <None Include="MvcSiteMapSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\PublishProfiles\dirot.somee.com.pubxml" />
+    <Content Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </Content>
+    <None Include="Properties\PublishProfiles\local.pubxml" />
+    <None Include="Scripts\jquery-1.6.2-vsdoc.js" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\changes.txt" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\css\calendar-eightysix-v1.1-default.css" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\css\calendar-eightysix-v1.1-osx-dashboard.css" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\css\calendar-eightysix-v1.1-vista.css" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\css\page.css" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\examples.html" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\img\calendar.gif" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\img\default\arrow-left-hover-blue.png" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\img\default\arrow-left-hover-green.png" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\img\default\arrow-left-hover-red.png" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\img\default\arrow-left.png" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\img\default\arrow-right-hover-blue.png" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\img\default\arrow-right-hover-green.png" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\img\default\arrow-right-hover-red.png" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\img\default\arrow-right.png" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\img\default\background.gif" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\img\default\background.png" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\img\default\footer-blue.png" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\img\default\footer-green.png" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\img\default\footer-red.png" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\img\osx-dashboard\arrow-left-hover.gif" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\img\osx-dashboard\arrow-left.gif" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\img\osx-dashboard\arrow-right-hover.gif" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\img\osx-dashboard\arrow-right.gif" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\img\osx-dashboard\background.gif" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\img\osx-dashboard\background.png" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\img\shading.png" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\img\vista\arrow-left-hover.gif" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\img\vista\arrow-left.gif" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\img\vista\arrow-right-hover.gif" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\img\vista\arrow-right.gif" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\img\vista\background.gif" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\img\vista\background.png" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\img\vista\day.gif" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\img\vista\year-decade.gif" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\js\calendar-eightysix-v1.1.js" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\js\compressed\calendar-eightysix-v1.1.js" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\js\compressed\mootools-1.2.4-core.js" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\js\compressed\mootools-1.2.4.4-more.js" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\js\mootools-1.2.4-core.js" />
+    <Content Include="Scripts\calendar-eightysix-v1.1\js\mootools-1.2.4.4-more.js" />
+    <Content Include="Scripts\custom-scrollbar-plugin\jquery.mCustomScrollbar.css" />
+    <Content Include="Scripts\custom-scrollbar-plugin\jquery.mCustomScrollbar.js" />
+    <Content Include="Scripts\custom-scrollbar-plugin\jquery.mousewheel.min.js" />
+    <Content Include="Scripts\jeditable\jquery.jeditable.js" />
+    <Content Include="Scripts\jquery-1.6.2.js" />
+    <Content Include="Scripts\jquery-1.6.2.min.js">
+      <DependentUpon>jquery-1.6.2.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js.map">
+      <DependentUpon>jquery.unobtrusive-ajax.js</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.8.11.js" />
+    <Content Include="Scripts\jquery-ui-1.8.11.min.js">
+      <DependentUpon>jquery-ui-1.8.11.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.sharrre-1.3.4\jquery.sharrre-1.3.4.js" />
+    <Content Include="Scripts\jquery.sharrre-1.3.4\jquery.sharrre-1.3.4.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js">
+      <DependentUpon>jquery.unobtrusive-ajax.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js">
+      <DependentUpon>jquery.validate.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js">
+      <DependentUpon>jquery.validate.unobtrusive.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\knockout-2.0.0.debug.js" />
+    <Content Include="Scripts\knockout-2.0.0.js" />
+    <Content Include="Scripts\modernizr-2.0.6-development-only.js" />
+    <Content Include="Scripts\nicEdit\nicEdit.js" />
+    <Content Include="Scripts\nicEdit\nicEditorIcons.gif" />
+    <Content Include="Scripts\nicescroll.3\jquery.nicescroll.min.js" />
+    <Content Include="Scripts\nicescroll.3\zoomico.png" />
+    <Content Include="Scripts\site.js" />
+    <Content Include="Scripts\tablesorter\addons\pager\icons\first.png" />
+    <Content Include="Scripts\tablesorter\addons\pager\icons\last.png" />
+    <Content Include="Scripts\tablesorter\addons\pager\icons\loading.gif" />
+    <Content Include="Scripts\tablesorter\addons\pager\icons\next.png" />
+    <Content Include="Scripts\tablesorter\addons\pager\icons\prev.png" />
+    <Content Include="Scripts\tablesorter\addons\pager\jquery.tablesorter.pager.css" />
+    <Content Include="Scripts\tablesorter\addons\pager\jquery.tablesorter.pager.js" />
+    <Content Include="Scripts\tablesorter\addons\pager\jquery.tablesorter.pager.min.js" />
+    <Content Include="Scripts\tablesorter\css\bootstrap.css" />
+    <Content Include="Scripts\tablesorter\css\images\black-asc.gif" />
+    <Content Include="Scripts\tablesorter\css\images\black-desc.gif" />
+    <Content Include="Scripts\tablesorter\css\images\black-unsorted.gif" />
+    <Content Include="Scripts\tablesorter\css\images\dropbox-asc-hovered.png" />
+    <Content Include="Scripts\tablesorter\css\images\dropbox-asc.png" />
+    <Content Include="Scripts\tablesorter\css\images\dropbox-desc-hovered.png" />
+    <Content Include="Scripts\tablesorter\css\images\dropbox-desc.png" />
+    <Content Include="Scripts\tablesorter\css\images\green-asc.gif" />
+    <Content Include="Scripts\tablesorter\css\images\green-desc.gif" />
+    <Content Include="Scripts\tablesorter\css\images\green-header.gif" />
+    <Content Include="Scripts\tablesorter\css\images\green-unsorted.gif" />
+    <Content Include="Scripts\tablesorter\css\images\ice-asc.gif" />
+    <Content Include="Scripts\tablesorter\css\images\ice-desc.gif" />
+    <Content Include="Scripts\tablesorter\css\images\ice-unsorted.gif" />
+    <Content Include="Scripts\tablesorter\css\images\white-asc.gif" />
+    <Content Include="Scripts\tablesorter\css\images\white-desc.gif" />
+    <Content Include="Scripts\tablesorter\css\images\white-unsorted.gif" />
+    <Content Include="Scripts\tablesorter\css\theme.black-ice.css" />
+    <Content Include="Scripts\tablesorter\css\theme.blue.css" />
+    <Content Include="Scripts\tablesorter\css\theme.bootstrap.css" />
+    <Content Include="Scripts\tablesorter\css\theme.dark.css" />
+    <Content Include="Scripts\tablesorter\css\theme.default.css" />
+    <Content Include="Scripts\tablesorter\css\theme.dropbox.css" />
+    <Content Include="Scripts\tablesorter\css\theme.green.css" />
+    <Content Include="Scripts\tablesorter\css\theme.grey.css" />
+    <Content Include="Scripts\tablesorter\css\theme.ice.css" />
+    <Content Include="Scripts\tablesorter\css\theme.jui.css" />
+    <Content Include="Scripts\tablesorter\js\jquery.metadata.js" />
+    <Content Include="Scripts\tablesorter\js\jquery.tablesorter.js" />
+    <Content Include="Scripts\tablesorter\js\jquery.tablesorter.min.js" />
+    <Content Include="Scripts\tablesorter\js\jquery.tablesorter.widgets.js" />
+    <Content Include="Scripts\tablesorter\js\jquery.tablesorter.widgets.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Images\accent.png" />
+    <Content Include="Images\aspNetHome.png" />
+    <Content Include="Images\bullet.png" />
+    <Content Include="Images\facebook.png" />
+    <Content Include="Images\findHosting.png" />
+    <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\NuGetGallery.png" />
+    <Content Include="Images\orderedList0.png" />
+    <Content Include="Images\orderedList1.png" />
+    <Content Include="Images\orderedList2.png" />
+    <Content Include="Images\orderedList3.png" />
+    <Content Include="Images\orderedList4.png" />
+    <Content Include="Images\orderedList5.png" />
+    <Content Include="Images\orderedList6.png" />
+    <Content Include="Images\orderedList7.png" />
+    <Content Include="Images\orderedList8.png" />
+    <Content Include="Images\orderedList9.png" />
+    <Content Include="Images\twitter.png" />
+    <Content Include="Images\windowsLive.png" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\ChangePasswordSuccess.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\GoogleDocument\Index.cshtml" />
+    <Content Include="Views\Configuration\Index.cshtml" />
+    <Content Include="Views\Configuration\AddNew.cshtml" />
+    <Content Include="Views\Configuration\AuthorizationCheck.cshtml" />
+    <Content Include="Views\GoogleDocument\Document.cshtml" />
+    <Content Include="Views\Home\Welcome.cshtml" />
+    <Content Include="Views\FAQ\Index.cshtml" />
+    <Content Include="Views\FAQ\AddNew.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\EditAnswer.cshtml" />
+    <Content Include="Views\Account\RegisterAdmin.cshtml" />
+    <Content Include="Views\Home\Admin.cshtml" />
+    <Content Include="Views\Error\ServerError.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\InvalidRequest.cshtml" />
+    <Content Include="Views\Error\AccessDenied.cshtml" />
+    <Content Include="Views\Home\Robots.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
+    <Content Include="Views\Shared\_LocalizationPartial.cshtml" />
+    <Content Include="Views\Home\SiteMap.cshtml" />
+    <Content Include="Views\Configuration\_IndexPartual.cshtml" />
+    <Content Include="Scripts\tablesorter\css\psd\green-asc.psd" />
+    <Content Include="Scripts\tablesorter\css\psd\green-desc.psd" />
+    <Content Include="Scripts\tablesorter\css\psd\green-unsorted.psd" />
+    <Content Include="Scripts\tablesorter\css\theme.less" />
+    <Content Include="Views\Video\Index.cshtml" />
+    <Content Include="Views\Maps\Index.cshtml" />
+    <Content Include="Views\Home\hapoelTest.cshtml" />
+    <Content Include="Views\Video\Calendar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Images\Uploaded\Temporary\" />
+    <Folder Include="Resources\Global\" />
+    <Folder Include="Resources\Views\Home\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50655</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:58169/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

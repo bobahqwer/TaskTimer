@@ -1,0 +1,32 @@
+﻿@model TaskTimer.Models.GoogleDocumentModel
+@{
+    ViewBag.Title = "Configuration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+        </div>
+    </section>
+}
+<h3>List of Google documents:</h3>
+<ol class="round">
+    @if (Model == null || Model.Documents == null)
+    {
+        <li><b>No documents in current API Access</b></li>
+    }
+    else
+    {
+        foreach (var item in Model.Documents)
+        {
+            <li>@Html.ActionLink(item.Title.Text, "Document", "GoogleDocument", new { docName = item.Title.Text }, new { })</li>
+        }
+    }
+</ol>
+@Html.ActionLink("Add New API Access", "AddNew")
+
+

@@ -1,0 +1,150 @@
+﻿@using TaskTimer.UsefulClasses
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/themes/base/css",
+        "~/Content/css", 
+        //"~/Scripts/tablesorter/themes/blue/style.css",
+        "~/Scripts/custom-scrollbar-plugin/jquery.mCustomScrollbar.css",
+        "~/Content/dropdown/dropdown.vertical.rtl.css",
+        "~/Content/dropdown/themes/default/default.css",
+        "~/Content/GoogleDoc.css",
+        "~/Content/FAQ.css",
+        "~/Content/CSS3.css")
+
+        @Scripts.Render("~/bundles/modernizr", 
+        "~/Scripts/jquery-1.6.2.js",
+        "~/Scripts/jquery-ui-1.8.11.js",
+        "~/Scripts/jquery.unobtrusive-ajax.js",
+        
+       /* "~/Scripts/custom-scrollbar-plugin/jquery.mCustomScrollbar.js",
+        "~/Scripts/custom-scrollbar-plugin/jquery.mousewheel.min.js",*/
+        "~/Scripts/site.js")
+        <script>
+            //Google+
+            $(function () {
+                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                po.src = 'https://apis.google.com/js/plusone.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+
+                
+            });
+
+            //Facebook 
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_EN/all.js#xfbml=1";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+
+
+            $(function () {
+                //remove log iframe of 'Pin it'
+                setTimeout(function () { $('footer').next('iframe').remove(); }, 1000);
+                
+            });
+           /*$(document).ready(
+                function () {
+                    $("html").niceScroll({
+                        spacebarenabled: false, //conflict with nicEditor
+                        smoothscroll: true,
+                        scrollspeed: '90'
+                    });
+                }
+            );*/
+          /*  (function ($) {
+                $(window).load(function () {
+                    $(".faqElement").mCustomScrollbar();
+                });
+            })(jQuery);*/
+        </script>
+        <script type="text/javascript">
+            //Google analytics
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-38346737-1']);
+            _gaq.push(['_trackPageview']);
+            (function () {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+    </head>
+    <body>
+        <div id="fb-root"></div>
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                        @Html.Partial("_LocalizationPartial")
+                        <div class="logo">
+                            @Html.ImageLink("/Images/logo.png", "Site logo", "Index", "Home", null, null, new { style = "border: 0px;" })
+                        </div>
+                </div>
+                <div class="float-right">
+                    <section id="login">
+                        @Html.Partial("_LoginPartial")
+                    </section>
+                    @Html.MvcSiteMap("MvcSiteMapProvider").Menu(false, true, true)
+                </div>
+            </div>
+        </header>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @*<div class="shareit">
+                    <span>
+                        <div class="g-plusone" data-size="medium"></div>
+                    </span>
+                    <span>
+                        <script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
+                        <script type="IN/Share" data-counter="right"></script>
+                    </span>
+                    <span>
+                        <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+                        <a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fdirot.somee.com%2F&media=http%3A%2F%2Fdirot.somee.com%2F&description=Demo%20site" class="pin-it-button" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>
+                    </span>
+                    <span>
+                        <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-via="bobahqwer">Tweet</a>
+                    </span>
+                    <span>
+                        <div class="fb-like" data-send="false" data-layout="button_count" data-width="20" data-show-faces="true" data-font="tahoma"></div>
+                    </span>
+                    
+                </div>*@
+                @Html.MvcSiteMap().SiteMapPath()
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left rights">
+                    <p>@Html.ActionLink("®", "Index", "Admin", new { area = "Admin" }, new { style = "text-decoration: none; cursor: default;" }) @DateTime.Now.Year - My ASP.NET MVC Application</p>
+                </div>
+                <div class="float-left fotterMiddleLinks">
+                    <p>@Html.ActionLink("Site map", "SiteMap", "Home")</p>
+                </div>
+                <div class="float-right">
+                    <ul id="visits">
+                        <li>@Resources.Views.Shared.LayoutPartual.OnlineVisitors: @App["onlinevisitors"]</li>
+                        @if (App["totalvisitors"] != null)
+                        {
+                            <li>@Resources.Views.Shared.LayoutPartual.TotalVisitors: @App["totalvisitors"]</li>
+                        }
+                        @if (App["totalusers"] != null)
+                        {
+                            <li>@Resources.Views.Shared.LayoutPartual.TotalUsers: @App["totalusers"]</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

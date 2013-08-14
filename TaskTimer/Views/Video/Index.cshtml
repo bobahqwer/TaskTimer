@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<script type="text/javascript">
+
+    function OpenVideo(el) {
+        var elementToFade = $(el).parent().find('.videoYoutube');
+        debugger;
+        if (elementToFade.css('opacity') == '0') {
+            elementToFade.fadeTo(3000, 1);
+            $(el).css('margin-top', '10px').css('margin-bottom', '10px');
+        }
+        else {
+            elementToFade.fadeTo(3000, 0, function () {
+                elementToFade.fadeOut('500');
+            });
+            $(el).css('margin-top', '0px').css('margin-bottom', '0px');
+        }
+    }
+</script>
+<ol class="round">
+    <li class="one">
+        <h5>How to create a login page using ASP.NET MVC 3 Razor (Part 1 of 3)</h5>
+        Simple example of how to create an MVC 3 Razor web application that forces a users to login in order to access secure parts of the website.
+        <ol class="videoNumberList">
+            <h1>Outline:</h1>
+            <li>In Visual Studio 2010, create an empty ASP.NET MVC 3 Razor application</li>
+            <li>Create a Home Controller</li>
+            <li>Create a Model for the Login data using Data Annotations</li>
+            <li>Create a Login Controller</li>
+            <li>Create an method decorated with the HttpPost attribute</li>
+            <li>Create a View for the Login HTML Form</li>
+            <li>Use Razor @Html helpers to build the HTML Form</li>
+            <li>Discuss Client-side and Server-side validation</li>
+            <li>Update Web.Config file to allow and disallow anonymous users</li>
+            <li>Update Web.Config to force users to the Login View</li>
+            <li>Create a Layout (Master) page for anonymous users and a different Layout for authenticated users</li>
+        </ol>
+        <div style="display: inline-block;">
+            <div class="videoPlayer">
+                <div class="videoPlayerOpen" onclick="OpenVideo(this);">+ Show video </div>
+                <div class="videoYoutube" style="display:none;">
+                @Video.Flash(path: "http://www.youtube.com/v/HXfhPj1rlQ8",
+                    width: "640", height: "390",
+                    play: true,
+                    //windowMode: "transparent", 
+                    quality: "medium"
+                )</div>
+            </div>
+        </div>
+    </li>
+    <li class="two">
+        <h5>How to create a login page using ASP.NET MVC 3 Razor (Part 2 of 3)</h5>
+        <div style="display: inline-block;">
+            <div class="videoPlayer">
+                <div class="videoPlayerOpen" onclick="OpenVideo(this);">+ Show video </div>
+                <div class="videoYoutube" style="display:none;">
+                @Video.Flash(path: "http://www.youtube.com/v/JMz-3wn_lxI",
+                    width: "640", height: "390",
+                    play: true,
+                    //windowMode: "transparent", 
+                    quality: "medium"
+                )</div>
+            </div>
+        </div>
+    </li>
+    <li class="three">
+        <h5>How to create a login page using ASP.NET MVC 3 Razor (Part 3 of 3)</h5>
+        <div style="display: inline-block;">
+            <div class="videoPlayer">
+                <div class="videoPlayerOpen" onclick="OpenVideo(this);">+ Show video </div>
+                <div class="videoYoutube" style="display:none;">
+                @Video.Flash(path: "http://www.youtube.com/v/cUFfE7qOU9Q",
+                    width: "640", height: "390",
+                    play: true,
+                    //windowMode: "transparent", 
+                    quality: "medium"
+                )</div>
+            </div>
+        </div>
+    </li>
+</ol>

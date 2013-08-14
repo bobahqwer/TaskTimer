@@ -1,0 +1,94 @@
+﻿@model List<TaskTimer.Areas.Admin.Models.User>
+@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+        
+ 
+
+<link href="~/Scripts/tablesorter/css/theme.bootstrap.css" rel="stylesheet" />
+<link href="~/Scripts/tablesorter/addons/pager/jquery.tablesorter.pager.css" rel="stylesheet" />
+<link href="~/Scripts/tablesorter/css/bootstrap.css" rel="stylesheet" />
+
+<script src="~/Scripts/tablesorter/js/jquery.tablesorter.js"></script>
+<script src="~/Scripts/tablesorter/js/jquery.tablesorter.widgets.js"></script>
+<script src="~/Scripts/tablesorter/addons/pager/jquery.tablesorter.pager.js"></script>
+
+
+
+@*<script src="~/Scripts/jeditable/jquery.jeditable.js"></script>*@
+
+<script>
+    $(loadTableSorter);
+    function loadTableSorter() {
+       
+
+        // call the tablesorter plugin and apply the uitheme widget
+        $("#myTable").tablesorter({
+            theme: "bootstrap", // this will 
+
+            widthFixed: true,
+
+            headerTemplate: '{content} {icon}', // new in v2.7. Needed to add the bootstrap icon!
+
+            // widget code contained in the jquery.tablesorter.widgets.js file
+            // use the zebra stripe widget if you plan on hiding any rows (filter widget)
+            widgets: ["uitheme", "filter", "zebra"],
+
+            widgetOptions: {
+                // using the default zebra striping class name, so it actually isn't included in the theme variable above
+                // this is ONLY needed for bootstrap theming if you are using the filter widget, because rows are hidden
+                zebra: ["even", "odd"],
+
+                // reset filters button
+                filter_reset: ".reset",
+
+                // set the uitheme widget to use the bootstrap theme class names
+                // uitheme : "bootstrap"
+
+            }
+        });
+        /*.tablesorterPager({
+
+            // target the pager markup - see the HTML block below
+            container: $(".pager"),
+
+            // target the pager page select dropdown - choose a page
+            cssGoto: ".pagenum",
+
+            // remove rows from the table to speed up the sort of large tables.
+            // setting this to false, only hides the non-visible rows; needed if you plan to add/remove rows with the pager enabled.
+            removeRows: false,
+
+            // output string - default is '{page}/{totalPages}';
+            // possible variables: {page}, {totalPages}, {filteredPages}, {startRow}, {endRow}, {filteredRows} and {totalRows}
+            output: '{startRow} - {endRow} / {filteredRows} ({totalRows})'
+
+        });*/
+
+        //$('.text-box').css('display','none');
+        //$('#myTable td').editable(function (value, settings) {
+        //    console.log(this);
+        //    console.log(value);
+        //    console.log(settings);
+        //    return (value);
+        //}, {
+        //    type: 'text',//'text',//'textarea',
+        //    //submit: 'Save changes',
+        //    onblur: 'myOnblur'
+        //    //width: '300px',
+        //   // height: '100px'
+        //});
+
+        //$("#myTable").tablesorter({
+        //    theme: 'bootstrap'
+        //});
+
+           
+    }
+  
+</script>
+
+<div id="main">
+    @Html.Partial("_UsersPartial", Model)
+</div>

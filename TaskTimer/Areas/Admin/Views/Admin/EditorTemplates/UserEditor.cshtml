@@ -1,0 +1,50 @@
+﻿@model TaskTimer.Areas.Admin.Models.User
+@{
+    Layout = null;
+}
+
+@using (Ajax.BeginForm("Edit", new AjaxOptions { HttpMethod = "POST",
+                                                UpdateTargetId = Model.UserId.ToString(), 
+                                                InsertionMode = InsertionMode.Replace,
+                                                LoadingElementId = "loadingLayer",
+                                                OnSuccess = "editToggle(" + Model.UserId.ToString() + ")"
+                                                })) //, OnBegin = "isValid", OnSuccess = "SetFocusOnForm" },
+{
+    @Html.HiddenFor(x => x.UserId)
+    <tr id="edit_@Model.UserId" class="edit">
+        <td>
+            @Html.EditorFor(x => x.UserName)
+        </td>
+        <td>
+            @Html.EditorFor(x => x.Email)
+        </td>
+        <td>
+            @Html.EditorFor(x => x.CreatedDate) @*new { value = Model.CreatedDate })*@
+            @*@Html.TextBox("",  String.Format("{0:yyyy-MM-dd}", Model.CreatedDate != null ? Model.CreatedDate : DateTime.Today), new { @class = "dp"})*@
+        </td>
+        <td>
+            @Html.EditorFor(x => x.IsActivated)
+        </td>
+        <td>
+            @Html.EditorFor(x => x.IsLockedOut)
+        </td>
+        <td>
+            @Html.EditorFor(x => x.LastLockedOutReason)
+        </td>
+        <td>
+            @Html.EditorFor(x => x.LastLockedOutDate)
+        </td>
+        <td>
+            @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles)
+            @*@Html.EditorFor(x => x.Roles, "RolesEditor")*@
+        </td>
+        <td>
+            <input type="submit" value="Save" /> |
+            @Html.ActionLink("Discard", "discard", new { id = Model.UserId })
+        </td>
+    </tr>
+}
+
+
+
+

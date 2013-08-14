@@ -1,0 +1,158 @@
+﻿@model TaskTimer.Models.GoogleDocumentModel
+<link href="~/Scripts/tablesorter/css/theme.bootstrap.css" rel="stylesheet" />
+<link href="~/Scripts/tablesorter/addons/pager/jquery.tablesorter.pager.css" rel="stylesheet" />
+
+<script src="~/Scripts/tablesorter/js/jquery.tablesorter.min.js"></script>
+<script src="~/Scripts/tablesorter/js/jquery.tablesorter.widgets.min.js"></script>
+<script src="~/Scripts/tablesorter/addons/pager/jquery.tablesorter.pager.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $.extend($.tablesorter.themes.bootstrap, {
+            // these classes are added to the table. To see other table classes available,
+            // look here: http://twitter.github.com/bootstrap/base-css.html#tables
+            table: 'table table-bordered',
+            header: 'bootstrap-header', // give the header a gradient background
+            footerRow: '',
+            footerCells: '',
+            icons: '', // add "icon-white" to make them white; this icon class is added to the <i> in the header
+            sortNone: 'bootstrap-icon-unsorted',
+            sortAsc: 'icon-chevron-up',
+            sortDesc: 'icon-chevron-down',
+            active: '', // applied when column is sorted
+            hover: '', // use custom css here - bootstrap class may not override it
+            filterRow: '', // filter row class
+            even: '', // odd row zebra striping
+            odd: ''  // even row zebra striping
+        });
+        // call the tablesorter plugin and apply the uitheme widget
+        $("#myTable").tablesorter({
+            theme: "bootstrap", // this will 
+
+            widthFixed: true,
+
+            headerTemplate: '{content} {icon}', // new in v2.7. Needed to add the bootstrap icon!
+
+            // widget code contained in the jquery.tablesorter.widgets.js file
+            // use the zebra stripe widget if you plan on hiding any rows (filter widget)
+            widgets: ["uitheme", "filter", "zebra"],
+
+            widgetOptions: {
+                // using the default zebra striping class name, so it actually isn't included in the theme variable above
+                // this is ONLY needed for bootstrap theming if you are using the filter widget, because rows are hidden
+                zebra: ["even", "odd"],
+
+                // reset filters button
+                filter_reset: ".reset",
+
+                // set the uitheme widget to use the bootstrap theme class names
+                // uitheme : "bootstrap"
+
+            }
+        })
+        .tablesorterPager({
+
+            // target the pager markup - see the HTML block below
+            container: $(".pager"),
+
+            // target the pager page select dropdown - choose a page
+            cssGoto: ".pagenum",
+
+            // remove rows from the table to speed up the sort of large tables.
+            // setting this to false, only hides the non-visible rows; needed if you plan to add/remove rows with the pager enabled.
+            removeRows: false,
+
+            // output string - default is '{page}/{totalPages}';
+            // possible variables: {page}, {totalPages}, {filteredPages}, {startRow}, {endRow}, {filteredRows} and {totalRows}
+            output: '{startRow} - {endRow} / {filteredRows} ({totalRows})'
+
+        });
+        //$("#myTable").tablesorter();
+    }
+    );
+</script>
+@{
+    ViewBag.Title = "Document: ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+        </div>
+    </section>
+}
+<h3>Worksheets</h3>
+<b class="errorMsg">@ViewBag.errorMsg</b>
+@if (Model == null || Model.Worksheet == null)
+{
+    <b>No Worksheets in current document</b>
+}
+else
+{
+    <ul>
+        @foreach (var item in Model.Worksheets)
+        {
+            if (@ViewBag.Worksheet == item.Title.Text)
+            {
+               <li class="active"> @Html.ActionLink(item.Title.Text, "Document", new { docName = Model.Document.Title.Text, workName = item.Title.Text })</li>
+            }
+            else
+            {
+                <li>@Html.ActionLink(item.Title.Text, "Document", new { docName = Model.Document.Title.Text, workName = item.Title.Text })</li>
+            }
+        }
+    </ul>
+}
+<h3>Data of "@Model.Worksheet.Title.Text"</h3>
+@if (Model == null || Model.Table == null)
+{
+    <b>Worksheet was not selected</b>
+}
+else if (Model.Table.Count == 0) 
+{
+    <b>Worksheet is empty</b>
+}
+else
+{
+    using (Html.BeginForm()) {
+    @Html.ValidationSummary()
+    @*<input type="submit" value="Start" />*@
+    <table id="myTable" class="tablesorter">
+        <thead>
+            <tr>
+                <th style="white-space: nowrap;"></th>
+                @foreach (Google.GData.Spreadsheets.ListEntry.Custom cell in ((Google.GData.Spreadsheets.ListEntry)Model.Table[0]).Elements)
+                {
+                    <th>@cell.LocalName</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @{ int? count = 0; }
+            @foreach (Google.GData.Spreadsheets.ListEntry row in Model.Table)
+            {
+                <tr>
+                    @if (Model.RowActive != null && Model.RowActive == count)
+                    {
+                        <td><input type="submit" value="Stop" /></td>
+                    }
+                    else
+                    {
+                        <td>@Html.RadioButton("rowNumber", count)</td>
+                    }
+                    @{count++;}
+                    @foreach (Google.GData.Spreadsheets.ListEntry.Custom cell in row.Elements)
+                    {
+                        <td>@cell.Value</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="pager"></div>
+    }
+}

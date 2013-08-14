@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskTimer", "TaskTimer\TaskTimer.csproj", "{3F29B244-42C0-4786-AA69-C5B044B531AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskTimer.Tests", "TaskTimer.Tests\TaskTimer.Tests.csproj", "{673EAA3F-08BD-43FD-94DC-DB66396A082E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3F29B244-42C0-4786-AA69-C5B044B531AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F29B244-42C0-4786-AA69-C5B044B531AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F29B244-42C0-4786-AA69-C5B044B531AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F29B244-42C0-4786-AA69-C5B044B531AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{673EAA3F-08BD-43FD-94DC-DB66396A082E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{673EAA3F-08BD-43FD-94DC-DB66396A082E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{673EAA3F-08BD-43FD-94DC-DB66396A082E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{673EAA3F-08BD-43FD-94DC-DB66396A082E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

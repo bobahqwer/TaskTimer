@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvcSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-2.0"
+            xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-3.0 MvcSiteMapSchema.xsd"
+            enableLocalization="true">
+ 
+  <mvcSiteMapNode title="$resources:MvcSitemap,HomePage" controller="Home" action="Index">
+    <mvcSiteMapNode title="$resources:MvcSitemap,GoogleDocument" controller="GoogleDocument" action="Index" >
+      <mvcSiteMapNode title="$resources:MvcSitemap,GoogleDocument" controller="GoogleDocument" action="Document" visibility="!MenuHelper"/>
+      <mvcSiteMapNode title="$resources:MvcSitemap,Configuration" controller="Configuration" action="Index">
+        <mvcSiteMapNode title="$resources:MvcSitemap,AddNew" controller="Configuration" action="AddNew">
+          <mvcSiteMapNode title="$resources:MvcSitemap,AuthorizationCheck" controller="Configuration" action="AuthorizationCheck" visibility="!MenuHelper" />
+          <!-- visibility="SiteMapPathHelper, !*" -->
+        </mvcSiteMapNode>
+      </mvcSiteMapNode>
+    </mvcSiteMapNode>
+    
+    <mvcSiteMapNode title="$resources:MvcSitemap,FAQ" controller="FAQ" action="Index">
+      <mvcSiteMapNode title="$resources:MvcSitemap,AddNew" controller="FAQ" action="AddNew"/>
+    </mvcSiteMapNode>
+    <!--<mvcSiteMapNode title="$resources:SiteLocalizations,About" controller="Home" action="About"/>-->
+    <mvcSiteMapNode title="$resources:MvcSitemap,Contact" controller="Home" action="Contact"/>
+
+    <mvcSiteMapNode title="$resources:MvcSitemap,Video" controller="Video" action="Index"/>
+    <mvcSiteMapNode title="$resources:MvcSitemap,Maps" controller="Maps" action="Index"/>
+  </mvcSiteMapNode>
+</mvcSiteMap>

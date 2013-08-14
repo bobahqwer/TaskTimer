@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+            <p>
+                Website features list.
+            </p>
+        </div>
+    </section>
+}
+<ol class="round">
+    <li class="one">
+        <h5>Form authentication.</h5>
+        Registration with and without confirmation by email, Login, Change password - implementation of <b>MembershipProvider</b> and <b>RoleProvider</b>. 
+        All fields with user and client side validations.
+    </li>
+    <li class="two">
+        <h5>Site map and Localization.</h5>
+        Using of <b>MvcSiteMapProvider</b> for sitemap creation: MvcSiteMap for site menu and SiteMapPathHelper for map path (recursive build of menu tree).
+        <b>Localization</b> of site map, form titles, field names and error messages. Added two flags for language selection.
+    </li>
+    <li class="three">
+        <h5>Google API client access (OAuth).</h5>
+        Using of <b>Google API</b> for viewing google worksheets. <b>OAuth</b> allows to control custom internal application and third-party application access 
+        to supported Google Data APIs (scopes).
+        <div>
+            <div class="example-title">OAuth 2.0 authorization:</div>
+                <div class="example-line">Client ID:	726531090653.apps.googleusercontent.com</div>
+                <div class="example-line">Client secret:	LUawfGJjnr8fbcA7XBn89Vld</div>
+        </div>
+    </li>
+    <li class="four">
+        <h5>Frequently asked questions.</h5>
+        Visitors and users can add new questions to the site. Users can add/edit new answers, also they can remove questions from the site (<b>Ajax</b> and <b>jQuery</b>).
+        Using of <b>modified</b> "nicEdit" JS plugin for site text editors. I added to plugin option of width changing during upload of new images, 
+        check image size and available name for save. Also, if visiter added some images to a new question but would not post it then temporary images 
+        of this question will be deleted soon from server.
+    </li>
+    <li class="five">
+        <h5>Administration</h5>
+        @Html.ActionLink("Admin", "Index", "Admin", new { area = "Admin" }, new { style = "color: blue;" }) 
+        this is new separated site area. In this area I used <b>Ajax</b> action links with <b>partial view</b> results.
+    </li>
+    <li class="six">
+        <h5>HTML5. CSS3.</h5>
+        HTML5. CSS3.
+    </li>
+   @* <li class="six">
+        <h5>add asdd</h5>
+        Using of Google API for viewing google documents.
+    </li>*@
+</ol>

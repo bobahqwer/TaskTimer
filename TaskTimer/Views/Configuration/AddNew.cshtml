@@ -1,0 +1,41 @@
+﻿@model TaskTimer.Models.GoogleAPIAccess
+@{
+    ViewBag.Title = "Configuration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+        </div>
+    </section>
+}
+<h3>Add new API Access:</h3>
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary()
+        <fieldset>
+        <legend>Add API Access</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m._ClientID)
+                @Html.TextBoxFor(m => m._ClientID)
+            </li>
+            <li>
+                @Html.LabelFor(m => m._ClientSecret)
+                @Html.TextBoxFor(m => m._ClientSecret)
+            </li>
+           @* <li>
+                @Html.LabelFor(m => m._RedirectURIs)
+                @Html.TextBoxFor(m => m._RedirectURIs)
+            </li>
+            <li>
+                @Html.LabelFor(m => m._Scope)
+                @Html.TextBoxFor(m => m._Scope, new { placeholder = "https://spreadsheets.google.com/feeds https://docs.google.com/feeds"})
+            </li>*@
+        </ol>
+        <input type="submit" value="Add New" />
+    </fieldset>
+}

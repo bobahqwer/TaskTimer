@@ -1,0 +1,55 @@
+﻿@model TaskTimer.Models.GoogleAPIAccess
+@{
+    ViewBag.Title = "Authorization Check";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <script type="text/javascript">
+        function onLinkClick() {
+            $('.accessCode').removeAttr("disabled", "disabled");
+        }
+    </script>   
+
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+        </div>
+    </section>
+}
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary()
+        <fieldset>
+        <legend>Add Google API Access</legend>
+        <table class="autho">
+            <tr>
+            <td>
+                @Html.Label("OAuth authorization URL")<a href="@ViewData["authorizationUrl"]" target="_blank" onclick="onLinkClick()">Confirmation link</a>
+                <div class="remark">
+                    Please visit the URL above to authorize your OAuth request token.<br/>
+                    Once that is complete, type in your access code to continue...
+                </div>
+                @Html.LabelFor(m => m._AccessCode)
+                @Html.TextBoxFor(m => m._AccessCode, new { disabled = "disabled", @class = "accessCode" })
+            </td>
+            <td style="font-size: 18px; font-weight:bold; padding: 23px 42px;">
+                OR
+            </td>
+            <td>
+                @Html.Label("OAuth auto authorization URL")<a href="@ViewData["authorizationUrlAuto"]">Confirmation link</a>
+                <div class="remark">
+                    Click on link for auto receive and check access code.
+                </div>
+            </td>
+            </tr>
+        </table>
+        <input type="submit" value="Confirm" />
+    </fieldset>
+}
+
+
+

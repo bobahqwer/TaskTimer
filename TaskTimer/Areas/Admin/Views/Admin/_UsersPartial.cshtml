@@ -1,0 +1,164 @@
+﻿@*@using TaskTimer.UsefulClasses*@
+@*@model IEnumerable<TaskTimer.Areas.Admin.Models.User>*@
+@*@model List<TaskTimer.Areas.Admin.Models.User>*@
+@model List<TaskTimer.Areas.Admin.Models.User>
+
+<script>
+    var curToggled = null;
+    function editToggle(id) {
+        //debugger;
+        var newToggled = $('#edit_' + id);
+        if (curToggled && newToggled[0] !== curToggled[0])
+            curToggled.toggle();
+        newToggled.toggle();
+        if (curToggled && newToggled[0] === curToggled[0])
+            curToggled = null;
+        else
+            curToggled = newToggled;
+    }
+</script>
+ @*<script type="text/javascript">
+    $(function () {
+        $('form').submit(function () {
+            debugger;
+            if ($(this).valid()) {
+                $.ajax({
+                    url: this.action,
+                    type: this.method,
+                    data: $(this).serialize(),
+                    dataType: 'json',
+                    success: function (result) {
+
+                    }
+                });
+            }
+            return false;
+        });
+        @*$(".dp").datepicker({
+            showButtonPanel: true,
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'yy-mm-dd'
+        });
+    });
+</script>*@
+<div id="loadingLayer"><div class="loadingText">Loading ... </div></div>
+<table id="myTable" class="tablesorter">
+    @{var first = Model.FirstOrDefault(); }
+    @if (first != null)
+    { 
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => first.UserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => first.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => first.CreatedDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => first.IsActivated)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => first.IsLockedOut)
+                </th>
+                <td>
+                    @Html.DisplayNameFor(model => first.LastLockedOutReason)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => first.LastLockedOutDate)
+                </td>
+                <th>
+                    @Html.DisplayNameFor(model => first.Roles)
+                </th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+    }
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr id="@item.UserId" onClick = "editToggle(@item.UserId)">
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsActivated)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsLockedOut)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastLockedOutReason)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastLockedOutDate)
+                </td>
+                <td>
+                    @{ bool isFirst = true;}
+                    @foreach (var role in item.Roles)
+                    {
+                        if (isFirst)
+                        {
+                            @Html.Raw(role.RoleName)
+                        }
+                        else
+                        { 
+                            @Html.Raw(", " + role.RoleName)
+                        }
+                        isFirst = false;
+                    }
+                </td>
+                <td>
+                    @Html.Link("Edit", "#", null) |@*.show('slide', { direction: 'up'}, 4000);"}) |*@
+                    @Html.ActionLink("Details", "Details", new { id = item.UserId }) |
+                    @Ajax.ActionLink("Delete", "Delete", new { id = item.UserId }, new AjaxOptions
+               {
+                   HttpMethod = "POST",
+                   UpdateTargetId = "main",
+                   LoadingElementId = "loadingLayer",
+                   InsertionMode = InsertionMode.Replace,
+                   OnSuccess = "loadTableSorter()"
+               }, new { onClick = "$('#edit_" + @item.UserId + "').toggle()" })
+                </td>
+            </tr>
+@*
+                <tr id="edit_@item.UserId" class="edit">
+
+                    <td>
+                        @Html.EditorFor(x => item.UserName)
+                    </td>
+                    <td>
+                        @Html.EditorFor(x => item.Email)
+
+                    </td>
+                    <td>
+                        @Html.EditorFor(x => item.CreatedDate)
+
+                    </td>
+                    <td>
+                        @Html.EditorFor(x => item.IsActivated)
+
+                    </td>
+                    <td>
+                        <input type="submit" value="save" />
+
+                        @Html.ActionLink("Save", "Edit", new { id = item.UserId, model = Model }) |
+            @Html.ActionLink("Discard", "discard", new { id = item.UserId })
+                    </td>
+
+
+                </tr>*@
+            @Html.EditorFor(modelItem => item, "UserEditor")
+        }
+    </tbody>
+</table>
+

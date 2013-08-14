@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "Calendar";
+}
+
+<link href="~/Scripts/calendar-eightysix-v1.1/css/calendar-eightysix-v1.1-default.css" rel="stylesheet" />
+<link href="~/Scripts/calendar-eightysix-v1.1/css/calendar-eightysix-v1.1-osx-dashboard.css" rel="stylesheet" />
+<link href="~/Scripts/calendar-eightysix-v1.1/css/calendar-eightysix-v1.1-vista.css" rel="stylesheet" />
+
+
+<script src="~/Scripts/calendar-eightysix-v1.1/js/mootools-1.2.4-core.js"></script>
+<script src="~/Scripts/calendar-eightysix-v1.1/js/mootools-1.2.4.4-more.js"></script>
+<script src="~/Scripts/calendar-eightysix-v1.1/js/calendar-eightysix-v1.1.js"></script>
+
+
+	<script type="text/javascript">
+	    $(function () {
+
+	       
+
+	    });
+	    window.addEvent('domready', function () {
+	        debugger;
+
+	       // jQuery.noConflict();
+	        //Example III
+	        new CalendarEightysix('exampleIII', { 'excludedWeekdays': [0, 6], 'toggler': 'exampleIII-picker', 'offsetY': -4 });
+
+	        //Example IX
+	        var calendarIX = new CalendarEightysix('exampleIXb', { 'linkWithInput': false, 'defaultDate': '1/1/2010', 'minDate': '1/1/2010', 'maxDate': '12/31/2014', 'format': '%d', 
+	            'toggler': 'exampleIX-picker', 'offsetY': -4, 'offsetX': 76 });
+	        calendarIX.addEvent('change', function(date) { 
+	            $('exampleIXa').set('value', date.get('month') + 1);
+	            $('exampleIXc').set('value', date.get('year')); 
+	        });
+	        var dateIXchange = function() {
+	            //Get the current date
+	            var date = calendarIX.getDate();
+	            //Set the variables from the input and select elements
+	            date.set('month', $('exampleIXa').get('value') - 1);
+	            date.set('date', $('exampleIXb').get('value'));
+	            date.set('year', $('exampleIXc').get('value'));
+	            //Set the new date
+	            calendarIX.setDate(date);
+	        }
+	        $('exampleIXa').addEvent('change', dateIXchange);
+	        $('exampleIXb').addEvent('change', dateIXchange);
+	        $('exampleIXc').addEvent('change', dateIXchange);
+			
+	    });
+        </script>
+
+<h2>Calendar</h2>
+<table>
+    	<tr>
+			<th>Example III</th>
+			<td>
+				<input id="exampleIII" name="dateIII" type="text" maxlength="10" style="padding-right: 22px;" />
+				<div class="picker inElement" id="exampleIII-picker"></div>
+			</td>
+		</tr>
+    <tr>
+			<th>Example IX</th>
+			<td>
+				<select id="exampleIXa" style="vertical-align: bottom;"><option value="1">January</option><option value="2">February</option><option value="3">March</option><option value="4">April</option><option value="5">May</option><option value="6">June</option><option value="7">July</option><option value="8">August</option><option value="9">September</option><option value="10">October</option><option value="11">November</option><option value="12">December</option></select>
+				<input id="exampleIXb" type="text" maxlength="2" style="width: 24px; vertical-align: bottom;" />
+				<select id="exampleIXc" style="vertical-align: bottom;"><option value="2010">2010</option><option value="2011">2011</option><option value="2012">2012</option><option value="2013">2013</option><option value="2014">2014</option></select>
+				<img id="exampleIX-picker" src="img/calendar.gif" width="13" height="12" alt="" style="cursor: pointer; margin-bottom: 2px;" />
+			</td>
+		</tr>
+</table>

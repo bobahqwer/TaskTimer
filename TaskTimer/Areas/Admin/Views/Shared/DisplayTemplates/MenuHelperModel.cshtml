@@ -1,0 +1,22 @@
+﻿@model MvcSiteMapProvider.Web.Html.Models.MenuHelperModel
+@using System.Web.Mvc.Html
+@using MvcSiteMapProvider.Web.Html.Models
+
+<div id="menu">
+    <ul>
+        @foreach (var node in Model.Nodes) 
+        { 
+            <li>
+               @Ajax.ActionLink(node.Title, node.Action, node.Controller, new AjaxOptions
+                    {
+                        HttpMethod = "GET",
+                        UpdateTargetId = "main",
+                        LoadingElementId = "loadingLayer",
+                        InsertionMode = InsertionMode.Replace,
+                        OnSuccess = "loadTableSorter()"
+                    }, new { @class = node.Title })
+            </li>
+        }
+    </ul>
+    <div class="message-user">Click on row for start editing</div>
+</div>

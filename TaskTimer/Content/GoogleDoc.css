@@ -1,0 +1,28 @@
+﻿/*label {
+    display: inline-block !important;
+}
+a {
+    padding: 0px !important;
+    padding-left: 20px !important;
+}*/
+.remark {
+    font-size: 10px;
+}
+table.autho tr td {
+    vertical-align: top;
+    padding: 0;
+}
+table.autho tr td a {
+    padding: 0;
+}
+fieldset input[type="submit"] {
+    margin: 0;
+    margin-top: 4px;
+}
+.errorMsg {
+    color: #a83030; 
+}
+.active {
+    font-weight: bold;
+    color: #a83030;
+}

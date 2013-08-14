@@ -1,0 +1,50 @@
+﻿@model TaskTimer.Areas.Admin.Models.User
+
+    <td>
+        @Html.DisplayFor(modelItem => Model.UserName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.Email)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.CreatedDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.IsActivated)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.IsLockedOut)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.LastLockedOutReason)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.LastLockedOutDate)
+    </td>
+    <td>
+        @{ bool isFirst = true;}
+        @foreach (var role in Model.Roles)
+        {
+            if (isFirst)
+            {
+            @Html.Raw(role.RoleName)
+            }
+            else
+            { 
+            @Html.Raw(", " + role.RoleName)
+            }
+            isFirst = false;
+        }
+    </td>
+    <td>
+        @Html.Link("Edit", "#", null)
+        @Html.ActionLink("Details", "Details", new { id = Model.UserId }) |
+        @Ajax.ActionLink("Delete", "Delete", new { id = Model.UserId }, new AjaxOptions
+               {
+                   HttpMethod = "POST",
+                   UpdateTargetId = "main",
+                   LoadingElementId = "loadingLayer",
+                   InsertionMode = InsertionMode.Replace,
+                   OnSuccess = "loadTableSorter()"
+               }, new { onClick = "editToggle(" + Model.UserId.ToString() + ")" })
+    </td>

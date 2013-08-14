@@ -1,0 +1,82 @@
+﻿@model TaskTimer.Models.FAQModel
+@{
+    ViewBag.Title = "FAQ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/nicEdit/nicEdit.js"></script>
+<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+
+<script>
+    $(function () {
+        nicEditors.allTextAreas();
+        $('form').submit(function () {
+            var id = $('form textarea').attr('id');
+            var editor = nicEditors.findEditor(id);
+            var delNames = editor.ne.loadedPlugins[5].options.buttons.upload.imageNames;
+            $(this).find('#ImageNames').val(delNames);
+            if ($(this).valid()) {
+                $.ajax({
+                    url: this.action,
+                    type: this.method,
+                    contentType: 'application/json; charset=utf-8',
+                    data: $(this).serialize()
+                });
+            }
+        });
+    })
+    function toggleClick(element) {
+        element.toggle("slow");
+    }
+    function beforeSubmit() {
+        /* nicEditors: prepare for validation */
+        var textarea = $('form textarea');
+        var id = textarea.attr('id');
+        var editor = nicEditors.findEditor(id);
+        var answerText = escape(editor.getContent());
+        textarea.val(answerText);
+        /* end nicEditors */
+    }   
+</script>
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+        </div>
+    </section>
+}
+
+<h3 class="errorMsg">@ViewBag.AddQuestionStatus</h3>
+@using (Html.BeginForm("AddNew", "FAQ", FormMethod.Post, new { id = "newQuestion", name = "newQuestion" }))
+{
+    @Html.ValidationSummary()
+    <fieldset>
+        <legend>New question</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.Title)
+                @Html.TextBoxFor(m => m.Title)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Question)
+                @Html.TextAreaFor(m => m.Question)
+            </li>
+            <li>
+                @Html.CheckBoxFor(m => m.NotifyByEmail, new { onclick = "toggleClick($('.toggleOption'))" })
+                @Html.LabelFor(m => m.NotifyByEmail, new { style = "display: inline-block;" })
+                <div class="remark" style="padding-left:26px;">Notify me, when I get an answer to my question.</div>
+            </li>
+            <li class="toggleOption">
+                @Html.LabelFor(m => m.NotifyEmail)
+                @Html.TextBoxFor(m => m.NotifyEmail)
+            </li>
+            @Html.HiddenFor(m => m.ImageNames, "qwer111")
+        </ol>
+        <input type="submit" value="Submit" onmouseover="beforeSubmit()"/>
+    </fieldset>
+}

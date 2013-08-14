@@ -1,0 +1,59 @@
+﻿@model MvcSiteMapProvider.Web.Html.Models.MenuHelperModel
+@using System.Web.Mvc.Html
+@using MvcSiteMapProvider.Web.Html.Models
+@functions{ 
+    public MvcHtmlString GetMenu(SiteMapNodeModel children, string liClass)
+    {
+        string menuElem;
+        if (children.Children.Count == 0)
+        {
+            menuElem = "<li>";
+            menuElem += Html.ActionLink(children.Title, children.Action, children.Controller);
+            //menuElem += Ajax.ActionLink(children.Title, children.Action, children.Controller, new AjaxOptions
+            //        {
+            //            HttpMethod = "GET",
+            //            UpdateTargetId = "body",
+            //            InsertionMode = InsertionMode.Replace
+            //        });
+            menuElem += "</li>";
+            return new MvcHtmlString(menuElem);
+        }
+
+        //add current element
+        menuElem = "<li";
+        if (String.IsNullOrEmpty(liClass))
+            menuElem += ">";
+        else
+            menuElem += " class='" + liClass + "'>";      //add class to li element if not last child
+
+        menuElem += Html.ActionLink(children.Title, children.Action, children.Controller);
+        //menuElem += Ajax.ActionLink(children.Title, children.Action, children.Controller, new AjaxOptions
+        //            {
+        //                HttpMethod = "GET",
+        //                UpdateTargetId = "body",
+        //                InsertionMode = InsertionMode.Replace
+        //            }, new { returnUrl = HttpContext.Current.Request.RawUrl });
+
+        //add childs
+        menuElem += "<ul>";
+        foreach (var item in children.Children)
+            menuElem += GetMenu(item, children.Children.Count > 0 ? "dir" : "");
+        menuElem += "</ul>";
+        menuElem += "</li>";
+        return new MvcHtmlString(menuElem);
+    } 
+    }
+
+
+
+<ul id="nav" class="dropdown dropdown-horizontal">
+    @{
+        var lastNode = Model.Nodes.Last();
+        foreach (var node in Model.Nodes.Except(Model.Nodes.Where(n => n == lastNode)))
+        { 
+        @GetMenu(node, node.Children.Count > 0 ? "dir" : "")
+        }
+            //lastNode change open direction 'rtl'
+        @GetMenu(lastNode, lastNode.Children.Count > 0 ? "dropdown-vertical-rtl dir" : "")
+    }
+</ul>

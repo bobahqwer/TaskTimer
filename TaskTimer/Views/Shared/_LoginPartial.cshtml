@@ -1,0 +1,27 @@
+﻿@if (Request.IsAuthenticated) {
+    <p>
+        @Resources.Views.Shared.LayoutPartual.Hello, @Html.ActionLink(User.Identity.Name, "ChangePassword", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Change password" })!
+        @Html.ActionLink(@Resources.Views.Shared.LayoutPartual.LogOff, "LogOff", "Account")
+    </p>
+} else {
+    <ul>
+        <li>@Html.ActionLink(@Resources.Views.Shared.LayoutPartual.Registration, "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", Style = "z-index: 1;" })</li>
+        <li>|</li>
+        <li>
+            @Html.ActionLink(@Resources.Views.Shared.LayoutPartual.LogIn, "Login", "Account", routeValues: null,
+                            htmlAttributes: new { id = "loginLink" })
+        </li>
+        <li>
+            <div class="loginOpacity" >
+                @using (Html.BeginForm("LoginOpacity", "Account", new { ReturnUrl = "/" }))
+                {
+                    @Html.Label("","User: ")
+                    @Html.TextBox("username")
+                    @Html.Label(""," Pass: ")
+                    @Html.Password("password")
+                    <input type="submit" value="Log in" />
+                }
+            </div>
+        </li>
+    </ul>
+}

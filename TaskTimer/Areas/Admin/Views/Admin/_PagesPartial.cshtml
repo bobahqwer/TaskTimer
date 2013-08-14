@@ -1,0 +1,74 @@
+﻿@model System.Data.Entity.DbSet<TaskTimer.Models.SiteMainPages>
+<div id="loadingLayer"><div class="loadingText">Loading ... </div></div>
+<table id="myTable" class="tablesorter">
+    <thead>
+
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Page MetaTag
+        </th>
+        <th>
+            Page DescriptionTag
+        </th>
+        <th>
+            Page Title
+        </th>
+        <th>
+            Page Body
+        </th>
+        <th>
+            Page Body Image
+        </th>
+        <th>
+            Page Footer
+        </th>
+         <th>
+            Page Footer Image
+        </th>
+        <th>
+            Actions
+        </th>
+    </tr>
+    </thead>
+
+    <tbody>
+    @foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MetaTag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescriptionTag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Body)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BodyImage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Footer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FooterImage)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </td>
+    </tr>
+   } 
+        </tbody>
+</table>
+
+@*@Html.ActionLink("Add new page","AddNewPage");*@

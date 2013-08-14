@@ -1,0 +1,73 @@
+﻿@model TaskTimer.Models.SiteMainPages
+
+@{
+    ViewBag.Title = "New page";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+    <h2>Add new page to site</h2>
+</hgroup>
+
+<div id="addNewPage"> </div>
+@using (Ajax.BeginForm("AddNewPageAjax",
+            new AjaxOptions
+            {
+                HttpMethod = "POST",
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "addNewPage"
+            })) {
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>New Page Form</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.MetaTag)
+                @Html.TextBoxFor(m => m.MetaTag)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.DescriptionTag)
+                @Html.TextBoxFor(m => m.DescriptionTag)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.TitleTag)
+                @Html.TextBoxFor(m => m.TitleTag)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Title)
+                @Html.TextBoxFor(m => m.Title)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.TitleImage)
+                <input type="file" name="TitleImage" />
+            @*    @FileUpload.GetHtml(
+                    initialNumberOfFiles:1,
+                    allowMoreFilesToBeAdded:false,
+                    includeFormTag:true,
+                    uploadText:"Upload")*@
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Body)
+                @Html.TextAreaFor(m => m.Body)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.BodyImage)
+                @Html.TextBoxFor(m => m.BodyImage)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Footer)
+                @Html.TextBoxFor(m => m.Footer)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.FooterImage)
+                @Html.TextBoxFor(m => m.FooterImage)
+            </li>
+@*            <li>
+                @Html.CheckBoxFor(m => m.IsEmailRegConform)
+                @Html.LabelFor(m => m.IsEmailRegConform, new { style = "display: inline-block;" })
+            </li>*@
+        </ol>
+        <input type="submit" value="Save new page" />
+    </fieldset>
+}
