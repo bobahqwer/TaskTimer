@@ -156,7 +156,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="App_GlobalResources\MvcSitemap.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -167,9 +166,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MvcSitemap.he.resx</DependentUpon>
     </Compile>
-    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Models\AdminModels.cs" />
-    <Compile Include="Areas\Admin\UsefulClasses\ModelsHelper.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
+    <Compile Include="Areas\Admin_old\AdminAreaRegistration.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\Admin_old\Controllers\AdminController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\Admin_old\Models\AdminModels.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\Admin_old\UsefulClasses\ModelsHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controllers\MapsController.cs" />
     <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Models\ShopItem.cs">
@@ -274,8 +286,29 @@
     <Compile Include="Security\MyMembershipProvider.cs" />
     <Compile Include="Security\MyRoleProvider.cs" />
     <Compile Include="UsefulClasses\HtmlHelperExtensions.cs" />
-    <Content Include="Areas\Admin\Content\admin.css" />
-    <Content Include="Areas\Admin\Content\Images\adminbg.jpg" />
+    <Content Include="Areas\Admin\Views\Web.config" />
+    <Content Include="Areas\Admin_old\Content\admin.css" />
+    <Content Include="Areas\Admin_old\Content\Images\adminbg.jpg" />
+    <Content Include="Areas\Admin_old\Mvc2.sitemap">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Areas\Admin_old\Views\Admin\EditorTemplates\RolesEditor.cshtml" />
+    <Content Include="Areas\Admin_old\Views\Admin\EditorTemplates\UserEditor.cshtml" />
+    <Content Include="Areas\Admin_old\Views\Admin\Index.cshtml" />
+    <Content Include="Areas\Admin_old\Views\Admin\_ImagesPartial.cshtml" />
+    <Content Include="Areas\Admin_old\Views\Admin\_MainPartial.cshtml" />
+    <Content Include="Areas\Admin_old\Views\Admin\_PagesNewPartial.cshtml" />
+    <Content Include="Areas\Admin_old\Views\Admin\_PagesPartial.cshtml" />
+    <Content Include="Areas\Admin_old\Views\Admin\_UserPartial.cshtml" />
+    <Content Include="Areas\Admin_old\Views\Admin\_UsersPartial.cshtml" />
+    <Content Include="Areas\Admin_old\Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
+    <Content Include="Areas\Admin_old\Views\Shared\DisplayTemplates\SiteMapHelperModel.cshtml" />
+    <Content Include="Areas\Admin_old\Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
+    <Content Include="Areas\Admin_old\Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
+    <Content Include="Areas\Admin_old\Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
+    <Content Include="Areas\Admin_old\Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.cshtml" />
+    <Content Include="Areas\Admin_old\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin_old\Views\Web.config" />
     <Content Include="Content\CSS3.css" />
     <Content Include="Content\dropdown\dropdown.css" />
     <Content Include="Content\dropdown\dropdown.vertical.css" />
@@ -412,26 +445,10 @@
     <Content Include="Mvc.sitemap">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\Web.config" />
-    <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\SiteMapHelperModel.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.cshtml" />
-    <Content Include="Areas\Admin\Mvc.sitemap">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Areas\Admin\Views\Admin\_UsersPartial.cshtml" />
-    <Content Include="Areas\Admin\Views\Admin\_ImagesPartial.cshtml" />
-    <Content Include="Areas\Admin\Views\Admin\_MainPartial.cshtml" />
-    <Content Include="Areas\Admin\Views\Admin\EditorTemplates\UserEditor.cshtml" />
-    <Content Include="Areas\Admin\Views\Admin\_UserPartial.cshtml" />
-    <Content Include="Areas\Admin\Views\Admin\EditorTemplates\RolesEditor.cshtml" />
-    <Content Include="Areas\Admin\Views\Admin\_PagesPartial.cshtml" />
-    <Content Include="Areas\Admin\Views\Admin\_PagesNewPartial.cshtml" />
+    <Content Include="Areas\Admin\Mvc.sitemap" />
+    <Content Include="Areas\Admin\Views\AdminHome\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\SitePages.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\SitePagesAddNew.cshtml" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -642,6 +659,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Images\Uploaded\Temporary\" />
     <Folder Include="Resources\Global\" />
     <Folder Include="Resources\Views\Home\" />

@@ -15,14 +15,9 @@ namespace TaskTimer.Areas.Admin
         public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
-                "My_Admin",
-                "Admin/{id}",
-                new { controller = "Admin", action = "Index", id = UrlParameter.Optional }
-            );
-            context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { controller = "Admin", action = "Index", id = UrlParameter.Optional }
+                new { action = "Index", id = UrlParameter.Optional }
             );
         }
     }

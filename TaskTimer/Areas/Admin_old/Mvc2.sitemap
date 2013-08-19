@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvcSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-2.0"
+            xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-3.0 MvcSiteMapSchema.xsd"
+            enableLocalization="true">
+
+  <mvcSiteMapNode title="Main" controller="Admin" action="Main" area="Admin">
+    <mvcSiteMapNode title="Users" controller="Admin" action="Users" area="Admin"/>
+    <mvcSiteMapNode title="Images" controller="Admin" action="Images"  area="Admin"/>
+    <mvcSiteMapNode title="Pages" controller="Admin" action="Pages"  area="Admin"/>
+    <mvcSiteMapNode title="Add New Page" controller="Admin" action="AddNewPage"  area="Admin"/>
+  </mvcSiteMapNode>
+</mvcSiteMap>
