@@ -1,0 +1,203 @@
+﻿/* PAGE */
+body {
+    background: url(Images/adminbg.jpg);
+    margin: 0px 30px;
+}
+.float-left {
+    float:left;
+}
+.float-right {
+    float:right;
+}
+    header h2 {
+        margin-bottom: 1px;
+    }
+
+    header .userinfo {
+        margin-bottom: 30px;
+        
+    }
+        header .userinfo span {
+            display:block;
+        }
+#loadingLayer {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: rgba(87, 87, 87, 0.45);
+    border-radius: 12px;
+    border-top-left-radius: 0px;
+}
+.loadingText {
+    top: 50%;
+    position: relative;
+    font-family: cursive;
+    font-size: 24px;
+    text-shadow: 2px 2px rgb(133, 159, 189);
+    color: rgb(57, 122, 64);
+}
+
+/* TABLE */
+table {
+  max-width: 100%;
+  background-color: transparent;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.table th,
+.table td {
+  padding: 8px;
+  line-height: 20px;
+  text-align: left;
+  vertical-align: middle;
+  border-top: 1px solid #dddddd;
+}
+
+.table th {
+  font-weight: bold;
+  min-width: 150px;
+}
+
+.table thead th {
+  vertical-align: bottom;
+}
+
+.table td:hover {
+    cursor: pointer;
+}
+.table td input[type="submit"],
+.table td a {
+    text-decoration: none;
+    font-size: 14px;
+    font-family: sans-serif;
+}
+.table td input[type="submit"] {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    color: -webkit-link;
+    line-height: 20px;
+}
+    .table td input[type="submit"]:hover,
+    .table td a:hover {
+        text-decoration: underline;
+    }
+
+.edit {
+    display: none;
+    background-color: rgba(255, 255, 255, 0.69);
+}
+
+/* HEADER */
+.userinfo span {
+    margin-right: 15px;
+
+}
+
+
+/* MENU */
+.message-user {
+    /*display: run-in;*/
+    float:left;
+    padding-left: 25px;
+}
+
+#menu {
+    clear: both;
+    display: table;
+}
+
+    #menu ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        float:left;
+    }
+
+        #menu ul li {
+            display: inline;
+            float: left;
+            margin-bottom: 18px;
+        }
+
+            /* :first-child pseudo selector with rounded top left corner */
+            #menu ul li:first-child a {
+                -moz-border-radius-topleft: 12px;
+                -webkit-border-top-left-radius: 12px;
+            }
+
+            /* :last-child pseudo selector with rounded top right corner */
+            #menu ul li:last-child a {
+                -moz-border-radius-topright: 12px;
+                -webkit-border-top-right-radius: 12px;
+            }
+
+            /* background color set to RGBA, with opacity on 0.3 and also using text-shadow */
+            #menu ul li a {
+                padding: 20px;
+                background: rgba(255,138,30,0.3);
+                text-decoration: none;
+                font: bold 14px Helvetica, Sans-Serif;
+                letter-spacing: -1px;
+                color: #402e16;
+                text-shadow: #eee 0px 0px 2px;
+            }
+
+                /* hover state shows a linear gradient and opacity it brought down to 0.9 and also shows a very slight grey gradient on top */
+                #menu ul li a:hover {
+                    -moz-box-shadow: 0 -5px 10px #777;
+                    -webkit-box-shadow: 0 -5px 10px #777;
+                    background: -webkit-gradient( linear, right bottom, left top, color-stop(0, rgb(237,227,112)), color-stop(0.72, rgb(255,173,10))) !important;
+                    background: -moz-linear-gradient( right bottom, rgb(237,227,112) 0%, rgb(255,173,10) 72%) !important;
+                    background-color: rgb(255,173,10) !important;
+                    -moz-opacity: .90;
+                    filter: alpha(opacity=90);
+                    opacity: .90;
+                }
+
+                /* another RGBA background, now with an opacity of 0.8 */
+                #menu ul li a.active {
+                    background: rgba(255,138,30,0.8) !important;
+                }
+
+/* main contents with RGBA background (same colour as active tab) and three rounded corners */
+#main {
+    position: relative;
+    display: inline-block;
+    clear: both;
+    background: rgba(255,138,30,0.8);
+    -moz-border-radius-topright: 12px;
+    -moz-border-radius-bottomright: 12px;
+    -moz-border-radius-bottomleft: 12px;
+    -webkit-border-top-right-radius: 12px;
+    -webkit-border-bottom-right-radius: 12px;
+    -webkit-border-bottom-left-radius: 12px;
+}
+
+    /* header with a text-shadow */
+    #main h3 {
+        text-transform: uppercase;
+        padding: 20px 0 0 20px;
+        color: #eee;
+        text-shadow: #000 0px 0px 2px;
+    }
+
+    #main p {
+        padding-bottom: 20px;
+        color: #ddd;
+    }
+
+/* TABLE sorter */
+.tablesorter {
+    padding: 10px;
+}
+
+/* Users */
+input[type="text"], input[type="date"] {
+    width: 98%;
+}

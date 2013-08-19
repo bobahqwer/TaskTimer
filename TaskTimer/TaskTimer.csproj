@@ -286,6 +286,9 @@
     <Compile Include="Security\MyMembershipProvider.cs" />
     <Compile Include="Security\MyRoleProvider.cs" />
     <Compile Include="UsefulClasses\HtmlHelperExtensions.cs" />
+    <Content Include="Areas\Admin\Content\admin.css" />
+    <Content Include="Areas\Admin\Content\Images\adminbg.jpg" />
+    <Content Include="Areas\Admin\Content\Images\drop.png" />
     <Content Include="Areas\Admin\Views\Web.config" />
     <Content Include="Areas\Admin_old\Content\admin.css" />
     <Content Include="Areas\Admin_old\Content\Images\adminbg.jpg" />
@@ -449,6 +452,7 @@
     <Content Include="Areas\Admin\Views\AdminHome\Index.cshtml" />
     <Content Include="Areas\Admin\Views\AdminHome\SitePages.cshtml" />
     <Content Include="Areas\Admin\Views\AdminHome\SitePagesAddNew.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -660,7 +664,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Images\Uploaded\Temporary\" />
     <Folder Include="Resources\Global\" />
     <Folder Include="Resources\Views\Home\" />

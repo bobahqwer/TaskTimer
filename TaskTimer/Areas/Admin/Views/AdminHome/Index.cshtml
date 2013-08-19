@@ -1,7 +1,129 @@
 ﻿@{
     ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+<style type="text/css">
+    header {
+        display: inline-block;
+        width: 100%;
+    }
 
-<h2>Index</h2>
-Menu:
-@Html.ActionLink("Site pages", "SitePages")
+    ul, li {
+        font-size: 15px;
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 21px;
+        text-align: left;
+    }
+
+    .menu {
+        list-style: none;
+        width: 940px;
+        /*margin: 30px auto 0px auto;*/
+        height: 43px;
+        padding: 0px 20px 0px 20px;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        background: #014464;
+        background: -moz-linear-gradient(top, #0272a7, #013953);
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#0272a7), to(#013953));
+        border: 1px solid #002232;
+        -moz-box-shadow: inset 0px 0px 1px #edf9ff;
+        -webkit-box-shadow: inset 0px 0px 1px #edf9ff;
+        box-shadow: inset 0px 0px 1px #edf9ff;
+    }
+
+    .menuTopItem {
+        float: left;
+        display: block;
+        text-align: center;
+        position: relative;
+        padding: 4px 10px 4px 10px;
+        margin-right: 30px;
+        margin-top: 7px;
+        border: none;
+        color: #EEEEEE;
+        text-shadow: 1px 1px 1px #000;
+    }
+
+        .menuTopItem:hover {
+            border: 1px solid #777777;
+            padding: 4px 9px 4px 9px;
+            background: #F4F4F4;
+            background: -moz-linear-gradient(top, #F4F4F4, #EEEEEE);
+            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F4F4F4), to(#EEEEEE));
+            -moz-border-radius: 5px 5px 0px 0px;
+            -webkit-border-radius: 5px 5px 0px 0px;
+            border-radius: 5px 5px 0px 0px;
+            color: #161616;
+            text-shadow: 1px 1px 1px #ffffff;
+        }
+
+        .menuTopItem .menuBottomItems {
+            margin: 4px auto;
+            text-align: left;
+            white-space: nowrap;
+            position: absolute;
+            left: -999em;
+            padding: 10px 5px 10px 7px;
+            border: 1px solid #777777;
+            border-top: none;
+            background: #F4F4F4;
+            background: -moz-linear-gradient(top, #EEEEEE, #BBBBBB);
+            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#EEEEEE), to(#BBBBBB));
+            -moz-border-radius: 0px 5px 5px 5px;
+            -webkit-border-radius: 0px 5px 5px 5px;
+            border-radius: 0px 5px 5px 5px;
+        }
+
+        .menuTopItem:hover .menuBottomItems {
+            left: -1px;
+            top: auto;
+        }
+
+            .menuTopItem:hover .menuBottomItems a {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 12px;
+                color: #015b86;
+                display: block;
+                outline: 0;
+                text-decoration: none;
+                text-shadow: 1px 1px 1px #ffffff;
+            }
+
+                .menuTopItem:hover .menuBottomItems a:hover {
+                    color: #029feb;
+                }
+        .menuTopItem .menuDrop {
+            padding-right: 21px;
+            background: url(/Areas/Admin/Content/Images/drop.png) no-repeat right 9px;
+        }
+</style>
+@*http://nettuts.s3.amazonaws.com/819_megamenu/demo/index.html*@
+<ul class="menu">
+    <li class="menuTopItem">
+        <div class="menuDrop">Pages</div>
+        <div class="menuBottomItems">
+            <div class="menuBottomItem">
+                @Html.ActionLink("Site main pages", "SitePages")
+            </div>
+        </div>
+    </li>
+    <li class="menuTopItem">
+        <div class="menuDrop">Shop</div>
+        <div class="menuBottomItems">
+            <div class="menuBottomItem">
+                @Html.ActionLink("Shop pages", "SitePages")
+            </div>
+        </div>
+    </li>
+    <li class="menuTopItem">
+        <div class="menuDrop">Templates</div>
+        <div class="menuBottomItems">
+            <div class="menuBottomItem">
+                @Html.ActionLink("Template pages", "SitePages")
+            </div>
+        </div>
+    </li>
+</ul>
+
