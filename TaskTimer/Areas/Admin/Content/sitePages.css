@@ -1,0 +1,16 @@
+﻿
+/* Add new site page */
+.addNewSitePage ol {
+    display: table;
+    padding-left:0;
+}
+    .addNewSitePage ol li {
+        display: table-row;
+    }
+        .addNewSitePage ol label,
+        .addNewSitePage ol li input {
+            display: table-cell;
+        }
+        .addNewSitePage ol label{
+            padding-right: 10px;
+        }

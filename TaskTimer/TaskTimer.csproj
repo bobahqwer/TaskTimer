@@ -289,6 +289,7 @@
     <Content Include="Areas\Admin\Content\admin.css" />
     <Content Include="Areas\Admin\Content\Images\adminbg.jpg" />
     <Content Include="Areas\Admin\Content\Images\drop.png" />
+    <Content Include="Areas\Admin\Content\sitePages.css" />
     <Content Include="Areas\Admin\Views\Web.config" />
     <Content Include="Areas\Admin_old\Content\admin.css" />
     <Content Include="Areas\Admin_old\Content\Images\adminbg.jpg" />
@@ -664,6 +665,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Images\Site Pages\" />
     <Folder Include="Images\Uploaded\Temporary\" />
     <Folder Include="Resources\Global\" />
     <Folder Include="Resources\Views\Home\" />

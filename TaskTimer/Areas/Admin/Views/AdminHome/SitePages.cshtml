@@ -1,9 +1,10 @@
 ﻿@model System.Data.Entity.DbSet<TaskTimer.Models.SiteMainPages>
 @{
     ViewBag.Title = "SitePages";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>SitePages</h2>
+<h2>Site pages</h2>
 @Html.ActionLink("Add new site page", "SitePagesAddNew")
 
 <table id="myTable" class="tablesorter">

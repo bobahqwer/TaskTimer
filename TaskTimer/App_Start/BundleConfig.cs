@@ -7,6 +7,8 @@ namespace TaskTimer
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
+            /* JS */
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-1.*"));
 
@@ -19,6 +21,21 @@ namespace TaskTimer
 
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
+
+            /* JS admin */
+
+            /* table sorter */
+            bundles.Add(new ScriptBundle("~/Scripts/tablesorter/js").Include(
+                        "~/Scripts/tablesorter/js/jquery.tablesorter.js",
+                        "~/Scripts/tablesorter/js/jquery.tablesorter.widgets.js",
+                        "~/Scripts/tablesorter/addons/pager/jquery.tablesorter.pager.js"));
+            bundles.Add(new StyleBundle("~/Scripts/tablesorter/css").Include(
+                       "~/Scripts/tablesorter/css/theme.bootstrap.css",
+                       "~/Scripts/tablesorter/addons/pager/jquery.tablesorter.pager.css",
+                       "~/Scripts/tablesorter/css/bootstrap.css"));
+
+            
+            /* stiles */
 
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
 
@@ -35,6 +52,14 @@ namespace TaskTimer
                         "~/Content/themes/base/jquery.ui.datepicker.css",
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
+
+
+
+            /* styles admin */
+
+            bundles.Add(new StyleBundle("~/Areas/Admin/Content/css").Include(
+                "~/Areas/Admin/Content/admin.css",
+                "~/Areas/Admin/Content/sitePages.css"));
         }
     }
 }

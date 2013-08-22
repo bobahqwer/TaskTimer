@@ -2,17 +2,17 @@
 
 @{
     ViewBag.Title = "SitePagesAddNew";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>SitePagesAddNew</h2>
+<h2>Add new site page</h2>
 
-@Html.ActionLink("Site pages", "SitePages")
-<div id="addNewPage"> </div>
-@using (Html.BeginForm("SitePagesAddNew", "AdminHome", FormMethod.Post))
+@*<div id="addNewPage"> </div>*@
+@using (Html.BeginForm("SitePagesAddNew", "AdminHome", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.ValidationSummary()
 
-    <fieldset>
+    <fieldset class="addNewSitePage">
         <legend>New Page Form</legend>
         <ol>
             <li>
@@ -46,7 +46,7 @@
             </li>
             <li>
                 @Html.LabelFor(m => m.BodyImage)
-                @Html.TextBoxFor(m => m.BodyImage)
+                 <input type="file" name="BodyImage" />
             </li>
             <li>
                 @Html.LabelFor(m => m.Footer)
@@ -54,7 +54,7 @@
             </li>
             <li>
                 @Html.LabelFor(m => m.FooterImage)
-                @Html.TextBoxFor(m => m.FooterImage)
+                <input type="file" name="FooterImage" />
             </li>
 @*            <li>
                 @Html.CheckBoxFor(m => m.IsEmailRegConform)
