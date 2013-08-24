@@ -22,9 +22,13 @@ body {
     background-color: #FFF;
     border: 1px solid #C8C8C8;
     box-shadow: 0px 0px 10px #888;
+
+    font: 13px/1.25 "Helvetica Neue",Helvetica,Arial;
+    color: #5f5f5f;
 }
 a {
     color: #333;
+    color: #5f5f5f;
     outline: none;
     padding-left: 3px;
     padding-right: 3px;
@@ -36,6 +40,7 @@ a {
     a:link, a:visited,
     a:active, a:hover {
         color: #333;
+        color: #5f5f5f;
     }
 
 header, footer, hgroup,
@@ -68,6 +73,7 @@ mark {
 h1, h2, h3,
 h4, h5, h6 {
     color: #000;
+    color: #5f5f5f;
     margin-bottom: 0;
     padding-bottom: 0;
 }
@@ -409,12 +415,9 @@ aside {
     border: 1px solid #333;
     margin: 5px 0 0 10px;
 }
-.addressText {
-    float:left;
-}
+
 .addressMap {
-    float: right;
-    font-size: 16px;
+    font-size: 14px;
     margin-top: 5px;
     margin-bottom: 5px;
 }
@@ -583,6 +586,8 @@ ul#visits {
 
 /* tables
 ----------------------------------------------------------*/
+
+/*
 table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -642,7 +647,7 @@ td {
 tr.pager td {
     padding: 0 0.25em 0 0;
 }
-
+*/
 
 /********************
 *   Mobile Styles   *

@@ -1,0 +1,17 @@
+﻿@model TaskTimer.Models.GalleryPages
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Gallery</h4>
+<div class="galleryTitle">@Model.Title</div>
+<div class="galleryItems">
+@foreach (var image in Model.GalleryImages)
+{
+    <div class="galleryItem">
+        @Html.Image("/Images/Gallery Pages/" + image.Path, "imageDescrtgbfg", new { width = "280px", height = "206px" })
+    </div>
+}
+</div>

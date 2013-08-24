@@ -2,6 +2,7 @@
 body {
     background: url(Images/adminbg.jpg);
     margin: 0px 30px;
+    font: 15px/1.25 "Helvetica Neue",Helvetica,Arial;
 }
 .float-left {
     float:left;
@@ -53,6 +54,7 @@ body {
 }
 
 /* TABLE */
+
 table {
   max-width: 100%;
   background-color: transparent;
@@ -70,7 +72,7 @@ table {
 
 .table th {
   font-weight: bold;
-  min-width: 150px;
+  /*min-width: 150px;*/
 }
 
 .table thead th {
@@ -104,6 +106,8 @@ table {
     display: none;
     background-color: rgba(255, 255, 255, 0.69);
 }
+
+
 
 /* HEADER */
 .userinfo span {
@@ -185,7 +189,7 @@ table {
 
             .menuTopItem:hover .menuBottomItems a {
                 font-family: Arial, Helvetica, sans-serif;
-                font-size: 12px;
+                font-size: 14px;
                 color: #015b86;
                 display: block;
                 outline: 0;
@@ -197,6 +201,7 @@ table {
                     color: #029feb;
                 }
         .menuTopItem .menuDrop {
+            font-size: 16px;
             padding-right: 21px;
             background: url(/Areas/Admin/Content/Images/drop.png) no-repeat right 9px;
         }

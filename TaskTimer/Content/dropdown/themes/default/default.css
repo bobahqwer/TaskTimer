@@ -44,12 +44,14 @@ ul.dropdown {
 	ul.dropdown a:link,
 	ul.dropdown a:visited	{ color: #000; text-decoration: none; }
 	ul.dropdown a:hover		{ color: #000; }
-	ul.dropdown a:active	{ color: #ffa500; }
+	ul.dropdown a:active	{ color: #ffa500; background-color:transparent; }
 
 	/* -- level mark -- */
 
 	ul.dropdown ul {
 	 margin-top: 1px;
+     white-space: nowrap;
+     width: auto;
 	}
 
 		ul.dropdown ul li {
@@ -62,9 +64,9 @@ ul.dropdown {
 ul.dropdown *.dir {
  padding-right: 20px;
  background-image: url(images/nav-arrow-down.png);
- background-position: 100% 50%;
+ background-position: 97% 58%;
  background-repeat: no-repeat;
- min-width: 85px;
+ /*min-width: 85px;*/
 }
 
 
@@ -73,7 +75,7 @@ ul.dropdown *.dir {
 ul.dropdown-horizontal ul *.dir {
  padding-right: 15px;
  background-image: url(images/nav-arrow-right.png);
- background-position: 100% 50%;
+ background-position: 96% 58%;
  background-repeat: no-repeat;
 }
 

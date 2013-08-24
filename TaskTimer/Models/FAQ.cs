@@ -28,6 +28,7 @@ namespace TaskTimer.Models
         public Nullable<int> AUserId { get; set; }
         public bool NotifyByEmail { get; set; }
         public string NotifyEmail { get; set; }
+        public bool Active { get; set; }
     
         public virtual ICollection<Images> Images { get; set; }
     }

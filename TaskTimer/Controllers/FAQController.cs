@@ -24,7 +24,7 @@ namespace TaskTimer.Controllers
         {
             ViewBag.Message = "Questions list.";
             CustomMembershipDB db = new CustomMembershipDB();
-            var listCustomer = db.FAQ.OrderByDescending(i => i.ID).ToList();
+            var listCustomer = db.FAQ.Where(f => f.Active == true).OrderByDescending(i => i.ID).ToList();
             int pageSize = 5;
             int pageNumber = (page ?? 1);
 
@@ -59,6 +59,18 @@ namespace TaskTimer.Controllers
 
         [AjaxOnly, HttpPost]
         public ActionResult Delete(int id)
+        {
+            CustomMembershipDB db = new CustomMembershipDB();
+            var question = db.FAQ.SingleOrDefault(q => q.ID == id);
+            if (question != null)
+            {
+                question.Active = false;
+                db.SaveChanges();
+            }
+            return Content("");
+        }
+        [AjaxOnly, HttpPost]
+        public ActionResult DeletePermanently(int id)
         {
             CustomMembershipDB db = new CustomMembershipDB();
             var question = db.FAQ.SingleOrDefault(q => q.ID == id);
@@ -114,7 +126,7 @@ namespace TaskTimer.Controllers
                         Question = question,
                         NotifyByEmail = model.NotifyByEmail,
                         NotifyEmail = NotifyEmail,
-
+                        Active = true
                     };
                     db.FAQ.Add(newFAQ);
 

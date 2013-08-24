@@ -35,6 +35,7 @@
         });
     });
     function ToggleForm(elem) {
+        debugger;
         var faqElement = $(elem).closest('.faqElement');
         var form = faqElement.find('form');
         var textHtml = faqElement.find('.answerBody').html();
@@ -133,11 +134,11 @@
                 }
                 if (String.IsNullOrEmpty(question.Answer))
                 {
-                    <div class="editFormBtn" onclick="ToggleForm(this)">Add answer</div>
+                    <div class="editFormBtn" onclick="ToggleForm(this);">Add answer</div>
                 }
                 else
                 { 
-                    <div class="editFormBtn" onclick="ToggleForm(this)">Edit answer</div>
+                    <div class="editFormBtn" onclick="ToggleForm(this);">Edit answer</div>
                 }
             }
             <div class="deleteQuestion" onclick="DeleteQuestion(this, @question.ID)"></div>

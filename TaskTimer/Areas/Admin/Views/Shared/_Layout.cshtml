@@ -131,10 +131,10 @@
         <div class="menuDrop">Pages</div>
         <div class="menuBottomItems">
             <div class="menuBottomItem">
-                @Html.ActionLink("Site main pages", "SitePages")
+                @Html.ActionLink("Site main pages", "SitePages", "AdminHome")
             </div>
             <div class="menuBottomItem">
-                @Html.ActionLink("Add new site page", "SitePagesAddNew")
+                @Html.ActionLink("Add new site page", "SitePagesAddNew", "AdminHome", new { id = -1 }, null)
             </div>
         </div>
     </li>
@@ -147,10 +147,30 @@
         </div>
     </li>
     <li class="menuTopItem">
+        <div class="menuDrop">Gallery</div>
+        <div class="menuBottomItems">
+            <div class="menuBottomItem">
+                @Html.ActionLink("Gallery pages", "GalleryPages", "AdminGallery")
+            </div>
+            <div class="menuBottomItem">
+                @Html.ActionLink("Add new gallery page", "GalleryPagesAddNew", "AdminGallery", new { id = -1 }, null)
+            </div>
+            <div class="menuBottomItem">
+                @Html.ActionLink("Gallery slider pages", "GalleryPages", "AdminGallery")
+            </div>
+            <div class="menuBottomItem">
+                @Html.ActionLink("Add new gallery slider page", "GalleryPagesAddNew", "AdminGallery", new { id = -1 }, null)
+            </div>
+        </div>
+    </li>
+    <li class="menuTopItem">
         <div class="menuDrop">Templates</div>
         <div class="menuBottomItems">
             <div class="menuBottomItem">
                 @Html.ActionLink("Template pages", "SitePages")
+            </div>
+            <div class="menuBottomItem">
+                @Html.ActionLink("Add new template page", "GalleryPagesAddNew", "AdminGallery", new { id = -1 }, null)
             </div>
         </div>
     </li>

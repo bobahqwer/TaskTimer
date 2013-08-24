@@ -5,12 +5,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
-using TaskTimer.Areas.Admin.Models;
-using TaskTimer.Areas.Admin.UsefulClasses;
+using TaskTimer.Areas.Admin_old.Models;
+using TaskTimer.Areas.Admin_old.UsefulClasses;
 using TaskTimer.Models;
 using TaskTimer.UsefulClasses;
 
-namespace TaskTimer.Areas.Admin.Controllers
+namespace TaskTimer.Areas.Admin_old.Controllers
 {
     public class AdminController : Controller
     {

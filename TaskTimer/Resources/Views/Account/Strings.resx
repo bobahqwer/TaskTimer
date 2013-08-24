@@ -123,7 +123,10 @@
   <data name="CreateANewAccount" xml:space="preserve">
     <value>Create a new account</value>
   </data>
-  <data name="IfYouDon'tHaveAnAccount" xml:space="preserve">
+  <data name="DirectionHTML" xml:space="preserve">
+    <value>ltr</value>
+  </data>
+  <data name="IfYouDontHaveAnAccount" xml:space="preserve">
     <value>if you don't have an account</value>
   </data>
   <data name="LogIn" xml:space="preserve">

@@ -27,7 +27,7 @@
 }
 form textarea {
     margin-top: 10px;
-    width: 650px;
+    width: 670px;
     height: 300px;
 }
 
@@ -73,6 +73,7 @@ form textarea {
     background: white url("/Images/tablesbg_1px.jpg") bottom;
     background-repeat: repeat-x;
     padding: 20px;
+    padding-bottom: 40px;
     margin-bottom: 10px;
     position: relative;
 }

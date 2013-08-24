@@ -1,0 +1,106 @@
+﻿@model System.Data.Entity.DbSet<TaskTimer.Models.GalleryPages>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Gallery pages</h2>
+@Html.ActionLink("Add new gallery page", "GalleryPagesAddNew", "AdminGallery", new { id = -1 }, null)
+
+<table id="myTable" class="tablesorter">
+    <thead>
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            MetaTag
+        </th>
+        <th>
+            Page DescriptionTag
+        </th>
+        <th>
+            Title
+        </th>
+        <th>
+            Body
+        </th>
+        <th>
+            Footer
+        </th>
+        <th>
+            Title Image
+        </th>
+        <th>
+            Body Image
+        </th>
+         <th>
+            Footer Image
+        </th>
+        <th>
+            Actions
+        </th>
+    </tr>
+    </thead>
+
+    <tbody>
+    @foreach (var item in Model) {
+    <tr>
+        <td>
+            <div>
+                @Html.DisplayFor(modelItem => item.Id)
+            </div>
+        </td>
+        <td>
+            <div>
+                @Html.DisplayFor(modelItem => item.MetaTag)
+            </div>
+        </td>
+        <td>
+            <div>
+                @Html.DisplayFor(modelItem => item.DescriptionTag)
+            </div>
+        </td>
+        <td>
+            <div>
+                @Html.DisplayFor(modelItem => item.Title)
+            </div>
+        </td>
+
+        <td>
+            <div>
+                @Html.DisplayFor(modelItem => item.Body)
+            </div>
+        </td>
+        <td>
+            <div>
+                @Html.DisplayFor(modelItem => item.Footer)
+            </div>
+        </td>
+        <td>
+            <div>
+                @Html.DisplayFor(modelItem => item.TitleImage)
+            </div>
+        </td>
+        <td>
+            <div>
+                @Html.DisplayFor(modelItem => item.BodyImage)
+            </div>
+        </td>
+        <td>
+            <div>
+                @Html.DisplayFor(modelItem => item.FooterImage)
+            </div>
+        </td>
+        <td>
+            <div>
+                @Html.ActionLink("Site", "Index", "Gallery", new { area = "", id = item.Id }, null) |
+                @Html.ActionLink("Edit", "GalleryPagesAddNew", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "GalleryPagesDelete", new { id = item.Id })
+            </div>
+        </td>
+    </tr>
+    }
+        </tbody>
+</table>

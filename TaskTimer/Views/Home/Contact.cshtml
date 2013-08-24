@@ -138,9 +138,8 @@
     <p>
         <span class="label">Main:</span>
         <span>+972-54-734-80-81</span>
-    </p>
-    <p>
-        <span class="label">After Hours:</span>
+        <br />
+        <span class="label">Between Hours:</span>
         <span>8am - 8pm</span>
     </p>
 </section>
@@ -163,19 +162,36 @@
     <header>
         <h3>Address</h3>
     </header>
-    <div class="addressText">
-        Ahad haAm<br />
-        Haifa, Israel
-        
-    </div>
+    <p>
+        <span class="label">Street:</span>
+        <span>Ahad Ha’am</span>    
+        <br />
+        <span class="label">City:</span>
+        <span>Haifa, Israel</span>    
+    </p>
+</section>
+
+<section class="contact">
+    <header>
+        <h3>Map</h3>
+    </header>
     <div class="addressMap">
-        <div class="curMapAddress">Map address: <div class="curMapAddressText"></div></div>
-        <div id="map_canvas" style="width: 400px; height: 300px;"></div>
-        New map address:
-        <input type="text" class="newMapAddressText" onkeypress="newMapAddressTextKeyPressed(event, this);"/>
-        <input type="button" class="newMapAddressBtn" onclick="GetAndSetNewAddress(this);"  value="Show"/>
-        New destination:
-        <input type="text" class="newMapDestinationText" onkeypress="newMapDestinationTextKeyPressed(event, this);"/>
-        <input type="button" class="newMapDestinationBtn" onclick="GetAndSetDestination(this);"  value="Set destination"/>
+        <div style="margin-left: 11px;">
+            <span class="curMapAddress label">Map address:</span>
+            <span class="curMapAddressText"></span>
+            <div id="map_canvas" style="width: 400px; height: 300px;"></div>
+            <table>
+                <tr>
+                    <td><span class="label">New map address:</span></td>
+                    <td><input type="text" class="newMapAddressText" onkeypress="newMapAddressTextKeyPressed(event, this);" /></td>
+                    <td><input type="button" class="newMapAddressBtn" onclick="GetAndSetNewAddress(this);" value="Show" /></td>
+                </tr>
+                <tr>
+                    <td><span class="label">New destination:</span></td>
+                    <td><input type="text" class="newMapDestinationText" onkeypress="newMapDestinationTextKeyPressed(event, this);" /></td>
+                    <td><input type="button" class="newMapDestinationBtn" onclick="GetAndSetDestination(this);" value="Set destination" /></td>
+                </tr>
+            </table>
+        </div>
     </div>
 </section>

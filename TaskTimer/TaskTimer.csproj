@@ -170,6 +170,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminGalleryController.cs" />
+    <Compile Include="Areas\Admin\Models\AdminHelper.cs" />
     <Compile Include="Areas\Admin_old\AdminAreaRegistration.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -182,8 +184,16 @@
     <Compile Include="Areas\Admin_old\UsefulClasses\ModelsHelper.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\MapsController.cs" />
+    <Compile Include="Controllers\SitePagesController.cs" />
     <Compile Include="Controllers\VideoController.cs" />
+    <Compile Include="Models\GalleryImages.cs">
+      <DependentUpon>CustomMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GalleryPages.cs">
+      <DependentUpon>CustomMembership.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ShopItem.cs">
       <DependentUpon>CustomMembership.tt</DependentUpon>
     </Compile>
@@ -286,10 +296,10 @@
     <Compile Include="Security\MyMembershipProvider.cs" />
     <Compile Include="Security\MyRoleProvider.cs" />
     <Compile Include="UsefulClasses\HtmlHelperExtensions.cs" />
-    <Content Include="Areas\Admin\Content\admin.css" />
+    <Content Include="Areas\Admin\Content\Admin.css" />
     <Content Include="Areas\Admin\Content\Images\adminbg.jpg" />
     <Content Include="Areas\Admin\Content\Images\drop.png" />
-    <Content Include="Areas\Admin\Content\sitePages.css" />
+    <Content Include="Areas\Admin\Content\SitePages.css" />
     <Content Include="Areas\Admin\Views\Web.config" />
     <Content Include="Areas\Admin_old\Content\admin.css" />
     <Content Include="Areas\Admin_old\Content\Images\adminbg.jpg" />
@@ -327,6 +337,12 @@
     <Content Include="Content\dropdown\themes\default\images\nav-arrow-top-white.png" />
     <Content Include="Content\dropdown\themes\default\images\nav-arrow-top.png" />
     <Content Include="Content\FAQ.css" />
+    <Content Include="Content\Gallery.css">
+      <DependentUpon>Gallery.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Gallery.min.css">
+      <DependentUpon>Gallery.less</DependentUpon>
+    </Content>
     <Content Include="Content\GoogleDoc.css" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ConfigurationController.cs" />
@@ -369,6 +385,7 @@
     <Content Include="Content\themes\base\jquery.ui.tabs.css" />
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
     <Content Include="Global.asax" />
+    <Content Include="Images\gallery item BG.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\sitebg.jpg" />
     <Content Include="Images\bg.gif" />
@@ -454,6 +471,9 @@
     <Content Include="Areas\Admin\Views\AdminHome\SitePages.cshtml" />
     <Content Include="Areas\Admin\Views\AdminHome\SitePagesAddNew.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminGallery\GalleryPages.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminGallery\GalleryPagesAddNew.cshtml" />
+    <Content Include="Content\Gallery.less" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -539,6 +559,7 @@
     <Content Include="Scripts\knockout-2.0.0.js" />
     <Content Include="Scripts\modernizr-2.0.6-development-only.js" />
     <Content Include="Scripts\nicEdit\nicEdit.js" />
+    <Content Include="Scripts\nicEdit\nicEditIconsNew.gif" />
     <Content Include="Scripts\nicEdit\nicEditorIcons.gif" />
     <Content Include="Scripts\nicescroll.3\jquery.nicescroll.min.js" />
     <Content Include="Scripts\nicescroll.3\zoomico.png" />
@@ -661,10 +682,12 @@
     <Content Include="Views\Maps\Index.cshtml" />
     <Content Include="Views\Home\hapoelTest.cshtml" />
     <Content Include="Views\Video\Calendar.cshtml" />
+    <Content Include="Views\SitePages\Index.cshtml" />
+    <Content Include="Views\Gallery\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Images\Gallery Pages\" />
     <Folder Include="Images\Site Pages\" />
     <Folder Include="Images\Uploaded\Temporary\" />
     <Folder Include="Resources\Global\" />

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using TaskTimer.Models;
 
-namespace TaskTimer.Areas.Admin.Models
+namespace TaskTimer.Areas.Admin_old.Models
 {
     public class User
     {

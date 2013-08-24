@@ -17,6 +17,9 @@
         <EntityTypeShape EntityType="CustomMembership.Models.Users" Width="1.5" PointX="2.875" PointY="27.125" />
         <AssociationConnector Association="CustomMembership.Models.FK_Images_FAQ" />
         <AssociationConnector Association="CustomMembership.Models.UserRole" />
+        <EntityTypeShape EntityType="CustomMembership.Models.GalleryImages" Width="1.5" PointX="7.25" PointY="19.125" />
+        <EntityTypeShape EntityType="CustomMembership.Models.GalleryPages" Width="1.5" PointX="4.25" PointY="19.125" />
+        <AssociationConnector Association="CustomMembership.Models.FK_GalleryImages_GalleryPages" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

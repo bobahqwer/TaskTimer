@@ -1,0 +1,86 @@
+﻿@model TaskTimer.Models.GalleryPages
+
+@{
+    ViewBag.Title = "GalleryPagesAddNew";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add new gallery page</h2>
+
+@*<div id="addNewPage"> </div>*@
+@using (Html.BeginForm("GalleryPagesAddNew", "AdminGallery", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary()
+
+    <fieldset class="addNewPage">
+        <legend>New Page Form</legend>
+        <table>
+            <tr>
+                <td>@Html.LabelFor(m => m.MetaTag)</td>
+                <td>@Html.TextBoxFor(m => m.MetaTag)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.DescriptionTag)</td>
+                <td>@Html.TextBoxFor(m => m.DescriptionTag)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.TitleTag)</td>
+                <td>@Html.TextBoxFor(m => m.TitleTag)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Title)</td>
+                <td>@Html.TextBoxFor(m => m.Title)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.TitleImage)</td>
+                <td>
+                    <input type="file" name="TitleImage" /></td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Body)</td>
+                <td>@Html.TextAreaFor(m => m.Body)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.BodyImage)</td>
+                <td>
+                    <input type="file" name="BodyImage" /></td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Footer)</td>
+                <td>@Html.TextBoxFor(m => m.Footer)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.FooterImage)</td>
+                <td>
+                    <input type="file" name="FooterImage" /></td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.GalleryImages)</td>
+                <td>
+                    <input type="file" name="GalleryImages" multiple="multiple" /></td>
+            </tr>
+            @foreach (var item in Model.GalleryImages)
+            //@for (int i = 0; i < Model.GalleryImages.Count; i++)
+			{
+                <tr>
+                    <td>
+                        <div class="galleryImageText">@item.Name</div>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    @Html.EditorFor(m => item)
+
+
+                 @*   <td>@Html.LabelFor(m => item.Alt)</td>
+                    <td>@Html.TextBoxFor(m => m.GalleryImages.First(i => i.Id == item.Id).Alt)</td>*@
+                </tr>
+                <tr>
+                 @*   <td>@Html.LabelFor(m => item.BottomText)</td>
+                    <td>@Html.TextBoxFor(m => item.BottomText)</td>*@
+                </tr>
+            }
+        </table>
+        <input type="submit" value="Save new page" />
+    </fieldset>
+}

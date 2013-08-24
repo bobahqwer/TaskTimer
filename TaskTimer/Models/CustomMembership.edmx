@@ -8,6 +8,8 @@
         <EntityContainer Name="CustomMembershipModelsStoreContainer">
           <EntitySet Name="Applications" EntityType="CustomMembership.Models.Store.Applications" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="FAQ" EntityType="CustomMembership.Models.Store.FAQ" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GalleryImages" EntityType="CustomMembership.Models.Store.GalleryImages" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GalleryPages" EntityType="CustomMembership.Models.Store.GalleryPages" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Images" EntityType="CustomMembership.Models.Store.Images" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Memberships" EntityType="CustomMembership.Models.Store.Memberships" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Profiles" EntityType="CustomMembership.Models.Store.Profiles" store:Type="Tables" Schema="dbo" />
@@ -17,6 +19,10 @@
           <EntitySet Name="sysdiagrams" EntityType="CustomMembership.Models.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserRole" EntityType="CustomMembership.Models.Store.UserRole" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Users" EntityType="CustomMembership.Models.Store.Users" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_GalleryImages_GalleryPages" Association="CustomMembership.Models.Store.FK_GalleryImages_GalleryPages">
+            <End Role="GalleryPages" EntitySet="GalleryPages" />
+            <End Role="GalleryImages" EntitySet="GalleryImages" />
+          </AssociationSet>
           <AssociationSet Name="FK_Images_FAQ" Association="CustomMembership.Models.Store.FK_Images_FAQ">
             <End Role="FAQ" EntitySet="FAQ" />
             <End Role="Images" EntitySet="Images" />
@@ -52,6 +58,33 @@
           <Property Name="AUserId" Type="int" />
           <Property Name="NotifyByEmail" Type="bit" Nullable="false" />
           <Property Name="NotifyEmail" Type="nvarchar" MaxLength="255" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GalleryImages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="GalleryId" Type="int" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Alt" Type="nvarchar(max)" />
+          <Property Name="BottomText" Type="nvarchar(max)" />
+          <Property Name="Path" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="GalleryPages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MetaTag" Type="nvarchar(max)" />
+          <Property Name="DescriptionTag" Type="nvarchar(max)" />
+          <Property Name="TitleTag" Type="nvarchar(max)" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="TitleImage" Type="nvarchar(max)" />
+          <Property Name="Body" Type="nvarchar(max)" />
+          <Property Name="BodyImage" Type="nvarchar(max)" />
+          <Property Name="Footer" Type="nvarchar(max)" />
+          <Property Name="FooterImage" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Images">
           <Key>
@@ -173,6 +206,18 @@
           <Property Name="NewEmailKey" Type="nvarchar" MaxLength="128" />
           <Property Name="NewEmailRequested" Type="datetime" />
         </EntityType>
+        <Association Name="FK_GalleryImages_GalleryPages">
+          <End Role="GalleryPages" Type="CustomMembership.Models.Store.GalleryPages" Multiplicity="0..1" />
+          <End Role="GalleryImages" Type="CustomMembership.Models.Store.GalleryImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GalleryPages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GalleryImages">
+              <PropertyRef Name="GalleryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Images_FAQ">
           <End Role="FAQ" Type="CustomMembership.Models.Store.FAQ" Multiplicity="1" />
           <End Role="Images" Type="CustomMembership.Models.Store.Images" Multiplicity="*" />
@@ -232,6 +277,12 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
+          <EntitySet Name="GalleryImages" EntityType="CustomMembership.Models.GalleryImages" />
+          <EntitySet Name="GalleryPages" EntityType="CustomMembership.Models.GalleryPages" />
+          <AssociationSet Name="FK_GalleryImages_GalleryPages" Association="CustomMembership.Models.FK_GalleryImages_GalleryPages">
+            <End Role="GalleryPages" EntitySet="GalleryPages" />
+            <End Role="GalleryImages" EntitySet="GalleryImages" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Applications">
           <Key>
@@ -256,6 +307,7 @@
           <Property Type="Boolean" Name="NotifyByEmail" Nullable="false" />
           <Property Type="String" Name="NotifyEmail" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Images" Relationship="CustomMembership.Models.FK_Images_FAQ" FromRole="FAQ" ToRole="Images" />
+          <Property Type="Boolean" Name="Active" Nullable="false" />
         </EntityType>
         <EntityType Name="Images">
           <Key>
@@ -388,6 +440,46 @@
           <End Type="CustomMembership.Models.Roles" Role="Roles" Multiplicity="*" />
           <End Type="CustomMembership.Models.Users" Role="Users" Multiplicity="*" />
         </Association>
+        <EntityType Name="GalleryImages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="GalleryId" />
+          <Property Type="String" Name="Name" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GalleryPages" Relationship="CustomMembership.Models.FK_GalleryImages_GalleryPages" FromRole="GalleryImages" ToRole="GalleryPages" />
+          <Property Type="String" Name="Path" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Alt" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BottomText" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="GalleryPages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="MetaTag" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DescriptionTag" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TitleTag" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Title" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TitleImage" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Body" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BodyImage" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Footer" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FooterImage" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GalleryImages" Relationship="CustomMembership.Models.FK_GalleryImages_GalleryPages" FromRole="GalleryPages" ToRole="GalleryImages" />
+        </EntityType>
+        <Association Name="FK_GalleryImages_GalleryPages">
+          <End Type="CustomMembership.Models.GalleryPages" Role="GalleryPages" Multiplicity="0..1" />
+          <End Type="CustomMembership.Models.GalleryImages" Role="GalleryImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GalleryPages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GalleryImages">
+              <PropertyRef Name="GalleryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -407,6 +499,7 @@
           <EntitySetMapping Name="FAQ">
             <EntityTypeMapping TypeName="CustomMembership.Models.FAQ">
               <MappingFragment StoreEntitySet="FAQ">
+                <ScalarProperty Name="Active" ColumnName="Active" />
                 <ScalarProperty Name="NotifyEmail" ColumnName="NotifyEmail" />
                 <ScalarProperty Name="NotifyByEmail" ColumnName="NotifyByEmail" />
                 <ScalarProperty Name="AUserId" ColumnName="AUserId" />
@@ -547,6 +640,34 @@
               <ScalarProperty Name="RoleId" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="GalleryImages">
+            <EntityTypeMapping TypeName="CustomMembership.Models.GalleryImages">
+              <MappingFragment StoreEntitySet="GalleryImages">
+                <ScalarProperty Name="BottomText" ColumnName="BottomText" />
+                <ScalarProperty Name="Alt" ColumnName="Alt" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GalleryId" ColumnName="GalleryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GalleryPages">
+            <EntityTypeMapping TypeName="CustomMembership.Models.GalleryPages">
+              <MappingFragment StoreEntitySet="GalleryPages">
+                <ScalarProperty Name="FooterImage" ColumnName="FooterImage" />
+                <ScalarProperty Name="Footer" ColumnName="Footer" />
+                <ScalarProperty Name="BodyImage" ColumnName="BodyImage" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="TitleImage" ColumnName="TitleImage" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="TitleTag" ColumnName="TitleTag" />
+                <ScalarProperty Name="DescriptionTag" ColumnName="DescriptionTag" />
+                <ScalarProperty Name="MetaTag" ColumnName="MetaTag" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

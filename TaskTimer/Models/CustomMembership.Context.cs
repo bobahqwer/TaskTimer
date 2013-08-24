@@ -35,5 +35,7 @@ namespace TaskTimer.Models
         public DbSet<SiteMainPages> SiteMainPages { get; set; }
         public DbSet<sysdiagrams> sysdiagrams { get; set; }
         public DbSet<Users> Users { get; set; }
+        public DbSet<GalleryImages> GalleryImages { get; set; }
+        public DbSet<GalleryPages> GalleryPages { get; set; }
     }
 }

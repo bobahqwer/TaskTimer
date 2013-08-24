@@ -14,15 +14,16 @@
         "~/Content/dropdown/themes/default/default.css",
         "~/Content/GoogleDoc.css",
         "~/Content/FAQ.css",
-        "~/Content/CSS3.css")
+        "~/Content/CSS3.css",
+        "~/Content/Gallery.css")
 
         @Scripts.Render("~/bundles/modernizr", 
         "~/Scripts/jquery-1.6.2.js",
         "~/Scripts/jquery-ui-1.8.11.js",
         "~/Scripts/jquery.unobtrusive-ajax.js",
         
-       /* "~/Scripts/custom-scrollbar-plugin/jquery.mCustomScrollbar.js",
-        "~/Scripts/custom-scrollbar-plugin/jquery.mousewheel.min.js",*/
+        /*"~/Scripts/custom-scrollbar-plugin/jquery.mCustomScrollbar.js",
+        *"~/Scripts/custom-scrollbar-plugin/jquery.mousewheel.min.js",*/
         "~/Scripts/site.js")
         <script>
             //Google+
@@ -125,7 +126,7 @@
         <footer>
             <div class="content-wrapper">
                 <div class="float-left rights">
-                    <p>@Html.ActionLink("®", "Index", "Admin", new { area = "Admin" }, new { style = "text-decoration: none; cursor: default;" }) @DateTime.Now.Year - My ASP.NET MVC Application</p>
+                    <p>@Html.ActionLink("®", "Index", "AdminHome", new { area = "Admin" }, new { style = "text-decoration: none; cursor: default;" }) @DateTime.Now.Year - My ASP.NET MVC Application</p>
                 </div>
                 <div class="float-left fotterMiddleLinks">
                     <p>@Html.ActionLink("Site map", "SiteMap", "Home")</p>

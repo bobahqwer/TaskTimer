@@ -123,7 +123,10 @@
   <data name="CreateANewAccount" xml:space="preserve">
     <value>צור חשבון חדש</value>
   </data>
-  <data name="IfYouDon'tHaveAnAccount" xml:space="preserve">
+  <data name="DirectionHTML" xml:space="preserve">
+    <value>rtl</value>
+  </data>
+  <data name="IfYouDontHaveAnAccount" xml:space="preserve">
     <value>אם אין לך חשבון</value>
   </data>
   <data name="LogIn" xml:space="preserve">

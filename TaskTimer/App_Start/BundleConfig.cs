@@ -58,8 +58,8 @@ namespace TaskTimer
             /* styles admin */
 
             bundles.Add(new StyleBundle("~/Areas/Admin/Content/css").Include(
-                "~/Areas/Admin/Content/admin.css",
-                "~/Areas/Admin/Content/sitePages.css"));
+                "~/Areas/Admin/Content/Admin.css",
+                "~/Areas/Admin/Content/SitePages.css"));
         }
     }
 }

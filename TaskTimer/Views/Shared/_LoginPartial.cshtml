@@ -12,14 +12,14 @@
                             htmlAttributes: new { id = "loginLink" })
         </li>
         <li>
-            <div class="loginOpacity" >
+            <div class="loginOpacity" style="direction: @Resources.Views.Account.Strings.DirectionHTML ;" >
                 @using (Html.BeginForm("LoginOpacity", "Account", new { ReturnUrl = "/" }))
                 {
-                    @Html.Label("","User: ")
+                    @Html.Label("", @Resources.Models.Account.FieldsNames.UserName + ": ")
                     @Html.TextBox("username")
-                    @Html.Label(""," Pass: ")
+                    @Html.Label(""," " + Resources.Models.Account.FieldsNames.Password + ": ")
                     @Html.Password("password")
-                    <input type="submit" value="Log in" />
+                    <input type="submit" value="@Resources.Views.Account.Strings.LogIn" />
                 }
             </div>
         </li>
