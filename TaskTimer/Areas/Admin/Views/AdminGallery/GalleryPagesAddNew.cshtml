@@ -59,26 +59,10 @@
                 <td>
                     <input type="file" name="GalleryImages" multiple="multiple" /></td>
             </tr>
-            @foreach (var item in Model.GalleryImages)
-            //@for (int i = 0; i < Model.GalleryImages.Count; i++)
-			{
-                <tr>
-                    <td>
-                        <div class="galleryImageText">@item.Name</div>
-                    </td>
-                    <td></td>
-                </tr>
-                <tr>
-                    @Html.EditorFor(m => item)
-
-
-                 @*   <td>@Html.LabelFor(m => item.Alt)</td>
-                    <td>@Html.TextBoxFor(m => m.GalleryImages.First(i => i.Id == item.Id).Alt)</td>*@
-                </tr>
-                <tr>
-                 @*   <td>@Html.LabelFor(m => item.BottomText)</td>
-                    <td>@Html.TextBoxFor(m => item.BottomText)</td>*@
-                </tr>
+            @foreach (var item in Model.GalleryImages.ToList())
+            {
+                    @Html.EditorFor(m => item, "~/Areas/Admin/Views/Shared/EditorTemplates/GalleryImages.cshtml")
+                
             }
         </table>
         <input type="submit" value="Save new page" />

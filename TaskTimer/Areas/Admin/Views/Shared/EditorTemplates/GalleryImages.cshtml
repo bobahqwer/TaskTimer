@@ -1,0 +1,17 @@
+﻿@model TaskTimer.Models.GalleryImages
+
+                <tr>
+                    <td>
+                        <div class="galleryImageText">@Model.Name</div>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.Alt)</td>
+                    <td>@Html.TextBoxFor(m => Model.Alt)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.BottomText)</td>
+                    <td>@Html.TextBoxFor(m => Model.BottomText)</td>
+                </tr>
+        

@@ -474,6 +474,7 @@
     <Content Include="Areas\Admin\Views\AdminGallery\GalleryPages.cshtml" />
     <Content Include="Areas\Admin\Views\AdminGallery\GalleryPagesAddNew.cshtml" />
     <Content Include="Content\Gallery.less" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\GalleryImages.cshtml" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>

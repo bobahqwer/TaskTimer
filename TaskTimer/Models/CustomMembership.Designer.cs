@@ -1,4 +1,4 @@
-﻿// Default code generation is disabled for model 'D:\P4B\Visual Studeo Projects\GitHub\TaskTimer\TaskTimer\Models\CustomMembership.edmx'. 
+﻿// Default code generation is disabled for model 'D:\Projects\P4B\Visual Studeo Projects\TaskTimer\TaskTimer\Models\CustomMembership.edmx'. 
 // To enable default code generation, change the value of the 'Code Generation Strategy' designer
 // property to an alternate value. This property is available in the Properties Window when the model is
 // open in the designer.

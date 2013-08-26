@@ -67,8 +67,11 @@
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="GalleryId" Type="int" />
           <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Title" Type="nvarchar(max)" />
           <Property Name="Alt" Type="nvarchar(max)" />
+          <Property Name="TopText" Type="nvarchar(max)" />
           <Property Name="BottomText" Type="nvarchar(max)" />
+          <Property Name="Link" Type="nvarchar(max)" />
           <Property Name="Path" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="GalleryPages">
@@ -451,6 +454,9 @@
           <Property Type="String" Name="Path" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Alt" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="BottomText" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Title" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TopText" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Link" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="GalleryPages">
           <Key>
@@ -643,6 +649,9 @@
           <EntitySetMapping Name="GalleryImages">
             <EntityTypeMapping TypeName="CustomMembership.Models.GalleryImages">
               <MappingFragment StoreEntitySet="GalleryImages">
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="TopText" ColumnName="TopText" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="BottomText" ColumnName="BottomText" />
                 <ScalarProperty Name="Alt" ColumnName="Alt" />
                 <ScalarProperty Name="Path" ColumnName="Path" />

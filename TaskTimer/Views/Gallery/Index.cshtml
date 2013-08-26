@@ -11,7 +11,18 @@
 @foreach (var image in Model.GalleryImages)
 {
     <div class="galleryItem">
-        @Html.Image("/Images/Gallery Pages/" + image.Path, "imageDescrtgbfg", new { width = "280px", height = "206px" })
+         <div class="galleryTopText">
+            @image.TopText
+        </div>
+        <div class="galleryImage">
+        @Html.Image("/Images/Gallery Pages/" + image.Path, "imageDescrtgbfg", new { width = "280px", height = "206px", alt = image.Alt, Title = image.Title })
+            </div>
+        <div class="galleryBottomText">
+            @image.BottomText
+        </div>
+        <div class="galleryLink">
+            @image.Link
+        </div>
     </div>
 }
 </div>

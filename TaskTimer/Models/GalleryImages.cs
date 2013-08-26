@@ -20,6 +20,9 @@ namespace TaskTimer.Models
         public string Path { get; set; }
         public string Alt { get; set; }
         public string BottomText { get; set; }
+        public string Title { get; set; }
+        public string TopText { get; set; }
+        public string Link { get; set; }
     
         public virtual GalleryPages GalleryPages { get; set; }
     }
