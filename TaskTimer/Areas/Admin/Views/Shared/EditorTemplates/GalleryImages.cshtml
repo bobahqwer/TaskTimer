@@ -2,16 +2,16 @@
 
                 <tr>
                     <td>
-                        <div class="galleryImageText">@Model.Name</div>
+                        <div class="galleryImageText">Image name: @Model.Name</div>
                     </td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td>@Html.LabelFor(m => Model.Alt)</td>
-                    <td>@Html.TextBoxFor(m => Model.Alt)</td>
+                    <td>@Html.LabelFor(m => m.Alt)</td>
+                    <td>@Html.TextBoxFor(m => m.Alt)</td>
                 </tr>
                 <tr>
-                    <td>@Html.LabelFor(m => Model.BottomText)</td>
-                    <td>@Html.TextBoxFor(m => Model.BottomText)</td>
+                    <td>@Html.LabelFor(m => m.BottomText)</td>
+                    <td>@Html.TextBoxFor(m => m.BottomText)</td>
                 </tr>
         

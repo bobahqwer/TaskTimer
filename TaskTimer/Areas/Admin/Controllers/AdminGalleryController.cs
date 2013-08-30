@@ -22,17 +22,32 @@ namespace TaskTimer.Areas.Admin.Controllers
         }
         public ActionResult GalleryPagesAddNew(int id)
         {
-            if (id == -1) //new page
-                return View(new GalleryPages());
-            var db = new CustomMembershipDB();
-            var editPage = db.GalleryPages.FirstOrDefault(p => p.Id == id);
-            if (editPage == null)
-                editPage = new GalleryPages();
-            return View(editPage);
+            //if (id == -1) //new page
+            //    return View(new GalleryPages());
+            //var db = new CustomMembershipDB();
+            //var editPage = db.GalleryPages.FirstOrDefault(p => p.Id == id);
+            //if (editPage == null)
+            //    editPage = new GalleryPages();
+            var qwer11list = new List<qwer11>();
+            qwer11list.Add(new qwer11()
+            {
+                alt = "alt1",
+                date = DateTime.Now,
+                name = "nameq"
+            });
+            qwer11list.Add(new qwer11()
+            {
+                alt = "alt2",
+                date = DateTime.Now,
+                name = "nameq"
+            });
+            return View(qwer11list);
+            //return View(editPage);
         }
         [HttpPost]
-        public ActionResult GalleryPagesAddNew(GalleryPages newPage)
+        public ActionResult GalleryPagesAddNew(List<qwer11> list)//GalleryPages newPage)
         {
+            GalleryPages newPage = new GalleryPages();
             if (ModelState.IsValid)
             {
                 //upload files
@@ -93,7 +108,7 @@ namespace TaskTimer.Areas.Admin.Controllers
                     db.GalleryPages.Add(newPage);
                 else
                     db.Entry(newPage).State = EntityState.Modified;
-                db.SaveChanges();
+                //db.SaveChanges();
             }
             return RedirectToAction("GalleryPages");
         }
@@ -108,5 +123,11 @@ namespace TaskTimer.Areas.Admin.Controllers
             }
             return RedirectToAction("GalleryPages");
         }
+    }
+    public class qwer11 
+    {
+        public string alt;
+        public string name;
+        public DateTime date;
     }
 }
