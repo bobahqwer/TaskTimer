@@ -300,6 +300,7 @@
     <Content Include="Areas\Admin\Content\Images\adminbg.jpg" />
     <Content Include="Areas\Admin\Content\Images\drop.png" />
     <Content Include="Areas\Admin\Content\SitePages.css" />
+    <Content Include="Areas\Admin\Scripts\admin.js" />
     <Content Include="Areas\Admin\Views\Web.config" />
     <Content Include="Areas\Admin_old\Content\admin.css" />
     <Content Include="Areas\Admin_old\Content\Images\adminbg.jpg" />
@@ -476,6 +477,7 @@
     <Content Include="Content\Gallery.less" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\GalleryImages.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\qwer11.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminGallery\_GalleryImagesPartial.cshtml" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>

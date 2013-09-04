@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using TaskTimer.Areas.Admin.Models;
 using TaskTimer.Models;
+using TaskTimer.UsefulClasses;
 
 namespace TaskTimer.Areas.Admin.Controllers
 {
@@ -22,36 +23,56 @@ namespace TaskTimer.Areas.Admin.Controllers
         }
         public ActionResult GalleryPagesAddNew(int id)
         {
-            //if (id == -1) //new page
+            if (id == -1) //new page
+                return View(new GalleryPages());
+            var db = new CustomMembershipDB();
+            var editPage = db.GalleryPages.FirstOrDefault(p => p.Id == id);
+            if (editPage == null)
+                return View(new GalleryPages());
+            return View(editPage);
+            //var editPages = db.GalleryPages.Where(p => p.Id == id);
+            //if (editPages.Count() == 0)
             //    return View(new GalleryPages());
-            //var db = new CustomMembershipDB();
-            //var editPage = db.GalleryPages.FirstOrDefault(p => p.Id == id);
-            //if (editPage == null)
-            //    editPage = new GalleryPages();
-            var qwer11list = new List<qwer11>();
-            qwer11list.Add(new qwer11()
-            {
-                alt = "alt1",
-                date = DateTime.Now,
-                name = "nameq"
-            });
-            qwer11list.Add(new qwer11()
-            {
-                alt = "alt2",
-                date = DateTime.Now,
-                name = "nameq"
-            });
-            return View(qwer11list);
-            //return View(editPage);
+            //return View(editPages.ToList());
+            //var qwer11list = new List<qwer11>();
+            //qwer11list.Add(new qwer11()
+            //{
+            //    alt = "alt1",
+            //    date = DateTime.Now,
+            //    name = "nameq"
+            //});
+            //qwer11list.Add(new qwer11()
+            //{
+            //    alt = "alt2",
+            //    date = DateTime.Now,
+            //    name = "nameq"
+            //});
+            //return View(qwer11list);
         }
         [HttpPost]
-        public ActionResult GalleryPagesAddNew(List<qwer11> list)//GalleryPages newPage)
+        public ActionResult GalleryPagesAddNew(GalleryPages newPage)
         {
-            GalleryPages newPage = new GalleryPages();
+            var db = new CustomMembershipDB();
+            var form= Request.Form;
+            var i = 0;
+            while (form["GalleryImages[" + i + "].Id"] != null)
+            {
+                var imageId = int.Parse(form["GalleryImages[" + i + "].Id"]);
+                var imageAlt = form["GalleryImages[" + i + "].Alt"];
+                var imageBottomText = form["GalleryImages[" + i + "].BottomText"];
+                var curGalleryImage = db.GalleryImages.SingleOrDefault(g => g.Id == imageId);
+                if (curGalleryImage != null)
+                {
+                    curGalleryImage.Alt = imageAlt;
+                    curGalleryImage.BottomText = imageBottomText;
+                    newPage.GalleryImages.Add(curGalleryImage);
+                }
+                i++;
+            }
             if (ModelState.IsValid)
             {
                 //upload files
-                var db = new CustomMembershipDB();
+                
                 var saveToDirectory = AppDomain.CurrentDomain.BaseDirectory + "Images/Gallery Pages/";
                 var uploadedMultipleFiles = new List<string>();
                 foreach (string file in Request.Files)
@@ -108,10 +129,22 @@ namespace TaskTimer.Areas.Admin.Controllers
                     db.GalleryPages.Add(newPage);
                 else
                     db.Entry(newPage).State = EntityState.Modified;
-                //db.SaveChanges();
+                db.SaveChanges();
             }
             return RedirectToAction("GalleryPages");
         }
+        [HttpGet]
+        public PartialViewResult GalleryImages(int id)
+        {
+            //if (id == -1)
+            //    return PartialView("_ImagesPartial", new GalleryImages());
+
+
+            CustomMembershipDB db = new CustomMembershipDB();
+            var galleryImages = db.GalleryPages.FirstOrDefault(p => p.Id == id);
+            return PartialView("_GalleryImagesPartial", galleryImages.GalleryImages.ToList());
+        }
+
         public ActionResult GalleryPagesDelete(int id)
         {
             var db = new CustomMembershipDB();
@@ -123,11 +156,24 @@ namespace TaskTimer.Areas.Admin.Controllers
             }
             return RedirectToAction("GalleryPages");
         }
+        [AjaxOnly, HttpPost]
+        public ActionResult GalleryPagesDeleteAjax(int id)
+        {
+            CustomMembershipDB db = new CustomMembershipDB();
+            var galleryPage = db.GalleryPages.SingleOrDefault(q => q.Id == id);
+            if (galleryPage != null)
+            {
+                db.GalleryPages.Remove(galleryPage);
+                //db.SaveChanges();
+                return Content("OK");
+            }
+            return Content("Page was not found");
+        }
     }
     public class qwer11 
     {
-        public string alt;
-        public string name;
-        public DateTime date;
+        public string alt { get; set; }
+        public string name { get; set; }
+        public DateTime date { get; set; }
     }
 }

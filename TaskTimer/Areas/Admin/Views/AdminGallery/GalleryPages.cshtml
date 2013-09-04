@@ -4,6 +4,50 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+<script>
+    function DeleteGalleryPage(elem, id) {
+        var element = $(elem).parent();
+
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <text>
+        debugger;
+        var $myDialog = $('<div></div>')
+            .html('Delete gallery page?')
+            .dialog({
+                title: 'Conformation',
+                autoOpen: false,
+                width: 300,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Delete": function () {
+                        $.ajax({
+                            url: '/AdminGallery/GalleryPagesDeleteAjax',
+                            type: 'POST',
+                            data: { id: id },
+                            success: function (result) {
+                                element.closest('tr').toggle("slow");
+                            }
+                        });
+                        $(this).dialog("close");
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                },
+            });
+        $myDialog.dialog('open');
+        </text>
+        }
+        else
+        {
+            <text>
+        element.closest('tr').toggle("slow");
+        </text>
+        }
+    }
+</script>
 
 <h2>Gallery pages</h2>
 @Html.ActionLink("Add new gallery page", "GalleryPagesAddNew", "AdminGallery", new { id = -1 }, null)
@@ -97,7 +141,8 @@
             <div>
                 @Html.ActionLink("Site", "Index", "Gallery", new { area = "", id = item.Id }, null) |
                 @Html.ActionLink("Edit", "GalleryPagesAddNew", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "GalleryPagesDelete", new { id = item.Id })
+                @*@Html.ActionLink("Delete", "GalleryPagesDelete", new { id = item.Id })*@
+                <span class="GalleryPageDelete" onclick="DeleteGalleryPage(this, @item.Id)">Delete</span>
             </div>
         </td>
     </tr>
