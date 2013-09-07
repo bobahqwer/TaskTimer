@@ -24,26 +24,36 @@
                 // call the tablesorter plugin and apply the uitheme widget
             $("#myTable").tablesorter({
                 theme: "bootstrap", // this will 
-
                 widthFixed: true,
-
                 headerTemplate: '{content} {icon}', // new in v2.7. Needed to add the bootstrap icon!
-
                 // widget code contained in the jquery.tablesorter.widgets.js file
                 // use the zebra stripe widget if you plan on hiding any rows (filter widget)
                 widgets: ["uitheme", "filter", "zebra"],
-
                 widgetOptions: {
                     // using the default zebra striping class name, so it actually isn't included in the theme variable above
                     // this is ONLY needed for bootstrap theming if you are using the filter widget, because rows are hidden
                     zebra: ["even", "odd"],
-
                     // reset filters button
                     filter_reset: ".reset",
-
                     // set the uitheme widget to use the bootstrap theme class names
                     // uitheme : "bootstrap"
-
+                }
+            });
+            $("#myTable2").tablesorter({
+                theme: "bootstrap", // this will 
+                widthFixed: true,
+                headerTemplate: '{content} {icon}', // new in v2.7. Needed to add the bootstrap icon!
+                // widget code contained in the jquery.tablesorter.widgets.js file
+                // use the zebra stripe widget if you plan on hiding any rows (filter widget)
+                widgets: ["uitheme", "filter", "zebra"],
+                widgetOptions: {
+                    // using the default zebra striping class name, so it actually isn't included in the theme variable above
+                    // this is ONLY needed for bootstrap theming if you are using the filter widget, because rows are hidden
+                    zebra: ["even", "odd"],
+                    // reset filters button
+                    filter_reset: ".reset",
+                    // set the uitheme widget to use the bootstrap theme class names
+                    // uitheme : "bootstrap"
                 }
             });
                 /*.tablesorterPager({
@@ -172,6 +182,17 @@
             </div>
             <div class="menuBottomItem">
                 @Html.ActionLink("Add new template page", "GalleryPagesAddNew", "AdminGallery", new { id = -1 }, null)
+            </div>
+        </div>
+    </li>
+    <li class="menuTopItem">
+        <div class="menuDrop">Efargan</div>
+        <div class="menuBottomItems">
+            <div class="menuBottomItem">
+                @Html.ActionLink("Efargan pages", "EfarganPages", "AdminEfargan")
+            </div>
+            <div class="menuBottomItem">
+                @Html.ActionLink("Add new Efargan page", "EfarganPagesAddNew", "AdminEfargan")
             </div>
         </div>
     </li>

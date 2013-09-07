@@ -1,0 +1,24 @@
+﻿@model TaskTimer.Models.EfarganPagesTickers
+
+<tr>
+    <td>
+        @Html.HiddenFor(m => Model.Id)
+    </td>
+    <td></td>
+</tr>
+<tr>
+    <td>@Html.LabelFor(m => Model.TickerTitle)</td>
+    <td>@Html.TextBoxFor(m => Model.TickerTitle)</td>
+</tr>
+<tr>
+    <td>@Html.LabelFor(m => Model.TickerText)</td>
+    <td>@Html.TextBoxFor(m => Model.TickerText)</td>
+</tr>
+<tr>
+    <td>@Html.LabelFor(m => Model.TickerLinkText)</td>
+    <td>@Html.TextBoxFor(m => Model.TickerLinkText)</td>
+</tr>
+<tr>
+    <td>@Html.LabelFor(m => Model.TickerLinkURL)</td>
+    <td>@Html.TextBoxFor(m => Model.TickerLinkURL)</td>
+</tr>

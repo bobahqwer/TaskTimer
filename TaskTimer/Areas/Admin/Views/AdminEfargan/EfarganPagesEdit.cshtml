@@ -1,0 +1,108 @@
+﻿@model TaskTimer.Models.EfarganPages
+@{
+    ViewBag.Title = "EfarganPagesEdit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@*<script type="text/javascript">
+    function UpdateSliderData(element, id)
+    {
+        var el = $(element);
+        var curVarNames = el.closest('table').find('label[for^="tmpSlider"]');
+        var curRow = el.closest('tr');
+        var curCellArr = curRow.find('td');
+        var data = {};
+        for (var i = 0; i < curVarNames.length; i++) {
+            var key = $(curVarNames[i]).html();
+            var value = "";
+            if (i == 0)
+                value = $(curCellArr[i]).html();
+            else
+                value = $(curCellArr[i]).find('input').attr('value');
+            data[key] = value;
+        }
+        data["EfarganPages"] = 0;
+        data["SliderEfarganPagesId"] = 0;
+        debugger;
+        $.ajax({
+            url: 'EfarganPagesAjaxSaveSliderData',
+            type: 'POST',
+            data: JSON.stringify(data),
+            success: function (result) {
+                //element.toggle("slow");
+            }
+        });
+    }
+    
+
+</script>*@
+
+<h2>Edit Efargan page</h2>
+@using (Html.BeginForm("EfarganPagesEdit", "AdminEfargan", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+	@Html.ValidationSummary()
+	<fieldset class="addNewPage">
+		<legend>Edit Page Form</legend>
+		<table>
+			<tr>
+				<td>@Html.LabelFor(m => m.MetaTag)</td>
+				<td>@Html.TextBoxFor(m => m.MetaTag)</td>
+			</tr>
+			<tr>
+				<td>@Html.LabelFor(m => m.DescriptionTag)</td>
+				<td>@Html.TextBoxFor(m => m.DescriptionTag)</td>
+			</tr>
+			<tr>
+				<td>@Html.LabelFor(m => m.TitleTag)</td>
+				<td>@Html.TextBoxFor(m => m.TitleTag)</td>
+			</tr>
+		</table>
+		<input type="submit" value="Edit page" />
+	</fieldset>
+}
+
+@{
+    var tmpSlider = new TaskTimer.Models.EfarganPagesSliders();
+    tmpSlider.Id = -1;
+    Model.EfarganPagesSliders.Add(tmpSlider);
+    if (Model.EfarganPagesSliders.Count == 1)
+    {
+        tmpSlider = new TaskTimer.Models.EfarganPagesSliders();
+        tmpSlider.Id = -1;
+        Model.EfarganPagesSliders.Add(tmpSlider);
+    }
+  }
+  @using (Html.BeginForm("EfarganPagesEdit", "AdminEfargan", new { id = Model.Id }))
+                {
+<table id="myTable2" class="tablesorter">
+    <thead>
+        <tr>
+            <th>
+                @Html.LabelFor(m => tmpSlider.Id)
+            </th>
+            <th>
+                @Html.LabelFor(m => tmpSlider.SliderTitle)
+            </th>
+            <th>
+                @Html.LabelFor(m => tmpSlider.SliderText)
+            </th>
+            <th>
+                @Html.LabelFor(m => tmpSlider.SliderLinkText)
+            </th>
+            <th>
+                @Html.LabelFor(m => tmpSlider.SliderLinkURL)
+            </th>
+            <th>
+                @Html.LabelFor(m => tmpSlider.SliderImage)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @Html.EditorFor(m => Model.EfarganPagesSliders)
+    </tbody>
+</table>
+
+
+  }

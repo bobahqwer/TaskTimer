@@ -7,6 +7,10 @@
     <Schema Namespace="CustomMembership.Models.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="CustomMembershipModelsStoreContainer">
           <EntitySet Name="Applications" EntityType="CustomMembership.Models.Store.Applications" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EfarganPages" EntityType="CustomMembership.Models.Store.EfarganPages" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EfarganPagesParagraphs" EntityType="CustomMembership.Models.Store.EfarganPagesParagraphs" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EfarganPagesSliders" EntityType="CustomMembership.Models.Store.EfarganPagesSliders" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EfarganPagesTickers" EntityType="CustomMembership.Models.Store.EfarganPagesTickers" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="FAQ" EntityType="CustomMembership.Models.Store.FAQ" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GalleryImages" EntityType="CustomMembership.Models.Store.GalleryImages" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GalleryPages" EntityType="CustomMembership.Models.Store.GalleryPages" store:Type="Tables" Schema="dbo" />
@@ -19,6 +23,18 @@
           <EntitySet Name="sysdiagrams" EntityType="CustomMembership.Models.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserRole" EntityType="CustomMembership.Models.Store.UserRole" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Users" EntityType="CustomMembership.Models.Store.Users" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_EfarganPagesParagraphs_EfarganPages" Association="CustomMembership.Models.Store.FK_EfarganPagesParagraphs_EfarganPages">
+            <End Role="EfarganPages" EntitySet="EfarganPages" />
+            <End Role="EfarganPagesParagraphs" EntitySet="EfarganPagesParagraphs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EfarganPagesSliders_EfarganPages" Association="CustomMembership.Models.Store.FK_EfarganPagesSliders_EfarganPages">
+            <End Role="EfarganPages" EntitySet="EfarganPages" />
+            <End Role="EfarganPagesSliders" EntitySet="EfarganPagesSliders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EfarganPagesTickers_EfarganPages" Association="CustomMembership.Models.Store.FK_EfarganPagesTickers_EfarganPages">
+            <End Role="EfarganPages" EntitySet="EfarganPages" />
+            <End Role="EfarganPagesTickers" EntitySet="EfarganPagesTickers" />
+          </AssociationSet>
           <AssociationSet Name="FK_GalleryImages_GalleryPages" Association="CustomMembership.Models.Store.FK_GalleryImages_GalleryPages">
             <End Role="GalleryPages" EntitySet="GalleryPages" />
             <End Role="GalleryImages" EntitySet="GalleryImages" />
@@ -44,6 +60,50 @@
           <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="256" />
           <Property Name="UserCounter" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EfarganPages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MetaTag" Type="nvarchar(max)" />
+          <Property Name="DescriptionTag" Type="nvarchar(max)" />
+          <Property Name="TitleTag" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="EfarganPagesParagraphs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ParagraphTitle" Type="nvarchar(max)" />
+          <Property Name="ParagraphText" Type="nvarchar(max)" />
+          <Property Name="ParagraphLinkText" Type="nvarchar(max)" />
+          <Property Name="ParagraphLinkURL" Type="nvarchar(max)" />
+          <Property Name="ParagraphImage" Type="nvarchar(max)" />
+          <Property Name="ParagraphEfarganPagesId" Type="int" />
+        </EntityType>
+        <EntityType Name="EfarganPagesSliders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SliderTitle" Type="nvarchar(max)" />
+          <Property Name="SliderText" Type="nvarchar(max)" />
+          <Property Name="SliderLinkText" Type="nvarchar(max)" />
+          <Property Name="SliderLinkURL" Type="nvarchar(max)" />
+          <Property Name="SliderImage" Type="nvarchar(max)" />
+          <Property Name="SliderEfarganPagesId" Type="int" />
+        </EntityType>
+        <EntityType Name="EfarganPagesTickers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TickerTitle" Type="nvarchar(max)" />
+          <Property Name="TickerText" Type="nvarchar(max)" />
+          <Property Name="TickerLinkText" Type="nvarchar(max)" />
+          <Property Name="TickerLinkURL" Type="nvarchar(max)" />
+          <Property Name="TickerEfarganPagesId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="FAQ">
           <Key>
@@ -209,6 +269,42 @@
           <Property Name="NewEmailKey" Type="nvarchar" MaxLength="128" />
           <Property Name="NewEmailRequested" Type="datetime" />
         </EntityType>
+        <Association Name="FK_EfarganPagesParagraphs_EfarganPages">
+          <End Role="EfarganPages" Type="CustomMembership.Models.Store.EfarganPages" Multiplicity="0..1" />
+          <End Role="EfarganPagesParagraphs" Type="CustomMembership.Models.Store.EfarganPagesParagraphs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EfarganPages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EfarganPagesParagraphs">
+              <PropertyRef Name="ParagraphEfarganPagesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EfarganPagesSliders_EfarganPages">
+          <End Role="EfarganPages" Type="CustomMembership.Models.Store.EfarganPages" Multiplicity="0..1" />
+          <End Role="EfarganPagesSliders" Type="CustomMembership.Models.Store.EfarganPagesSliders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EfarganPages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EfarganPagesSliders">
+              <PropertyRef Name="SliderEfarganPagesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EfarganPagesTickers_EfarganPages">
+          <End Role="EfarganPages" Type="CustomMembership.Models.Store.EfarganPages" Multiplicity="1" />
+          <End Role="EfarganPagesTickers" Type="CustomMembership.Models.Store.EfarganPagesTickers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EfarganPages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EfarganPagesTickers">
+              <PropertyRef Name="TickerEfarganPagesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_GalleryImages_GalleryPages">
           <End Role="GalleryPages" Type="CustomMembership.Models.Store.GalleryPages" Multiplicity="0..1" />
           <End Role="GalleryImages" Type="CustomMembership.Models.Store.GalleryImages" Multiplicity="*" />
@@ -286,7 +382,23 @@
             <End Role="GalleryPages" EntitySet="GalleryPages" />
             <End Role="GalleryImages" EntitySet="GalleryImages" />
           </AssociationSet>
-        </EntityContainer>
+          <EntitySet Name="EfarganPages" EntityType="CustomMembership.Models.EfarganPages" />
+          <EntitySet Name="EfarganPagesParagraphs" EntityType="CustomMembership.Models.EfarganPagesParagraphs" />
+          <EntitySet Name="EfarganPagesSliders" EntityType="CustomMembership.Models.EfarganPagesSliders" />
+          <EntitySet Name="EfarganPagesTickers" EntityType="CustomMembership.Models.EfarganPagesTickers" />
+          <AssociationSet Name="FK_EfarganPagesParagraphs_EfarganPages" Association="CustomMembership.Models.FK_EfarganPagesParagraphs_EfarganPages">
+            <End Role="EfarganPages" EntitySet="EfarganPages" />
+            <End Role="EfarganPagesParagraphs" EntitySet="EfarganPagesParagraphs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EfarganPagesSliders_EfarganPages" Association="CustomMembership.Models.FK_EfarganPagesSliders_EfarganPages">
+            <End Role="EfarganPages" EntitySet="EfarganPages" />
+            <End Role="EfarganPagesSliders" EntitySet="EfarganPagesSliders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EfarganPagesTickers_EfarganPages" Association="CustomMembership.Models.FK_EfarganPagesTickers_EfarganPages">
+            <End Role="EfarganPages" EntitySet="EfarganPages" />
+            <End Role="EfarganPagesTickers" EntitySet="EfarganPagesTickers" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="Applications">
           <Key>
             <PropertyRef Name="ApplicationName" />
@@ -486,6 +598,92 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="EfarganPages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="MetaTag" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DescriptionTag" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TitleTag" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EfarganPagesParagraphs" Relationship="CustomMembership.Models.FK_EfarganPagesParagraphs_EfarganPages" FromRole="EfarganPages" ToRole="EfarganPagesParagraphs" />
+          <NavigationProperty Name="EfarganPagesSliders" Relationship="CustomMembership.Models.FK_EfarganPagesSliders_EfarganPages" FromRole="EfarganPages" ToRole="EfarganPagesSliders" />
+          <NavigationProperty Name="EfarganPagesTickers" Relationship="CustomMembership.Models.FK_EfarganPagesTickers_EfarganPages" FromRole="EfarganPages" ToRole="EfarganPagesTickers" />
+        </EntityType>
+        <EntityType Name="EfarganPagesParagraphs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ParagraphTitle" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ParagraphText" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ParagraphLinkText" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ParagraphLinkURL" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ParagraphImage" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ParagraphEfarganPagesId" />
+          <NavigationProperty Name="EfarganPages" Relationship="CustomMembership.Models.FK_EfarganPagesParagraphs_EfarganPages" FromRole="EfarganPagesParagraphs" ToRole="EfarganPages" />
+        </EntityType>
+        <EntityType Name="EfarganPagesSliders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="SliderTitle" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SliderText" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SliderLinkText" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SliderLinkURL" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SliderImage" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="SliderEfarganPagesId" />
+          <NavigationProperty Name="EfarganPages" Relationship="CustomMembership.Models.FK_EfarganPagesSliders_EfarganPages" FromRole="EfarganPagesSliders" ToRole="EfarganPages" />
+        </EntityType>
+        <EntityType Name="EfarganPagesTickers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="TickerTitle" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TickerText" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TickerLinkText" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TickerLinkURL" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="TickerEfarganPagesId" Nullable="false" />
+          <NavigationProperty Name="EfarganPages" Relationship="CustomMembership.Models.FK_EfarganPagesTickers_EfarganPages" FromRole="EfarganPagesTickers" ToRole="EfarganPages" />
+        </EntityType>
+        <Association Name="FK_EfarganPagesParagraphs_EfarganPages">
+          <End Type="CustomMembership.Models.EfarganPages" Role="EfarganPages" Multiplicity="0..1" />
+          <End Type="CustomMembership.Models.EfarganPagesParagraphs" Role="EfarganPagesParagraphs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EfarganPages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EfarganPagesParagraphs">
+              <PropertyRef Name="ParagraphEfarganPagesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EfarganPagesSliders_EfarganPages">
+          <End Type="CustomMembership.Models.EfarganPages" Role="EfarganPages" Multiplicity="0..1" />
+          <End Type="CustomMembership.Models.EfarganPagesSliders" Role="EfarganPagesSliders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EfarganPages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EfarganPagesSliders">
+              <PropertyRef Name="SliderEfarganPagesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EfarganPagesTickers_EfarganPages">
+          <End Type="CustomMembership.Models.EfarganPages" Role="EfarganPages" Multiplicity="1" />
+          <End Type="CustomMembership.Models.EfarganPagesTickers" Role="EfarganPagesTickers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EfarganPages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EfarganPagesTickers">
+              <PropertyRef Name="TickerEfarganPagesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -677,7 +875,55 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          <EntitySetMapping Name="EfarganPages">
+            <EntityTypeMapping TypeName="CustomMembership.Models.EfarganPages">
+              <MappingFragment StoreEntitySet="EfarganPages">
+                <ScalarProperty Name="TitleTag" ColumnName="TitleTag" />
+                <ScalarProperty Name="DescriptionTag" ColumnName="DescriptionTag" />
+                <ScalarProperty Name="MetaTag" ColumnName="MetaTag" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EfarganPagesParagraphs">
+            <EntityTypeMapping TypeName="CustomMembership.Models.EfarganPagesParagraphs">
+              <MappingFragment StoreEntitySet="EfarganPagesParagraphs">
+                <ScalarProperty Name="ParagraphEfarganPagesId" ColumnName="ParagraphEfarganPagesId" />
+                <ScalarProperty Name="ParagraphImage" ColumnName="ParagraphImage" />
+                <ScalarProperty Name="ParagraphLinkURL" ColumnName="ParagraphLinkURL" />
+                <ScalarProperty Name="ParagraphLinkText" ColumnName="ParagraphLinkText" />
+                <ScalarProperty Name="ParagraphText" ColumnName="ParagraphText" />
+                <ScalarProperty Name="ParagraphTitle" ColumnName="ParagraphTitle" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EfarganPagesSliders">
+            <EntityTypeMapping TypeName="CustomMembership.Models.EfarganPagesSliders">
+              <MappingFragment StoreEntitySet="EfarganPagesSliders">
+                <ScalarProperty Name="SliderEfarganPagesId" ColumnName="SliderEfarganPagesId" />
+                <ScalarProperty Name="SliderImage" ColumnName="SliderImage" />
+                <ScalarProperty Name="SliderLinkURL" ColumnName="SliderLinkURL" />
+                <ScalarProperty Name="SliderLinkText" ColumnName="SliderLinkText" />
+                <ScalarProperty Name="SliderText" ColumnName="SliderText" />
+                <ScalarProperty Name="SliderTitle" ColumnName="SliderTitle" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EfarganPagesTickers">
+            <EntityTypeMapping TypeName="CustomMembership.Models.EfarganPagesTickers">
+              <MappingFragment StoreEntitySet="EfarganPagesTickers">
+                <ScalarProperty Name="TickerEfarganPagesId" ColumnName="TickerEfarganPagesId" />
+                <ScalarProperty Name="TickerLinkURL" ColumnName="TickerLinkURL" />
+                <ScalarProperty Name="TickerLinkText" ColumnName="TickerLinkText" />
+                <ScalarProperty Name="TickerText" ColumnName="TickerText" />
+                <ScalarProperty Name="TickerTitle" ColumnName="TickerTitle" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

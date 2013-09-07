@@ -1,0 +1,97 @@
+﻿@using MvcSiteMapProvider.Web.Html
+@using MvcSiteMapProvider.Web.Html.Models
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render(
+        "~/Content/themes/base/jquery.ui.all.css",
+        "~/Areas/Efargan.co.il/Content/efargan.css"
+        )
+    @Scripts.Render("~/bundles/modernizr",
+        "~/Scripts/jquery-1.6.2.js",
+        "~/Scripts/jquery-ui-1.8.11.js",
+        "~/Scripts/jquery.unobtrusive-ajax.js",
+        "~/Scripts/jquery.validate.js",
+        "~/Scripts/jquery.validate.unobtrusive.js"
+        )
+</head>
+<body>
+    <header>
+        <div class="headerBG"></div>
+        <ul class="menu">
+            <li class="menuTopItem">
+                <div class="menuDrop">@Html.ActionLink("דפ הבית", "SitePages")</div>
+            </li>
+            <li class="menuTopItem">
+                <div class="menuDrop">@Html.ActionLink("אודות", "SitePages")</div>
+            </li>
+            <li class="menuTopItem">
+                <div class="menuDrop">@Html.ActionLink("אירועים", "SitePages")</div>
+            </li>
+            <li class="menuTopItem">
+                <div class="menuDrop">@Html.ActionLink("אירועים", "SitePages")</div>
+            </li>
+            <li class="menuTopItem">
+                <div class="menuDrop">@Html.ActionLink("אירועים", "SitePages")</div>
+            </li>
+            <li class="menuTopItem">
+                <div class="menuDrop">@Html.ActionLink("אירועים", "SitePages")</div>
+            </li>
+            <li class="menuTopItem">
+                <div class="menuDrop">@Html.ActionLink("אירועים", "SitePages")</div>
+            </li>
+            <li class="menuTopItem">
+                <div class="menuDrop">@Html.ActionLink("אירועים", "SitePages")</div>
+            </li>
+            <li class="menuTopItem">
+                <div class="menuDrop">@Html.ActionLink("אירועים", "SitePages")</div>
+            </li>
+        </ul>
+    </header>
+    <div id="body">
+        @*@Html.MvcSiteMap("AdminMvcSiteMapProvider").Menu(false, true, true)*@
+        @RenderBody()
+    </div>
+    <footer>
+        <div class="line"></div>
+        <div>
+            <div class="floatRight">הרב חיים עמרם איפרגן</div>
+            <div class="floatLeft">כל הזכויות שמורות 2013 ®</div>
+            <div class="footerMenuDiv">
+                <ul class="footerMenu">
+                    <li class="menuTopItem">
+                        <div class="menuDrop">@Html.ActionLink("דפ הבית", "SitePages")</div>
+                    </li>
+                    <li class="menuTopItem">
+                        <div class="menuDrop">@Html.ActionLink("אודות", "SitePages")</div>
+                    </li>
+                    <li class="menuTopItem">
+                        <div class="menuDrop">@Html.ActionLink("אירועים", "SitePages")</div>
+                    </li>
+                    <li class="menuTopItem">
+                        <div class="menuDrop">@Html.ActionLink("אירועים", "SitePages")</div>
+                    </li>
+                    <li class="menuTopItem">
+                        <div class="menuDrop">@Html.ActionLink("אירועים", "SitePages")</div>
+                    </li>
+                    <li class="menuTopItem">
+                        <div class="menuDrop">@Html.ActionLink("אירועים", "SitePages")</div>
+                    </li>
+                    <li class="menuTopItem">
+                        <div class="menuDrop">@Html.ActionLink("אירועים", "SitePages")</div>
+                    </li>
+                    <li class="menuTopItem">
+                        <div class="menuDrop">@Html.ActionLink("אירועים", "SitePages")</div>
+                    </li>
+                    <li class="menuTopItem">
+                        <div class="menuDrop">@Html.ActionLink("אירועים", "SitePages")</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <div id="OpenDialogDiv"></div>
+</body>
+</html>

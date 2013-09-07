@@ -1,0 +1,8 @@
+﻿.actionSpan {
+    color: #3131b9;
+    cursor: pointer;
+}
+
+.actionSpan:hover {
+    text-decoration: underline;
+}

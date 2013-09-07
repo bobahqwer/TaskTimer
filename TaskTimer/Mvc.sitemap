@@ -23,5 +23,6 @@
 
     <mvcSiteMapNode title="$resources:MvcSitemap,Video" controller="Video" action="Index"/>
     <mvcSiteMapNode title="$resources:MvcSitemap,Maps" controller="Maps" action="Index"/>
+    <mvcSiteMapNode title="Facebook" controller="Home" action="Facebook"/>
   </mvcSiteMapNode>
 </mvcSiteMap>

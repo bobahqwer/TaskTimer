@@ -1,0 +1,47 @@
+﻿@model TaskTimer.Models.EfarganPagesSliders
+<tr>
+    <td>
+        @Model.Id
+        @Html.HiddenFor(m => Model.Id)
+    </td>
+    <td>
+        <div style="display: none;">
+            @Html.ValueFor(m => Model.SliderTitle)
+        </div>
+        @Html.TextBoxFor(m => Model.SliderTitle)
+    </td>
+    <td>
+        <div style="display: none;">
+            @Html.ValueFor(m => Model.SliderText)
+        </div>
+        @Html.TextBoxFor(m => Model.SliderText)
+
+    </td>
+    <td>
+        <div style="display: none;">
+            @Html.ValueFor(m => Model.SliderLinkText)
+        </div>
+        @Html.TextBoxFor(m => Model.SliderLinkText)</td>
+    <td>
+        <div style="display: none;">
+            @Html.ValueFor(m => Model.SliderLinkURL)
+        </div>
+        @Html.TextBoxFor(m => Model.SliderLinkURL)</td>
+    <td>
+        <input type="file" name="SliderImage_@Model.Id" />
+    </td>
+    <td>
+        <div>
+            @if (Model.Id != -1)
+            {
+                <input type="submit" value="Update" />
+                <span>| </span>
+                <span class="actionSpan" onclick="DeleteSliderData(this, @Model.Id)">Delete</span>
+            }
+            else
+            {
+                <input type="submit" value="Add new slider" />
+            }
+        </div>
+    </td>
+</tr>

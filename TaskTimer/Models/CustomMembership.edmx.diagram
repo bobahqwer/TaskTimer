@@ -5,22 +5,29 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="fee4882e2d8d4300be1f73dfa01856f3" Name="Diagram1">
-        <EntityTypeShape EntityType="CustomMembership.Models.Applications" Width="1.5" PointX="9.1996117817236165" PointY="17.533625044642772" />
-        <EntityTypeShape EntityType="CustomMembership.Models.FAQ" Width="1.5" PointX="10.354868943968262" PointY="13.87183197488628" />
-        <EntityTypeShape EntityType="CustomMembership.Models.Images" Width="1.5" PointX="0.40605719778968818" PointY="29.086784331634075" />
-        <EntityTypeShape EntityType="CustomMembership.Models.Memberships" Width="1.5" PointX="1.0301714954106935" PointY="20.623610327310679" />
-        <EntityTypeShape EntityType="CustomMembership.Models.Profiles" Width="1.5" PointX="11.969045000136385" PointY="28.093855304687217" />
-        <EntityTypeShape EntityType="CustomMembership.Models.Roles" Width="1.5" PointX="2.5774948497198031" PointY="10.112922360241843" />
-        <EntityTypeShape EntityType="CustomMembership.Models.ShopItem" Width="1.5" PointX="9.5300546183856465" PointY="22.875325168890566" />
-        <EntityTypeShape EntityType="CustomMembership.Models.SiteMainPages" Width="1.5" PointX="5.0643424676099524" PointY="4.507685648513811" />
-        <EntityTypeShape EntityType="CustomMembership.Models.sysdiagrams" Width="1.5" PointX="4.9471212890684235" PointY="8.2348344811400551" />
-        <EntityTypeShape EntityType="CustomMembership.Models.Users" Width="1.5" PointX="2.875" PointY="27.125" />
+        <EntityTypeShape EntityType="CustomMembership.Models.Applications" Width="1.5" PointX="8.125" PointY="9.25" />
+        <EntityTypeShape EntityType="CustomMembership.Models.FAQ" Width="1.5" PointX="9.875" PointY="4.25" />
+        <EntityTypeShape EntityType="CustomMembership.Models.Images" Width="1.5" PointX="11.875" PointY="4.25" />
+        <EntityTypeShape EntityType="CustomMembership.Models.Memberships" Width="1.5" PointX="2.125" PointY="8.75" />
+        <EntityTypeShape EntityType="CustomMembership.Models.Profiles" Width="1.5" PointX="6" PointY="9.25" />
+        <EntityTypeShape EntityType="CustomMembership.Models.Roles" Width="1.5" PointX="2.125" PointY="0.5" />
+        <EntityTypeShape EntityType="CustomMembership.Models.ShopItem" Width="1.5" PointX="4" PointY="9.25" />
+        <EntityTypeShape EntityType="CustomMembership.Models.SiteMainPages" Width="1.5" PointX="10" PointY="8.5" />
+        <EntityTypeShape EntityType="CustomMembership.Models.sysdiagrams" Width="1.5" PointX="11.75" PointY="8.5" />
+        <EntityTypeShape EntityType="CustomMembership.Models.Users" Width="1.5" PointX="2.125" PointY="3.625" />
         <AssociationConnector Association="CustomMembership.Models.FK_Images_FAQ" />
         <AssociationConnector Association="CustomMembership.Models.UserRole" />
-        <EntityTypeShape EntityType="CustomMembership.Models.GalleryImages" Width="1.5" PointX="7.25" PointY="19.125" />
-        <EntityTypeShape EntityType="CustomMembership.Models.GalleryPages" Width="1.5" PointX="4.25" PointY="19.125" />
+        <EntityTypeShape EntityType="CustomMembership.Models.GalleryImages" Width="1.5" PointX="7.375" PointY="4.375" />
+        <EntityTypeShape EntityType="CustomMembership.Models.GalleryPages" Width="1.5" PointX="4.375" PointY="4.375" />
         <AssociationConnector Association="CustomMembership.Models.FK_GalleryImages_GalleryPages" />
-      </Diagram>
+        <EntityTypeShape EntityType="CustomMembership.Models.EfarganPages" Width="1.5" PointX="6.875" PointY="0.75" />
+        <EntityTypeShape EntityType="CustomMembership.Models.EfarganPagesParagraphs" Width="1.5" PointX="9.625" PointY="0.75" />
+        <EntityTypeShape EntityType="CustomMembership.Models.EfarganPagesSliders" Width="1.5" PointX="12.125" PointY="0.625" />
+        <EntityTypeShape EntityType="CustomMembership.Models.EfarganPagesTickers" Width="1.5" PointX="4.375" PointY="0.625" />
+        <AssociationConnector Association="CustomMembership.Models.FK_EfarganPagesParagraphs_EfarganPages" />
+        <AssociationConnector Association="CustomMembership.Models.FK_EfarganPagesSliders_EfarganPages" />
+        <AssociationConnector Association="CustomMembership.Models.FK_EfarganPagesTickers_EfarganPages" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

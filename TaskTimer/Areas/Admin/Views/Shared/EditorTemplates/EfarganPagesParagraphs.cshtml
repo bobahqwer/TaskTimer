@@ -1,0 +1,28 @@
+﻿@model TaskTimer.Models.EfarganPagesParagraphs
+
+<tr>
+    <td>
+        @Html.HiddenFor(m => Model.Id)
+    </td>
+    <td></td>
+</tr>
+<tr>
+    <td>@Html.LabelFor(m => Model.ParagraphTitle)</td>
+    <td>@Html.TextBoxFor(m => Model.ParagraphTitle)</td>
+</tr>
+<tr>
+    <td>@Html.LabelFor(m => Model.ParagraphText)</td>
+    <td>@Html.TextBoxFor(m => Model.ParagraphText)</td>
+</tr>
+<tr>
+    <td>@Html.LabelFor(m => Model.ParagraphLinkText)</td>
+    <td>@Html.TextBoxFor(m => Model.ParagraphLinkText)</td>
+</tr>
+<tr>
+    <td>@Html.LabelFor(m => Model.ParagraphLinkURL)</td>
+    <td>@Html.TextBoxFor(m => Model.ParagraphLinkURL)</td>
+</tr>
+<tr>
+    <td>@Html.LabelFor(m => Model.ParagraphImage)</td>
+    <td><input type="file" name="SliderImage_@Model.Id" /></td>
+</tr>

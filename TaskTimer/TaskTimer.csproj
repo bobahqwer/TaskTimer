@@ -169,6 +169,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Areas\Admin\Controllers\AdminEfarganController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminGalleryController.cs" />
     <Compile Include="Areas\Admin\Models\AdminHelper.cs" />
@@ -184,10 +185,24 @@
     <Compile Include="Areas\Admin_old\UsefulClasses\ModelsHelper.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Areas\Efargan.co.il\Controllers\PagesController.cs" />
+    <Compile Include="Areas\Efargan.co.il\Efargan.co.ilAreaRegistration.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\MapsController.cs" />
     <Compile Include="Controllers\SitePagesController.cs" />
     <Compile Include="Controllers\VideoController.cs" />
+    <Compile Include="Models\EfarganPages.cs">
+      <DependentUpon>CustomMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EfarganPagesParagraphs.cs">
+      <DependentUpon>CustomMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EfarganPagesSliders.cs">
+      <DependentUpon>CustomMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EfarganPagesTickers.cs">
+      <DependentUpon>CustomMembership.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GalleryImages.cs">
       <DependentUpon>CustomMembership.tt</DependentUpon>
     </Compile>
@@ -297,6 +312,8 @@
     <Compile Include="Security\MyRoleProvider.cs" />
     <Compile Include="UsefulClasses\HtmlHelperExtensions.cs" />
     <Content Include="Areas\Admin\Content\Admin.css" />
+    <Content Include="Areas\Admin\Content\EfarganPages.css" />
+    <Content Include="Areas\Admin\Content\GalleryPages.css" />
     <Content Include="Areas\Admin\Content\Images\adminbg.jpg" />
     <Content Include="Areas\Admin\Content\Images\drop.png" />
     <Content Include="Areas\Admin\Content\SitePages.css" />
@@ -324,6 +341,13 @@
     <Content Include="Areas\Admin_old\Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.cshtml" />
     <Content Include="Areas\Admin_old\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin_old\Views\Web.config" />
+    <Content Include="Areas\Efargan.co.il\Content\efargan.css" />
+    <Content Include="Areas\Efargan.co.il\Content\Images\header-bg.jpg" />
+    <Content Include="Areas\Efargan.co.il\Content\Images\headerBG.png" />
+    <Content Include="Areas\Efargan.co.il\Content\Images\sliderBG.png" />
+    <Content Include="Areas\Efargan.co.il\Content\JS\jcarousel\jcarousel.basic.css" />
+    <Content Include="Areas\Efargan.co.il\Content\JS\jcarousel\jquery.jcarousel.min.js" />
+    <Content Include="Areas\Efargan.co.il\Content\JS\jcarousel\jquery.js" />
     <Content Include="Content\CSS3.css" />
     <Content Include="Content\dropdown\dropdown.css" />
     <Content Include="Content\dropdown\dropdown.vertical.css" />
@@ -476,8 +500,16 @@
     <Content Include="Areas\Admin\Views\AdminGallery\GalleryPagesAddNew.cshtml" />
     <Content Include="Content\Gallery.less" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\GalleryImages.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\qwer11.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminGallery\_GalleryImagesPartial.cshtml" />
+    <Content Include="Areas\Efargan.co.il\Views\Web.config" />
+    <Content Include="Areas\Admin\Views\AdminEfargan\EfarganPages.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminEfargan\EfarganPagesEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\EfarganPagesTickers.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\EfarganPagesSliders.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\EfarganPagesParagraphs.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminEfargan\EfarganPagesAddNew.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\EfarganPages.cshtml" />
+    <Content Include="Areas\Efargan.co.il\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Efargan.co.il\Views\Pages\Index.cshtml" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -691,6 +723,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Efargan.co.il\Models\" />
     <Folder Include="Images\Gallery Pages\" />
     <Folder Include="Images\Site Pages\" />
     <Folder Include="Images\Uploaded\Temporary\" />

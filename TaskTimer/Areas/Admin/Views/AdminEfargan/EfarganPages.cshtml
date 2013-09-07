@@ -1,0 +1,34 @@
+﻿@model System.Data.Entity.DbSet<TaskTimer.Models.EfarganPages>
+@{
+    ViewBag.Title = "EfarganPages";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>EfarganPages</h2>
+@{
+    var tmpSlider = new TaskTimer.Models.EfarganPages();
+  }
+<table id="myTable2" class="tablesorter">
+    <thead>
+        <tr>
+            <th>
+                @Html.LabelFor(m => tmpSlider.Id)
+            </th>
+            <th>
+                @Html.LabelFor(m => tmpSlider.TitleTag)
+            </th>
+            <th>
+                @Html.LabelFor(m => tmpSlider.MetaTag)
+            </th>
+            <th>
+                @Html.LabelFor(m => tmpSlider.DescriptionTag)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @Html.EditorFor(m => Model)
+    </tbody>
+</table>

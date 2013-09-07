@@ -31,7 +31,10 @@ namespace TaskTimer.Controllers
         {
             return View();
         }
-        
+        public ActionResult Facebook()
+        {
+            return Redirect("https://apps.facebook.com/testappqwerqwer/?code=AQCpZEP7s8TZpfY17TIV4G2WDcq2gyVU1cCg17jdq-Yo6IjRTCau7VC_K4HOjFaw4gyiLvIuuCow2YjpKO4nkxQKDo27hAwrcEBqxhbbpw8Nwst4e6x5l3QBEt4kBh31jmp_kYPyQ00lgeJLo60hoUfKQ-s_RmiUEjYBHg0xuUFEHaqFPqDBsUpbAINYDfcRK9SVYDj7ZRTJBUx7QtrDPC5j2VtAksS8SZbGVRGRvO1T7buTxyLEq2iT4oHhpgsKpT9UBxLFjH9hH4TxJsvoERH_-Zad3fuTarxA0rAz_DTUS83uTUJARG5Ryl3FQd7w8jI#_=_");
+        }
         [Authorize(Roles = "Admin")]
         public ActionResult Admin()
         {

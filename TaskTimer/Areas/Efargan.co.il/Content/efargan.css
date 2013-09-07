@@ -1,0 +1,142 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    font-family: areal;
+    background: url(Images/header-bg.jpg) repeat-x top;
+    direction: rtl;
+}
+
+header {
+}
+
+    header .headerBG {
+        height: 270px;
+        width: 1024px;
+        background: url(Images/headerBG.png) no-repeat;
+        margin: 23px auto 0 auto;
+    }
+
+ul.menu {
+    list-style: none;
+    margin: 0 auto;
+    width: 1024px;
+    height: 30px;
+    padding: 0;
+}
+
+    ul.menu li {
+        display: inline-block;
+        padding: 0;
+        padding-right: 43px;
+    }
+
+        ul.menu li:first-child {
+            padding-right: 0px;
+        }
+
+        ul.menu li a {
+            font-size: 23px;
+            color: black;
+            text-decoration: underline;
+            font-weight: bold;
+            font-family: sans-serif;
+        }
+
+        ul.menu li.selectedMenu a {
+            text-decoration: none;
+        }
+
+
+#body {
+    width: 1024px;
+    margin: 0 auto;
+}
+
+footer {
+    width: 1024px;
+    margin: 0 auto;
+}
+
+    footer .line {
+        border: 1px solid black;
+        width: 1024px;
+        margin: 0 auto;
+    }
+
+    footer .floatRight {
+        display: inline;
+        float: right;
+    }
+
+    footer .footerMenuDiv {
+    }
+
+    footer .floatLeft {
+        display: inline;
+        float: left;
+    }
+
+ul.footerMenu {
+    list-style: none;
+    margin: 0 auto;
+    width: 585px;
+    height: 30px;
+    padding: 0;
+}
+
+    ul.footerMenu li {
+        display: inline-block;
+        padding: 0;
+        padding-right: 20px;
+    }
+
+        ul.footerMenu li:first-child {
+            padding-right: 0px;
+        }
+
+        ul.footerMenu li a {
+            font-size: 14px;
+            color: black;
+            text-decoration: underline;
+            font-weight: bold;
+            font-family: sans-serif;
+        }
+
+        ul.footerMenu li.selectedMenu a {
+            text-decoration: none;
+        }
+
+
+
+#body .middleSlider {
+    direction: ltr;
+    width: 710px;
+}
+
+    #body .middleSlider li {
+        position: relative;
+    }
+
+        #body .middleSlider li .sliderTextDiv {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            direction: rtl;
+            text-align: right;
+            margin-top: 28px;
+            margin-right: 33px;
+            color: white;
+        }
+
+            #body .middleSlider li .sliderTextDiv .sliderTitle {
+
+                font-size: 44px;
+line-height: 35px;
+            }
+
+            #body .middleSlider li .sliderTextDiv .sliderText {
+            }
+             #body .middleSlider li .sliderTextDiv .sliderLink a {
+                 color: white;
+            }
