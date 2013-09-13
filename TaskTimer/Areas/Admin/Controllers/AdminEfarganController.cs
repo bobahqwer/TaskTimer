@@ -66,9 +66,12 @@ namespace TaskTimer.Areas.Admin.Controllers
                         curPage2.TitleTag = curPage.TitleTag;
                         curPage2.MetaTag = curPage.MetaTag;
                         curPage2.DescriptionTag = curPage.DescriptionTag;
+                        curPage2.TicketTitle = curPage.TicketTitle;
+                        curPage2.TicketLinkText = curPage.TicketLinkText;
+                        curPage2.TicketLinkURL = curPage.TicketLinkURL;
                     }
                     //update / add to sliders
-                    if (curPage.EfarganPagesSliders.Count > 0) 
+                    if (curPage.EfarganPagesSliders.Count > 0)
                     {
 
                         foreach (var slider in curPage.EfarganPagesSliders)
@@ -91,6 +94,58 @@ namespace TaskTimer.Areas.Admin.Controllers
                                 !string.IsNullOrEmpty(slider.SliderImage)
                                 ))  //add new slider to list
                                 curPage2.EfarganPagesSliders.Add(slider);
+                        }
+                    }
+
+                    //update / add to paragraphs
+                    if (curPage.EfarganPagesParagraphs.Count > 0)
+                    {
+
+                        foreach (var paragraph in curPage.EfarganPagesParagraphs)
+                        {
+                            var sliderToUpdate = curPage2.EfarganPagesParagraphs.FirstOrDefault(sl => sl.Id == paragraph.Id);
+                            if (sliderToUpdate != null)
+                            {
+                                sliderToUpdate.ParagraphTitle = paragraph.ParagraphTitle;
+                                sliderToUpdate.ParagraphText = paragraph.ParagraphText;
+                                sliderToUpdate.ParagraphLinkText = paragraph.ParagraphLinkText;
+                                sliderToUpdate.ParagraphLinkURL = paragraph.ParagraphLinkURL;
+                                sliderToUpdate.ParagraphImage = paragraph.ParagraphImage;
+                            }
+                            else if (paragraph.Id == -1 &&
+                                (
+                                !string.IsNullOrEmpty(paragraph.ParagraphTitle) ||
+                                !string.IsNullOrEmpty(paragraph.ParagraphText) ||
+                                !string.IsNullOrEmpty(paragraph.ParagraphLinkText) ||
+                                !string.IsNullOrEmpty(paragraph.ParagraphLinkURL) ||
+                                !string.IsNullOrEmpty(paragraph.ParagraphImage)
+                                ))  //add new slider to list
+                                curPage2.EfarganPagesParagraphs.Add(paragraph);
+                        }
+                    }
+
+                    //update / add to tickets
+                    if (curPage.EfarganPagesTickers.Count > 0)
+                    {
+
+                        foreach (var ticker in curPage.EfarganPagesTickers)
+                        {
+                            var sliderToUpdate = curPage2.EfarganPagesTickers.FirstOrDefault(sl => sl.Id == ticker.Id);
+                            if (sliderToUpdate != null)
+                            {
+                                sliderToUpdate.TickerTitle = ticker.TickerTitle;
+                                sliderToUpdate.TickerText = ticker.TickerText;
+                                sliderToUpdate.TickerLinkText = ticker.TickerLinkText;
+                                sliderToUpdate.TickerLinkURL = ticker.TickerLinkURL;
+                            }
+                            else if (ticker.Id == -1 &&
+                                (
+                                !string.IsNullOrEmpty(ticker.TickerTitle) ||
+                                !string.IsNullOrEmpty(ticker.TickerText) ||
+                                !string.IsNullOrEmpty(ticker.TickerLinkText) ||
+                                !string.IsNullOrEmpty(ticker.TickerLinkURL)
+                                ))  //add new slider to list
+                                curPage2.EfarganPagesTickers.Add(ticker);
                         }
                     }
                 }

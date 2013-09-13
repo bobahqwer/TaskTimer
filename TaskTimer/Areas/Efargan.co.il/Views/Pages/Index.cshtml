@@ -7,6 +7,8 @@
 <link href="~/Areas/Efargan.co.il/Content/JS/jcarousel/jcarousel.basic.css" rel="stylesheet" />
 <script src="~/Areas/Efargan.co.il/Content/JS/jcarousel/jquery.js"></script>
 <script src="~/Areas/Efargan.co.il/Content/JS/jcarousel/jquery.jcarousel.min.js"></script>
+<script src="~/Areas/Efargan.co.il/Content/JS/jquery.autoScroller.js"></script>
+<script src="~/Areas/Efargan.co.il/Content/JS/jquery.timers.js"></script>
 <script type="text/javascript">
     (function ($) {
         $(function () {
@@ -49,6 +51,8 @@
                     $(this).removeClass('active');
                 })
                 .jcarouselPagination();
+            //add auto scroller to news
+            autoScroller('bottomTickets','1');
         });
     })(jQuery);
 </script>
@@ -60,14 +64,14 @@
             <ul style="left: -3000px; top: 0px;">
                 @foreach (var slider in Model.EfarganPagesSliders)
                 {
-                     <li>
-                    <img src="~/Areas/Efargan.co.il/Content/Images/sliderBG.png" width="696" height="302" alt="" />
-                         <div class="sliderTextDiv">
-                    <div class="sliderTitle">@slider.SliderTitle</div>
-                         <div class="sliderText">@slider.SliderText</div>
-                             <div class="sliderLink"><a href="@slider.SliderLinkURL">@slider.SliderLinkText</a></div>
-                             </div>
-                </li>
+                    <li>
+                        <img src="~/Areas/Efargan.co.il/Content/Images/sliderBG.png" width="696" height="302" alt="" />
+                        <div class="sliderTextDiv">
+                            <div class="sliderTitle">@slider.SliderTitle</div>
+                            <div class="sliderText">@slider.SliderText</div>
+                            <div class="sliderLink"><a href="@slider.SliderLinkURL">@slider.SliderLinkText</a></div>
+                        </div>
+                    </li>
                 }
             </ul>
         </div>
@@ -77,5 +81,50 @@
         <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true">‹</a>
         <a href="#" class="jcarousel-control-next inactive" data-jcarouselcontrol="true">›</a>
         <p class="jcarousel-pagination" data-jcarouselpagination="true"><a href="#1" class="">1</a><a href="#2" class="">2</a><a href="#3" class="">3</a><a href="#4" class="">4</a><a href="#5" class="">5</a><a href="#6" class="active">6</a></p>
+    </div>
+</div>
+
+<div class="bottomPharagraps">
+    @foreach (var item in Model.EfarganPagesParagraphs)
+    {
+        <div class="pharagraph">
+            <div class="pharagraphImage">
+                <img src="@item.ParagraphImage" alt="" />
+            </div>
+            <div class="pharagraphTitle">
+                @item.ParagraphTitle
+            </div>
+            <div class="pharagraphText">
+                @item.ParagraphText
+            </div>
+            <div class="pharagraphLink">
+                <a href="@item.ParagraphLinkURL">@item.ParagraphLinkText</a>
+            </div>
+        </div>
+    }
+</div>
+<div class="bottomTicket">
+    <div class="bottomTicketTitle">@Model.TicketTitle</div>
+    <div class="bottomTickets" id="bottomTickets">
+        @foreach (var item in Model.EfarganPagesTickers)
+        {
+            @*<div class="bottomTicketItem">*@
+                <h3 class="ticketTitle">@item.TickerTitle</h3>
+                <p>
+                @*<div class="ticketTitle">
+                    @item.TickerTitle
+                </div>*@
+                <div class="ticketText">
+                    @item.TickerText
+                </div>
+                <div class="ticketLink">
+                    <a href="@item.TickerLinkURL">@item.TickerLinkText</a>
+                </div>
+                    </p>
+            @*</div>*@
+        }
+    </div>
+    <div class="bottomTicketLink">
+        <a href="@Model.TicketLinkURL" >@Model.TicketLinkText</a>
     </div>
 </div>

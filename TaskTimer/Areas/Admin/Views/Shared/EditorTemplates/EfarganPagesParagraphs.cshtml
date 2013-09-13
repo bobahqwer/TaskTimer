@@ -2,27 +2,47 @@
 
 <tr>
     <td>
+        @Model.Id
         @Html.HiddenFor(m => Model.Id)
     </td>
-    <td></td>
-</tr>
-<tr>
-    <td>@Html.LabelFor(m => Model.ParagraphTitle)</td>
-    <td>@Html.TextBoxFor(m => Model.ParagraphTitle)</td>
-</tr>
-<tr>
-    <td>@Html.LabelFor(m => Model.ParagraphText)</td>
-    <td>@Html.TextBoxFor(m => Model.ParagraphText)</td>
-</tr>
-<tr>
-    <td>@Html.LabelFor(m => Model.ParagraphLinkText)</td>
-    <td>@Html.TextBoxFor(m => Model.ParagraphLinkText)</td>
-</tr>
-<tr>
-    <td>@Html.LabelFor(m => Model.ParagraphLinkURL)</td>
-    <td>@Html.TextBoxFor(m => Model.ParagraphLinkURL)</td>
-</tr>
-<tr>
-    <td>@Html.LabelFor(m => Model.ParagraphImage)</td>
-    <td><input type="file" name="SliderImage_@Model.Id" /></td>
+    <td>
+        <div style="display: none;">
+            @Html.ValueFor(m => Model.ParagraphTitle)
+        </div>
+        @Html.TextBoxFor(m => Model.ParagraphTitle)
+    </td>
+    <td>
+        <div style="display: none;">
+            @Html.ValueFor(m => Model.ParagraphText)
+        </div>
+        @Html.TextBoxFor(m => Model.ParagraphText)
+
+    </td>
+    <td>
+        <div style="display: none;">
+            @Html.ValueFor(m => Model.ParagraphLinkText)
+        </div>
+        @Html.TextBoxFor(m => Model.ParagraphLinkText)</td>
+    <td>
+        <div style="display: none;">
+            @Html.ValueFor(m => Model.ParagraphLinkURL)
+        </div>
+        @Html.TextBoxFor(m => Model.ParagraphLinkURL)</td>
+    <td>
+        <input type="file" name="ParagraphImage_@Model.Id" />
+    </td>
+    <td>
+        <div>
+            @if (Model.Id != -1)
+            {
+                <input type="submit" value="Update" />
+                <span>| </span>
+                <span class="actionSpan" onclick="DeleteSliderData(this, @Model.Id)">Delete</span>
+            }
+            else
+            {
+                <input type="submit" value="Add new paragraph" />
+            }
+        </div>
+    </td>
 </tr>

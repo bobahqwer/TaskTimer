@@ -1,9 +1,27 @@
-﻿body {
+﻿html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
     margin: 0;
     padding: 0;
-    font-family: areal;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+body {
+    margin: 0;
+    padding: 0;
     background: url(Images/header-bg.jpg) repeat-x top;
     direction: rtl;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 header {
@@ -22,6 +40,7 @@ ul.menu {
     width: 1024px;
     height: 30px;
     padding: 0;
+    font-size: 0.8em;
 }
 
     ul.menu li {
@@ -35,15 +54,21 @@ ul.menu {
         }
 
         ul.menu li a {
-            font-size: 23px;
+            padding-right: 10px;
             color: black;
             text-decoration: underline;
-            font-weight: bold;
             font-family: sans-serif;
+            font-size: 1.5em;
         }
 
         ul.menu li.selectedMenu a {
             text-decoration: none;
+        }
+
+
+        ul.menu li.menuTopItem div.menuDrop a:hover, ul.menu li.menuTopItem div.menuDrop a:active {
+            color: #847959;
+            text-decoration: underline;
         }
 
 
@@ -64,16 +89,20 @@ footer {
     }
 
     footer .floatRight {
+        margin: 3px 0 0 0;
         display: inline;
         float: right;
+        font-size: 14px;
     }
 
     footer .footerMenuDiv {
     }
 
     footer .floatLeft {
+        margin: 3px 0 0 0;
         display: inline;
         float: left;
+        font-size: 14px;
     }
 
 ul.footerMenu {
@@ -98,7 +127,6 @@ ul.footerMenu {
             font-size: 14px;
             color: black;
             text-decoration: underline;
-            font-weight: bold;
             font-family: sans-serif;
         }
 
@@ -109,6 +137,7 @@ ul.footerMenu {
 
 
 #body .middleSlider {
+    margin: 0 auto;
     direction: ltr;
     width: 710px;
 }
@@ -130,13 +159,72 @@ ul.footerMenu {
         }
 
             #body .middleSlider li .sliderTextDiv .sliderTitle {
-
                 font-size: 44px;
-line-height: 35px;
+                line-height: 35px;
             }
 
             #body .middleSlider li .sliderTextDiv .sliderText {
             }
-             #body .middleSlider li .sliderTextDiv .sliderLink a {
-                 color: white;
+
+            #body .middleSlider li .sliderTextDiv .sliderLink a {
+                color: white;
             }
+#body .bottomPharagraps {
+    max-width: 800px;
+    display: inline-block;
+}
+
+#body .pharagraph {
+    float: right;
+    width: 400px;
+    margin-bottom: 38px;
+}
+
+#body .bottomPharagraps .pharagraphImage {
+    width: 85px;
+    height: 85px;
+    background-image: url(Images/pharagraphImg.png);
+    float: right;
+    margin-left: 13px;
+}
+
+#body .bottomPharagraps .pharagraphTitle {
+    width: 300px;
+    font-size: 22px;
+    font-weight: bold;
+    float: right;
+}
+
+#body .bottomPharagraps .pharagraphText {
+    width: 300px;
+    overflow: hidden;
+    float: right;
+}
+
+#body .bottomTicket {
+    display: inline-block;
+    vertical-align: top;
+}
+#body .bottomTicket .bottomTicketTitle {
+    font-weight: bold;
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+#body .bottomTicket .bottomTicketLink {
+}
+#body .bottomTicket .bottomTickets {
+    font-size: 12px;
+}
+#body .bottomTicket .bottomTickets .bottomTicketItem{
+    margin-bottom: 10px;
+}
+
+    #body .bottomTicket .bottomTickets .ticketTitle {
+    }
+
+    #body .bottomTicket .bottomTickets .ticketText {
+        max-width: 200px;
+    }
+
+    #body .bottomTicket .bottomTickets .ticketLink {
+    }

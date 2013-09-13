@@ -3,6 +3,6 @@
     cursor: pointer;
 }
 
-.actionSpan:hover {
-    text-decoration: underline;
-}
+    .actionSpan:hover {
+        text-decoration: underline;
+    }

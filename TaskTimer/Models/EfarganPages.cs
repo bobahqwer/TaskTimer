@@ -25,6 +25,9 @@ namespace TaskTimer.Models
         public string MetaTag { get; set; }
         public string DescriptionTag { get; set; }
         public string TitleTag { get; set; }
+        public string TicketTitle { get; set; }
+        public string TicketLinkText { get; set; }
+        public string TicketLinkURL { get; set; }
     
         public virtual ICollection<EfarganPagesParagraphs> EfarganPagesParagraphs { get; set; }
         public virtual ICollection<EfarganPagesSliders> EfarganPagesSliders { get; set; }

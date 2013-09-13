@@ -2,23 +2,44 @@
 
 <tr>
     <td>
+        @Model.Id
         @Html.HiddenFor(m => Model.Id)
     </td>
-    <td></td>
-</tr>
-<tr>
-    <td>@Html.LabelFor(m => Model.TickerTitle)</td>
-    <td>@Html.TextBoxFor(m => Model.TickerTitle)</td>
-</tr>
-<tr>
-    <td>@Html.LabelFor(m => Model.TickerText)</td>
-    <td>@Html.TextBoxFor(m => Model.TickerText)</td>
-</tr>
-<tr>
-    <td>@Html.LabelFor(m => Model.TickerLinkText)</td>
-    <td>@Html.TextBoxFor(m => Model.TickerLinkText)</td>
-</tr>
-<tr>
-    <td>@Html.LabelFor(m => Model.TickerLinkURL)</td>
-    <td>@Html.TextBoxFor(m => Model.TickerLinkURL)</td>
+    <td>
+        <div style="display: none;">
+            @Html.ValueFor(m => Model.TickerTitle)
+        </div>
+        @Html.TextBoxFor(m => Model.TickerTitle)
+    </td>
+    <td>
+        <div style="display: none;">
+            @Html.ValueFor(m => Model.TickerText)
+        </div>
+        @Html.TextBoxFor(m => Model.TickerText)
+
+    </td>
+    <td>
+        <div style="display: none;">
+            @Html.ValueFor(m => Model.TickerLinkText)
+        </div>
+        @Html.TextBoxFor(m => Model.TickerLinkText )</td>
+    <td>
+        <div style="display: none;">
+            @Html.ValueFor(m => Model.TickerLinkURL)
+        </div>
+        @Html.TextBoxFor(m => Model.TickerLinkURL)</td>
+    <td>
+        <div>
+            @if (Model.Id != -1)
+            {
+                <input type="submit" value="Update" />
+                <span>| </span>
+                <span class="actionSpan" onclick="DeleteSliderData(this, @Model.Id)">Delete</span>
+            }
+            else
+            {
+                <input type="submit" value="Add new ticker" />
+            }
+        </div>
+    </td>
 </tr>

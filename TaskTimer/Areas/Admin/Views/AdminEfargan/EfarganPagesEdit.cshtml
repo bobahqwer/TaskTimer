@@ -3,6 +3,12 @@
     ViewBag.Title = "EfarganPagesEdit";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+
+<script>
+  $(function() {
+    $( "#tabs" ).tabs();
+  });
+  </script>
 @*<script type="text/javascript">
     function UpdateSliderData(element, id)
     {
@@ -55,12 +61,35 @@
 				<td>@Html.LabelFor(m => m.TitleTag)</td>
 				<td>@Html.TextBoxFor(m => m.TitleTag)</td>
 			</tr>
+            <tr>
+				<td>@Html.LabelFor(m => m.TicketTitle)</td>
+				<td>@Html.TextBoxFor(m => m.TicketTitle)</td>
+			</tr>
+            <tr>
+				<td>@Html.LabelFor(m => m.TicketLinkText)</td>
+				<td>@Html.TextBoxFor(m => m.TicketLinkText)</td>
+			</tr>
+            <tr>
+				<td>@Html.LabelFor(m => m.TicketLinkURL)</td>
+				<td>@Html.TextBoxFor(m => m.TicketLinkURL)</td>
+			</tr>
 		</table>
 		<input type="submit" value="Edit page" />
 	</fieldset>
 }
 
-@{
+
+
+
+
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-1">Edit sliders</a></li>
+    <li><a href="#tabs-2">Edit pharagraphs</a></li>
+    <li><a href="#tabs-3">Edit Tickers</a></li>
+  </ul>
+  <div id="tabs-1">
+    @{
     var tmpSlider = new TaskTimer.Models.EfarganPagesSliders();
     tmpSlider.Id = -1;
     Model.EfarganPagesSliders.Add(tmpSlider);
@@ -73,7 +102,7 @@
   }
   @using (Html.BeginForm("EfarganPagesEdit", "AdminEfargan", new { id = Model.Id }))
                 {
-<table id="myTable2" class="tablesorter">
+<table class="tablesorter">
     <thead>
         <tr>
             <th>
@@ -103,6 +132,103 @@
         @Html.EditorFor(m => Model.EfarganPagesSliders)
     </tbody>
 </table>
+  }
+  </div>
+  <div id="tabs-2">
+    @{
+    var tmpParagraph = new TaskTimer.Models.EfarganPagesParagraphs();
+    tmpParagraph.Id = -1;
+    Model.EfarganPagesParagraphs.Add(tmpParagraph);
+    if (Model.EfarganPagesParagraphs.Count == 1)
+    {
+        tmpParagraph = new TaskTimer.Models.EfarganPagesParagraphs();
+        tmpParagraph.Id = -1;
+        Model.EfarganPagesParagraphs.Add(tmpParagraph);
+    }
+  }
+  @using (Html.BeginForm("EfarganPagesEdit", "AdminEfargan", new { id = Model.Id }))
+                {
+<table class="tablesorter">
+    <thead>
+        <tr>
+            <th>
+                @Html.LabelFor(m => tmpParagraph.Id)
+            </th>
+            <th>
+                @Html.LabelFor(m => tmpParagraph.ParagraphTitle)
+            </th>
+            <th>
+                @Html.LabelFor(m => tmpParagraph.ParagraphText)
+            </th>
+            <th>
+                @Html.LabelFor(m => tmpParagraph.ParagraphLinkText)
+            </th>
+            <th>
+                @Html.LabelFor(m => tmpParagraph.ParagraphLinkURL)
+            </th>
+            <th>
+                @Html.LabelFor(m => tmpParagraph.ParagraphImage)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @Html.EditorFor(m => Model.EfarganPagesParagraphs)
+    </tbody>
+</table>
+
+
+
+      
+      
+  }
+  </div>
+  <div id="tabs-3">
+                           
+@{
+    var tmpTicker = new TaskTimer.Models.EfarganPagesTickers();
+    tmpTicker.Id = -1;
+    Model.EfarganPagesTickers.Add(tmpTicker);
+    if (Model.EfarganPagesTickers.Count == 1)
+    {
+        tmpTicker = new TaskTimer.Models.EfarganPagesTickers();
+        tmpTicker.Id = -1;
+        Model.EfarganPagesTickers.Add(tmpTicker);
+    }
+  }
+  @using (Html.BeginForm("EfarganPagesEdit", "AdminEfargan", new { id = Model.Id }))
+                {
+<table class="tablesorter">
+    <thead>
+        <tr>
+            <th>
+                @Html.LabelFor(m => tmpTicker.Id)
+            </th>
+            <th>
+                @Html.LabelFor(m => tmpTicker.TickerTitle)
+            </th>
+            <th>
+                @Html.LabelFor(m => tmpTicker.TickerText)
+            </th>
+            <th>
+                @Html.LabelFor(m => tmpTicker.TickerLinkText)
+            </th>
+            <th>
+                @Html.LabelFor(m => tmpTicker.TickerLinkURL)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @Html.EditorFor(m => Model.EfarganPagesTickers)
+    </tbody>
+</table>
 
 
   }
+  </div>
+</div>

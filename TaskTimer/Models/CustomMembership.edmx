@@ -69,6 +69,9 @@
           <Property Name="MetaTag" Type="nvarchar(max)" />
           <Property Name="DescriptionTag" Type="nvarchar(max)" />
           <Property Name="TitleTag" Type="nvarchar(max)" />
+          <Property Name="TicketTitle" Type="nvarchar(max)" />
+          <Property Name="TicketLinkText" Type="nvarchar(max)" />
+          <Property Name="TicketLinkURL" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="EfarganPagesParagraphs">
           <Key>
@@ -609,6 +612,9 @@
           <NavigationProperty Name="EfarganPagesParagraphs" Relationship="CustomMembership.Models.FK_EfarganPagesParagraphs_EfarganPages" FromRole="EfarganPages" ToRole="EfarganPagesParagraphs" />
           <NavigationProperty Name="EfarganPagesSliders" Relationship="CustomMembership.Models.FK_EfarganPagesSliders_EfarganPages" FromRole="EfarganPages" ToRole="EfarganPagesSliders" />
           <NavigationProperty Name="EfarganPagesTickers" Relationship="CustomMembership.Models.FK_EfarganPagesTickers_EfarganPages" FromRole="EfarganPages" ToRole="EfarganPagesTickers" />
+          <Property Type="String" Name="TicketTitle" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TicketLinkText" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TicketLinkURL" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="EfarganPagesParagraphs">
           <Key>
@@ -878,6 +884,9 @@
           <EntitySetMapping Name="EfarganPages">
             <EntityTypeMapping TypeName="CustomMembership.Models.EfarganPages">
               <MappingFragment StoreEntitySet="EfarganPages">
+                <ScalarProperty Name="TicketLinkURL" ColumnName="TicketLinkURL" />
+                <ScalarProperty Name="TicketLinkText" ColumnName="TicketLinkText" />
+                <ScalarProperty Name="TicketTitle" ColumnName="TicketTitle" />
                 <ScalarProperty Name="TitleTag" ColumnName="TitleTag" />
                 <ScalarProperty Name="DescriptionTag" ColumnName="DescriptionTag" />
                 <ScalarProperty Name="MetaTag" ColumnName="MetaTag" />

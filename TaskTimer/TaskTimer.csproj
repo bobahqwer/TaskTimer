@@ -344,10 +344,13 @@
     <Content Include="Areas\Efargan.co.il\Content\efargan.css" />
     <Content Include="Areas\Efargan.co.il\Content\Images\header-bg.jpg" />
     <Content Include="Areas\Efargan.co.il\Content\Images\headerBG.png" />
+    <Content Include="Areas\Efargan.co.il\Content\Images\pharagraphImg.png" />
     <Content Include="Areas\Efargan.co.il\Content\Images\sliderBG.png" />
     <Content Include="Areas\Efargan.co.il\Content\JS\jcarousel\jcarousel.basic.css" />
     <Content Include="Areas\Efargan.co.il\Content\JS\jcarousel\jquery.jcarousel.min.js" />
     <Content Include="Areas\Efargan.co.il\Content\JS\jcarousel\jquery.js" />
+    <Content Include="Areas\Efargan.co.il\Content\JS\jquery.autoScroller.js" />
+    <Content Include="Areas\Efargan.co.il\Content\JS\jquery.timers.js" />
     <Content Include="Content\CSS3.css" />
     <Content Include="Content\dropdown\dropdown.css" />
     <Content Include="Content\dropdown\dropdown.vertical.css" />
@@ -569,6 +572,7 @@
     <Content Include="Scripts\jquery-1.6.2.min.js">
       <DependentUpon>jquery-1.6.2.js</DependentUpon>
     </Content>
+    <Content Include="Scripts\jquery.autoScroller.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js.map">
       <DependentUpon>jquery.unobtrusive-ajax.js</DependentUpon>
     </Content>

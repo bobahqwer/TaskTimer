@@ -139,7 +139,7 @@
         </td>
         <td>
             <div>
-                @Html.ActionLink("Site", "Index", "Gallery", new { area = "", id = item.Id }, null) |
+                @Html.ActionLink("Site", "Index", "Gallery", new { area = "", id = item.Id }, new { target = "_blank" }) |
                 @Html.ActionLink("Edit", "GalleryPagesAddNew", new { id = item.Id }) |
                 @*@Html.ActionLink("Delete", "GalleryPagesDelete", new { id = item.Id })*@
                 <span class="GalleryPageDelete" onclick="DeleteGalleryPage(this, @item.Id)">Delete</span>
