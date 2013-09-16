@@ -27,11 +27,72 @@ body {
 header {
 }
 
+    header .topLine {
+        margin: 0 auto;
+        width: 1024px;
+        height: 24px;
+        padding: 0;
+        font-size: 0.8em;
+    }
+
+        header .topLine .languageSelect {
+            float: left;
+            margin-top: 5px;
+        }
+
+            header .topLine .languageSelect a {
+                color: black;
+                text-decoration: none;
+            }
+
+                header .topLine .languageSelect a:hover {
+                    text-decoration: underline;
+                }
+            header .topLine .languageSelect .selected {
+                text-decoration: underline;
+            }
+
+        header .topLine .searchField {
+            float: left;
+            height: 22px;
+            width: 228px;
+            margin-top: 1px;
+            margin-left: 90px;
+            background: url(Images/searchField.png);
+        }
+
+            header .topLine .searchField .searchFieldInput {
+                height: 14px;
+                outline: 0;
+                border: 0;
+                width: 190px;
+                padding-right: 10px;
+                padding-top: 3px;
+                background: transparent;
+                color: #727171;
+            }
+
+            header .topLine .searchField .searchFieldButton {
+                width: 18px;
+                height: 19px;
+                background: url(Images/searchFieldButton.png);
+                float: left;
+                margin-left: 3px;
+                margin-top: 1px;
+                cursor: pointer;
+            }
+
+
+        header .topLine .fbButton {
+            float: right;
+            margin-top: 2px;
+        }
+
     header .headerBG {
         height: 270px;
         width: 1024px;
         background: url(Images/headerBG.png) no-repeat;
-        margin: 23px auto 0 auto;
+        margin: -1px auto 0 auto;
     }
 
 ul.menu {
@@ -169,6 +230,7 @@ ul.footerMenu {
             #body .middleSlider li .sliderTextDiv .sliderLink a {
                 color: white;
             }
+
 #body .bottomPharagraps {
     max-width: 800px;
     display: inline-block;
@@ -201,30 +263,76 @@ ul.footerMenu {
     float: right;
 }
 
-#body .bottomTicket {
+#body .bottomTicketBorder {
     display: inline-block;
     vertical-align: top;
-}
-#body .bottomTicket .bottomTicketTitle {
-    font-weight: bold;
-    font-size: 22px;
-    margin-bottom: 5px;
-}
-#body .bottomTicket .bottomTicketLink {
-}
-#body .bottomTicket .bottomTickets {
-    font-size: 12px;
-}
-#body .bottomTicket .bottomTickets .bottomTicketItem{
-    margin-bottom: 10px;
+    height: 200px;
+    width: 180px;
+    background: #eaeaea;
+    padding: 9px;
 }
 
-    #body .bottomTicket .bottomTickets .ticketTitle {
+#body .bottomTicket {
+    position: relative;
+    border: 1px solid #CCCCCC;
+    padding: 5px;
+    padding-top: 0;
+    background: white;
+    height: 188px;
+}
+
+    #body .bottomTicket .bottomTicketTitle {
+        font-weight: bold;
+        font-size: 17px;
+        text-align: center;
+        /* IE10 Consumer Preview */
+        background-image:  url(Images/ticketArrow.png), -ms-linear-gradient(top, #FFFFFF 0%, #F3F3F3 100%);
+        /* Mozilla Firefox */
+        background-image: url(Images/ticketArrow.png), -moz-linear-gradient(top, #FFFFFF 0%, #F3F3F3 100%);
+        /* Opera */
+        background-image: url(Images/ticketArrow.png), -o-linear-gradient(top, #FFFFFF 0%, #F3F3F3 100%);
+        /* Webkit (Safari/Chrome 10) */
+        background-image: url(Images/ticketArrow.png), -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFFFFF), color-stop(1, #F3F3F3));
+        /* Webkit (Chrome 11+) */
+        background-image: url(Images/ticketArrow.png), -webkit-linear-gradient(top, #FFFFFF 0%, #F3F3F3 100%);
+        /* W3C Markup, IE10 Release Preview */
+        background-image: url(Images/ticketArrow.png), linear-gradient(to bottom, #FFFFFF 0%, #F3F3F3 100%);
+        background-repeat: no-repeat;
+        background-position-x: right;
+        background-position-y: 6px;
+    }
+    #body .bottomTicket .bottomTicketTitle .bottomTicketArrow {
+        width: 11px;
+        height: 9px;
+        background: url(Images/ticketArrow.png);
+    }
+    #body .bottomTicket .bottomTicketLink {
+        position: absolute;
+        bottom: 0;
+        font-size: 14px;
     }
 
-    #body .bottomTicket .bottomTickets .ticketText {
-        max-width: 200px;
+        #body .bottomTicket .bottomTicketLink a {
+            text-decoration: none;
+            color: #4D4D4D;
+        }
+
+    #body .bottomTicket .bottomTicketContent {
+        font-size: 12px;
+        height: 143px;
     }
 
-    #body .bottomTicket .bottomTickets .ticketLink {
-    }
+        #body .bottomTicket .bottomTicketContent .bottomTicketItem {
+            margin-bottom: 10px;
+        }
+
+        #body .bottomTicket .bottomTicketContent .ticketTitle {
+        }
+
+        #body .bottomTicket .bottomTicketContent .ticketText {
+            max-width: 200px;
+            color: #959595;
+        }
+
+        #body .bottomTicket .bottomTicketContent .ticketLink {
+        }

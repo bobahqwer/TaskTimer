@@ -16,9 +16,47 @@
         "~/Scripts/jquery.validate.js",
         "~/Scripts/jquery.validate.unobtrusive.js"
         )
+    <script type="text/javascript">
+        $(function () {
+            //search field focus
+            $('.searchFieldInput').focus(function () {
+                var el = $(this);
+                if (el.val() == "חיפוש")
+                    el.val("");
+            }).focusout(function () {
+                var el = $(this);
+                if (el.val() == null || el.val() == "")
+                    el.val("חיפוש");
+            });
+        });
+    </script>
 </head>
 <body>
-    <header>
+    @*FaceBook button*@
+    <div id="fb-root"></div>
+    <script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1&appId=580743358639301";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+@*Page HTML*@
+<header>
+        <div class="topLine">
+            <div class="languageSelect">
+                <span class="selected"><a href="#">עברית</a></span>
+                |
+                <span><a href="#">english</a></span>
+            </div>
+            <div class="searchField">
+                <div class="searchFieldButton"></div>
+                <input type="text" class="searchFieldInput" value="חיפוש"/>
+            </div>
+            <div class="fbButton">
+            <div class="fb-like" data-href="http://dirot.somee.com/" data-width="450" data-layout="button_count" data-show-faces="true" data-send="false"></div>
+                </div>
+        </div>
         <div class="headerBG"></div>
         <ul class="menu">
             <li class="menuTopItem">
@@ -52,41 +90,41 @@
     </header>
     <div id="body">
         @*@Html.MvcSiteMap("AdminMvcSiteMapProvider").Menu(false, true, true)*@
-        @RenderBody()
-    </div>
+@RenderBody()
+</div>
     <footer>
         <div class="line"></div>
         <div>
             <div class="floatRight">הרב חיים עמרם איפרגן</div>
-            <div class="floatLeft">כל הזכויות שמורות 2013 ®</div>
+            <div class="floatLeft">כל הזכויות שמורות 2013 ©</div>
             <div class="footerMenuDiv">
                 <ul class="footerMenu">
                     <li class="menuTopItem">
-                        <div class="menuDrop">@Html.ActionLink("דפ הבית", "SitePages")</div>
+                        <div class="menuDrop">@Html.ActionLink("דפ הבית", "Index", "Pages")</div>
                     </li>
                     <li class="menuTopItem">
-                        <div class="menuDrop">@Html.ActionLink("אודות", "SitePages")</div>
+                        <div class="menuDrop">@Html.ActionLink("אודות", "Index", "Pages")</div>
                     </li>
                     <li class="menuTopItem">
-                        <div class="menuDrop">@Html.ActionLink("אירועים", "SitePages")</div>
+                        <div class="menuDrop">@Html.ActionLink("אירועים", "Index", "Pages")</div>
                     </li>
                     <li class="menuTopItem">
-                        <div class="menuDrop">@Html.ActionLink("אירועים", "SitePages")</div>
+                        <div class="menuDrop">@Html.ActionLink("אירועים", "Index", "Pages")</div>
                     </li>
                     <li class="menuTopItem">
-                        <div class="menuDrop">@Html.ActionLink("אירועים", "SitePages")</div>
+                        <div class="menuDrop">@Html.ActionLink("אירועים", "Index", "Pages")</div>
                     </li>
                     <li class="menuTopItem">
-                        <div class="menuDrop">@Html.ActionLink("אירועים", "SitePages")</div>
+                        <div class="menuDrop">@Html.ActionLink("אירועים", "Index", "Pages")</div>
                     </li>
                     <li class="menuTopItem">
-                        <div class="menuDrop">@Html.ActionLink("אירועים", "SitePages")</div>
+                        <div class="menuDrop">@Html.ActionLink("אירועים", "Index", "Pages")</div>
                     </li>
                     <li class="menuTopItem">
-                        <div class="menuDrop">@Html.ActionLink("אירועים", "SitePages")</div>
+                        <div class="menuDrop">@Html.ActionLink("אירועים", "Index", "Pages")</div>
                     </li>
                     <li class="menuTopItem">
-                        <div class="menuDrop">@Html.ActionLink("אירועים", "SitePages")</div>
+                        <div class="menuDrop">@Html.ActionLink("אירועים", "Index", "Pages")</div>
                     </li>
                 </ul>
             </div>
