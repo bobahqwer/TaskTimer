@@ -207,5 +207,14 @@ namespace TaskTimer.Areas.Admin.Controllers
         {
             return "qwer1";
         }
+
+
+        #region Blog
+
+        public ActionResult EfarganPagesBlog()
+        {
+            return View();
+        }
+        #endregion
     }
 }

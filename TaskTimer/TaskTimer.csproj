@@ -513,6 +513,7 @@
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\EfarganPages.cshtml" />
     <Content Include="Areas\Efargan.co.il\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Efargan.co.il\Views\Pages\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminEfargan\EfarganPagesBlog.cshtml" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
