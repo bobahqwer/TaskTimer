@@ -187,6 +187,8 @@
     </Compile>
     <Compile Include="Areas\Efargan.co.il\Controllers\PagesController.cs" />
     <Compile Include="Areas\Efargan.co.il\Efargan.co.ilAreaRegistration.cs" />
+    <Compile Include="Areas\mmgtaabora.com\Controllers\IndexController.cs" />
+    <Compile Include="Areas\mmgtaabora.com\mmgtaaboraAreaRegistration.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\MapsController.cs" />
     <Compile Include="Controllers\SitePagesController.cs" />
@@ -541,6 +543,9 @@
     <Content Include="Areas\Efargan.co.il\Content\JS\jcarousel\jquery.min.js.map">
       <DependentUpon>jquery.js</DependentUpon>
     </Content>
+    <Content Include="Areas\mmgtaabora.com\Views\Web.config" />
+    <Content Include="Areas\mmgtaabora.com\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\mmgtaabora.com\Views\Index\Index.cshtml" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -756,6 +761,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Efargan.co.il\Models\" />
+    <Folder Include="Areas\mmgtaabora.com\Models\" />
     <Folder Include="Images\Gallery Pages\" />
     <Folder Include="Images\Site Pages\" />
     <Folder Include="Images\Uploaded\Temporary\" />

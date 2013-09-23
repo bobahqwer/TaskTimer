@@ -277,6 +277,7 @@ ul.footerMenu {
     border: 1px solid #CCCCCC;
     padding: 5px;
     padding-top: 0;
+    padding-bottom: 10px;
     background: white;
     height: 188px;
 }
@@ -335,4 +336,11 @@ ul.footerMenu {
         }
 
         #body .bottomTicket .bottomTicketContent .ticketLink {
+        }
+
+
+
+        /*SEARCH PAGE*/
+        .searchResponseDistinguished{
+            color: blue;
         }
