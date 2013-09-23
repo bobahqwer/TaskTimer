@@ -9,6 +9,13 @@
 <script src="~/Areas/Efargan.co.il/Content/JS/jcarousel/jquery.jcarousel.min.js"></script>
 <script src="~/Areas/Efargan.co.il/Content/JS/jquery.autoScroller.js"></script>
 <script src="~/Areas/Efargan.co.il/Content/JS/jquery.timers.js"></script>
+
+@*<link href="~/Areas/Efargan.co.il/Content/JS/jcarousel/jcarousel.basic.min.css" rel="stylesheet" />
+<script src="~/Areas/Efargan.co.il/Content/JS/jcarousel/jquery.min.js"></script>
+<script src="~/Areas/Efargan.co.il/Content/JS/jcarousel/jquery.jcarousel.min.js"></script>
+<script src="~/Areas/Efargan.co.il/Content/JS/jquery.autoScroller.min.js"></script>
+<script src="~/Areas/Efargan.co.il/Content/JS/jquery.timers.min.js"></script>*@
+
 <script type="text/javascript">
     (function ($) {
         $(function () {
@@ -18,9 +25,7 @@
                 offset: 1,
                 scroll: 1,
                 wrap: "both"
-
             });
-
             $('.jcarousel-control-prev')
                 .on('active.jcarouselcontrol', function () {
                     $(this).removeClass('inactive');
@@ -31,7 +36,6 @@
                 .jcarouselControl({
                     target: '-=1'
                 });
-
             $('.jcarousel-control-next')
                 .on('active.jcarouselcontrol', function () {
                     $(this).removeClass('inactive');
@@ -42,7 +46,6 @@
                 .jcarouselControl({
                     target: '+=1'
                 });
-
             $('.jcarousel-pagination')
                 .on('active.jcarouselpagination', 'a', function () {
                     $(this).addClass('active');
@@ -52,7 +55,7 @@
                 })
                 .jcarouselPagination();
             //add auto scroller to news
-            autoScroller('bottomTickets','1');
+            autoScroller('bottomTicketItems', '1');
         });
     })(jQuery);
 </script>
@@ -65,7 +68,7 @@
                 @foreach (var slider in Model.EfarganPagesSliders)
                 {
                     <li>
-                        <img src="~/Areas/Efargan.co.il/Content/Images/sliderBG.png" width="696" height="302" alt="" />
+                        <img src="~/Areas/Efargan.co.il/Content/Images/sliderBG2.png" width="698" height="301" alt="" />
                         <div class="sliderTextDiv">
                             <div class="sliderTitle">@slider.SliderTitle</div>
                             <div class="sliderText">@slider.SliderText</div>
@@ -103,28 +106,25 @@
         </div>
     }
 </div>
+<div class="bottomTicketBorder">
 <div class="bottomTicket">
     <div class="bottomTicketTitle">@Model.TicketTitle</div>
-    <div class="bottomTickets" id="bottomTickets">
-        @foreach (var item in Model.EfarganPagesTickers)
-        {
-            @*<div class="bottomTicketItem">*@
+    <div class="bottomTicketContent" >
+        <div class="bottomTicketItems" id="bottomTicketItems">
+            @foreach (var item in Model.EfarganPagesTickers)
+            {
                 <h3 class="ticketTitle">@item.TickerTitle</h3>
-                <p>
-                @*<div class="ticketTitle">
-                    @item.TickerTitle
-                </div>*@
-                <div class="ticketText">
+                <p class="ticketText">
                     @item.TickerText
-                </div>
                 <div class="ticketLink">
                     <a href="@item.TickerLinkURL">@item.TickerLinkText</a>
                 </div>
-                    </p>
-            @*</div>*@
-        }
+                </p>
+            }
+        </div>
     </div>
     <div class="bottomTicketLink">
         <a href="@Model.TicketLinkURL" >@Model.TicketLinkText</a>
     </div>
+</div>
 </div>

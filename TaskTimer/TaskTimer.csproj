@@ -187,6 +187,8 @@
     </Compile>
     <Compile Include="Areas\Efargan.co.il\Controllers\PagesController.cs" />
     <Compile Include="Areas\Efargan.co.il\Efargan.co.ilAreaRegistration.cs" />
+    <Compile Include="Areas\mmgtaabora.com\Controllers\IndexController.cs" />
+    <Compile Include="Areas\mmgtaabora.com\mmgtaaboraAreaRegistration.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\MapsController.cs" />
     <Compile Include="Controllers\SitePagesController.cs" />
@@ -342,15 +344,34 @@
     <Content Include="Areas\Admin_old\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin_old\Views\Web.config" />
     <Content Include="Areas\Efargan.co.il\Content\efargan.css" />
+    <Content Include="Areas\Efargan.co.il\Content\efargan.min.css">
+      <DependentUpon>efargan.css</DependentUpon>
+    </Content>
     <Content Include="Areas\Efargan.co.il\Content\Images\header-bg.jpg" />
     <Content Include="Areas\Efargan.co.il\Content\Images\headerBG.png" />
     <Content Include="Areas\Efargan.co.il\Content\Images\pharagraphImg.png" />
+    <Content Include="Areas\Efargan.co.il\Content\Images\searchField.png" />
+    <Content Include="Areas\Efargan.co.il\Content\Images\searchFieldButton.png" />
     <Content Include="Areas\Efargan.co.il\Content\Images\sliderBG.png" />
+    <Content Include="Areas\Efargan.co.il\Content\Images\sliderBG2.png" />
+    <Content Include="Areas\Efargan.co.il\Content\Images\ticketArrow.png" />
     <Content Include="Areas\Efargan.co.il\Content\JS\jcarousel\jcarousel.basic.css" />
+    <Content Include="Areas\Efargan.co.il\Content\JS\jcarousel\jcarousel.basic.min.css">
+      <DependentUpon>jcarousel.basic.css</DependentUpon>
+    </Content>
     <Content Include="Areas\Efargan.co.il\Content\JS\jcarousel\jquery.jcarousel.min.js" />
     <Content Include="Areas\Efargan.co.il\Content\JS\jcarousel\jquery.js" />
+    <Content Include="Areas\Efargan.co.il\Content\JS\jcarousel\jquery.min.js">
+      <DependentUpon>jquery.js</DependentUpon>
+    </Content>
     <Content Include="Areas\Efargan.co.il\Content\JS\jquery.autoScroller.js" />
+    <Content Include="Areas\Efargan.co.il\Content\JS\jquery.autoScroller.min.js">
+      <DependentUpon>jquery.autoScroller.js</DependentUpon>
+    </Content>
     <Content Include="Areas\Efargan.co.il\Content\JS\jquery.timers.js" />
+    <Content Include="Areas\Efargan.co.il\Content\JS\jquery.timers.min.js">
+      <DependentUpon>jquery.timers.js</DependentUpon>
+    </Content>
     <Content Include="Content\CSS3.css" />
     <Content Include="Content\dropdown\dropdown.css" />
     <Content Include="Content\dropdown\dropdown.vertical.css" />
@@ -514,6 +535,18 @@
     <Content Include="Areas\Efargan.co.il\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Efargan.co.il\Views\Pages\Index.cshtml" />
     <Content Include="Areas\Admin\Views\AdminEfargan\EfarganPagesBlog.cshtml" />
+    <Content Include="Areas\Efargan.co.il\Content\JS\jquery.timers.min.js.map">
+      <DependentUpon>jquery.timers.js</DependentUpon>
+    </Content>
+    <Content Include="Areas\Efargan.co.il\Content\JS\jquery.autoScroller.min.js.map">
+      <DependentUpon>jquery.autoScroller.js</DependentUpon>
+    </Content>
+    <Content Include="Areas\Efargan.co.il\Content\JS\jcarousel\jquery.min.js.map">
+      <DependentUpon>jquery.js</DependentUpon>
+    </Content>
+    <Content Include="Areas\mmgtaabora.com\Views\Web.config" />
+    <Content Include="Areas\mmgtaabora.com\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\mmgtaabora.com\Views\Index\Index.cshtml" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -729,6 +762,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Efargan.co.il\Models\" />
+    <Folder Include="Areas\mmgtaabora.com\Models\" />
     <Folder Include="Images\Gallery Pages\" />
     <Folder Include="Images\Site Pages\" />
     <Folder Include="Images\Uploaded\Temporary\" />
