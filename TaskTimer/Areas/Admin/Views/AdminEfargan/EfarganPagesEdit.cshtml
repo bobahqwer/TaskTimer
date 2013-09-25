@@ -48,7 +48,37 @@
 	@Html.ValidationSummary()
 	<fieldset class="addNewPage">
 		<legend>Edit Page Form</legend>
-		<table>
+		<table class="LanguageTable">
+			<tr>
+				<td>@Html.LabelFor(m => m.MetaTag)</td>
+				<td>@Html.TextBoxFor(m => m.MetaTag)</td>
+			</tr>
+			<tr>
+				<td>@Html.LabelFor(m => m.DescriptionTag)</td>
+				<td>@Html.TextBoxFor(m => m.DescriptionTag)</td>
+			</tr>
+			<tr>
+				<td>@Html.LabelFor(m => m.TitleTag)</td>
+				<td>@Html.TextBoxFor(m => m.TitleTag)</td>
+			</tr>
+            <tr>
+				<td>@Html.LabelFor(m => m.TicketTitle)</td>
+				<td>@Html.TextBoxFor(m => m.TicketTitle)</td>
+			</tr>
+            <tr>
+				<td>@Html.LabelFor(m => m.TicketLinkText)</td>
+				<td>@Html.TextBoxFor(m => m.TicketLinkText)</td>
+			</tr>
+            <tr>
+				<td>@Html.LabelFor(m => m.TicketLinkURL)</td>
+				<td>@Html.TextBoxFor(m => m.TicketLinkURL)</td>
+			</tr>
+		</table>
+
+        <div class="LanguageSelection">
+            @Html.DropDownList()
+        </div>
+        <table class="LanguageTable">
 			<tr>
 				<td>@Html.LabelFor(m => m.MetaTag)</td>
 				<td>@Html.TextBoxFor(m => m.MetaTag)</td>

@@ -12,16 +12,8 @@ namespace TaskTimer.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class EfarganPages
+    public partial class EfarganPagesLanguage
     {
-        public EfarganPages()
-        {
-            this.EfarganPagesParagraphs = new HashSet<EfarganPagesParagraphs>();
-            this.EfarganPagesSliders = new HashSet<EfarganPagesSliders>();
-            this.EfarganPagesTickers = new HashSet<EfarganPagesTickers>();
-            this.EfarganPagesLanguage = new HashSet<EfarganPagesLanguage>();
-        }
-    
         public int Id { get; set; }
         public string MetaTag { get; set; }
         public string DescriptionTag { get; set; }
@@ -29,10 +21,10 @@ namespace TaskTimer.Models
         public string TicketTitle { get; set; }
         public string TicketLinkText { get; set; }
         public string TicketLinkURL { get; set; }
+        public Nullable<int> EfarganLanguageRef { get; set; }
+        public Nullable<int> EfarganPagesIdRef { get; set; }
     
-        public virtual ICollection<EfarganPagesParagraphs> EfarganPagesParagraphs { get; set; }
-        public virtual ICollection<EfarganPagesSliders> EfarganPagesSliders { get; set; }
-        public virtual ICollection<EfarganPagesTickers> EfarganPagesTickers { get; set; }
-        public virtual ICollection<EfarganPagesLanguage> EfarganPagesLanguage { get; set; }
+        public virtual EfarganLanguage EfarganLanguage { get; set; }
+        public virtual EfarganPages EfarganPages { get; set; }
     }
 }

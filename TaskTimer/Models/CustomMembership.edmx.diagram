@@ -27,6 +27,12 @@
         <AssociationConnector Association="CustomMembership.Models.FK_EfarganPagesParagraphs_EfarganPages" />
         <AssociationConnector Association="CustomMembership.Models.FK_EfarganPagesSliders_EfarganPages" />
         <AssociationConnector Association="CustomMembership.Models.FK_EfarganPagesTickers_EfarganPages" />
+        <EntityTypeShape EntityType="CustomMembership.Models.EfarganLanguage" Width="1.5" PointX="6.1072487952687071" PointY="21.823139737277824" />
+        <EntityTypeShape EntityType="CustomMembership.Models.EfarganPagesBlog" Width="1.5" PointX="2.2318241457603052" PointY="12.279666757341319" />
+        <EntityTypeShape EntityType="CustomMembership.Models.EfarganPagesBlogReplies" Width="1.5" PointX="11.843677382843419" PointY="0.33201628938876848" />
+        <EntityTypeShape EntityType="CustomMembership.Models.EfarganPagesLanguage" Width="1.5" PointX="0.84017801323913877" PointY="19.506221690916558" />
+        <AssociationConnector Association="CustomMembership.Models.FK_EfarganPagesLanguage_EfarganLanguage" />
+        <AssociationConnector Association="CustomMembership.Models.FK_EfarganPagesLanguage_EfarganPages" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

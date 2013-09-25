@@ -172,6 +172,7 @@
     <Compile Include="Areas\Admin\Controllers\AdminEfarganController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminGalleryController.cs" />
+    <Compile Include="Areas\Admin\Models\AdminEfarganHelper.cs" />
     <Compile Include="Areas\Admin\Models\AdminHelper.cs" />
     <Compile Include="Areas\Admin_old\AdminAreaRegistration.cs">
       <SubType>Code</SubType>
@@ -193,7 +194,19 @@
     <Compile Include="Controllers\MapsController.cs" />
     <Compile Include="Controllers\SitePagesController.cs" />
     <Compile Include="Controllers\VideoController.cs" />
+    <Compile Include="Models\EfarganLanguage.cs">
+      <DependentUpon>CustomMembership.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\EfarganPages.cs">
+      <DependentUpon>CustomMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EfarganPagesBlog.cs">
+      <DependentUpon>CustomMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EfarganPagesBlogReplies.cs">
+      <DependentUpon>CustomMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EfarganPagesLanguage.cs">
       <DependentUpon>CustomMembership.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EfarganPagesParagraphs.cs">
