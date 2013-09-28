@@ -9,6 +9,12 @@
         "~/Content/themes/base/jquery.ui.all.css",
         "~/Areas/Efargan.co.il/Content/efargan.css"
         )
+    @if (ViewBag.PageLng != "HE")
+    { 
+      @Styles.Render(
+        "~/Areas/Efargan.co.il/Content/efarganLTR.css"
+        )
+    }
     @Scripts.Render("~/bundles/modernizr",
         "~/Scripts/jquery-1.6.2.js",
         "~/Scripts/jquery-ui-1.8.11.js",
@@ -57,9 +63,9 @@
 <header>
         <div class="topLine">
             <div class="languageSelect">
-                <span class="selected"><a href="#">עברית</a></span>
+                <span class="selected">@Html.ActionLink("עברית", "Index", new { lng = "HE" })</span>
                 |
-                <span><a href="#">english</a></span>
+                <span>@Html.ActionLink("english", "Index", new { lng = "ENG" })</span>
             </div>
             <div class="searchField">
                 <div class="searchFieldButton" onclick="SiteSearch();"></div>
@@ -70,35 +76,7 @@
                 </div>
         </div>
         <div class="headerBG"></div>
-        <ul class="menu">
-            <li class="menuTopItem">
-                <div class="menuDrop">@Html.ActionLink("דפ הבית", "Index", "Pages")</div>
-            </li>
-            <li class="menuTopItem">
-                <div class="menuDrop">@Html.ActionLink("אודות", "Index", "Pages")</div>
-            </li>
-            <li class="menuTopItem">
-                <div class="menuDrop">@Html.ActionLink("אירועים", "Index", "Pages")</div>
-            </li>
-            <li class="menuTopItem">
-                <div class="menuDrop">@Html.ActionLink("אירועים", "Index", "Pages")</div>
-            </li>
-            <li class="menuTopItem">
-                <div class="menuDrop">@Html.ActionLink("אירועים", "Index", "Pages")</div>
-            </li>
-            <li class="menuTopItem">
-                <div class="menuDrop">@Html.ActionLink("אירועים", "Index", "Pages")</div>
-            </li>
-            <li class="menuTopItem">
-                <div class="menuDrop">@Html.ActionLink("אירועים", "Index", "Pages")</div>
-            </li>
-            <li class="menuTopItem">
-                <div class="menuDrop">@Html.ActionLink("אירועים", "Index", "Pages")</div>
-            </li>
-            <li class="menuTopItem">
-                <div class="menuDrop">@Html.ActionLink("אירועים", "Index", "Pages")</div>
-            </li>
-        </ul>
+        @Html.Action("_MainMenu", new { lng = ViewBag.PageLng })
     </header>
     <div id="body">
         @*@Html.MvcSiteMap("AdminMvcSiteMapProvider").Menu(false, true, true)*@

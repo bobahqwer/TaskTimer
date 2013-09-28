@@ -13,16 +13,64 @@ namespace TaskTimer.Areas.Efargan.co.il.Controllers
         //
         // GET: /Efargan.co.il/Pages/
 
-        public ActionResult Index(int id)
+        public ActionResult Index(int? id, string lng)
         {
+            ViewBag.PageLng = lng;
             var db = new CustomMembershipDB();
-            var curPage = db.EfarganPages.SingleOrDefault(p => p.Id == id);
-            if (curPage == null)
-                return View(new EfarganPages());
-            return View(curPage);
+            var viewPage = new EfarganPages();
+            if (id == null)
+                id = 0;
+            if (lng.Equals("HE"))
+            {
+                viewPage = db.EfarganPages.SingleOrDefault(p => p.Id == id);
+                if (viewPage == null)
+                    viewPage = db.EfarganPages.FirstOrDefault(p => p.Id == 0);
+            }
+            else //get page in different language
+            {
+                viewPage = db.EfarganPages.SingleOrDefault(p => p.Id == id);
+                if (viewPage == null)
+                    viewPage = db.EfarganPages.FirstOrDefault(p => p.Id == 0);
+                var curLngPage = viewPage.EfarganPagesLanguage.FirstOrDefault(pl => pl.EfarganLanguage.LanguageValue == lng);
+                if (curLngPage != null)
+                {
+                    viewPage = new EfarganPages() {
+                    MetaTag = curLngPage.MetaTag,
+                    TitleTag = curLngPage.TitleTag,
+                    DescriptionTag = curLngPage.DescriptionTag,
+                    TicketTitle = curLngPage.TicketTitle,
+                    TicketLinkText = curLngPage.TicketLinkText,
+                    TicketLinkURL = curLngPage.TicketLinkURL,
+                    EfarganPagesSliders = curLngPage.EfarganPagesSliders,
+                    EfarganPagesParagraphs = curLngPage.EfarganPagesParagraphs,
+                    EfarganPagesTickers = curLngPage.EfarganPagesTickers
+                    };
+                   
+                }
+            }
+            return View(viewPage);
         }
-
-
+        public ActionResult _MainMenu(string lng)
+        {
+            //var lng = (string)ViewBag.PageLng;
+            var db = new CustomMembershipDB();
+            Dictionary<int, string> dictionary = new Dictionary<int, string>();
+            if (lng.Equals("HE"))
+                dictionary = db.EfarganPages.ToDictionary(p => p.Id, p => p.MenuText);
+            else 
+            {   //get all pages in different language
+                var curLng = db.EfarganLanguage.FirstOrDefault(l => l.LanguageValue == lng);
+                if (curLng != null)
+                {
+                    var pagesLng = db.EfarganPagesLanguage.Where(pl => pl.EfarganLanguage.Id == curLng.Id);
+                    if (pagesLng.Count() > 0)
+                    {
+                        dictionary = pagesLng.ToDictionary(p => p.Id, p => p.MenuText);
+                    }
+                }
+            }
+            return PartialView("_MainMenu", dictionary);
+        }
 
         [AjaxOnly, HttpPost]
         public ActionResult SiteSearch(string key)
@@ -54,9 +102,6 @@ namespace TaskTimer.Areas.Efargan.co.il.Controllers
                 }
                 responseHtml += responseTitle;
                 responseHtml += "</div>";
-
-
-
 
                 //item.SliderText
                 responseHtml += "</div>";

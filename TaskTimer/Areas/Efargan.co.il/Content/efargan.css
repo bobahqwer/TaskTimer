@@ -283,6 +283,8 @@ ul.footerMenu {
 }
 
     #body .bottomTicket .bottomTicketTitle {
+        min-height: 20px;
+
         font-weight: bold;
         font-size: 17px;
         text-align: center;
@@ -320,7 +322,7 @@ ul.footerMenu {
 
     #body .bottomTicket .bottomTicketContent {
         font-size: 12px;
-        height: 143px;
+        height: 160px;
     }
 
         #body .bottomTicket .bottomTicketContent .bottomTicketItem {

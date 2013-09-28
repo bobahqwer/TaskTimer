@@ -19,8 +19,10 @@ namespace TaskTimer.Models
         public string TickerText { get; set; }
         public string TickerLinkText { get; set; }
         public string TickerLinkURL { get; set; }
-        public int TickerEfarganPagesId { get; set; }
+        public Nullable<int> TickerEfarganPagesId { get; set; }
+        public Nullable<int> TickerEfarganPagesLanguageId { get; set; }
     
         public virtual EfarganPages EfarganPages { get; set; }
+        public virtual EfarganPagesLanguage EfarganPagesLanguage { get; set; }
     }
 }

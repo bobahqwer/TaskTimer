@@ -39,12 +39,24 @@
             <End Role="EfarganPages" EntitySet="EfarganPages" />
             <End Role="EfarganPagesParagraphs" EntitySet="EfarganPagesParagraphs" />
           </AssociationSet>
+          <AssociationSet Name="FK_EfarganPagesParagraphs_EfarganPagesLanguage" Association="CustomMembership.Models.Store.FK_EfarganPagesParagraphs_EfarganPagesLanguage">
+            <End Role="EfarganPagesLanguage" EntitySet="EfarganPagesLanguage" />
+            <End Role="EfarganPagesParagraphs" EntitySet="EfarganPagesParagraphs" />
+          </AssociationSet>
           <AssociationSet Name="FK_EfarganPagesSliders_EfarganPages" Association="CustomMembership.Models.Store.FK_EfarganPagesSliders_EfarganPages">
             <End Role="EfarganPages" EntitySet="EfarganPages" />
             <End Role="EfarganPagesSliders" EntitySet="EfarganPagesSliders" />
           </AssociationSet>
+          <AssociationSet Name="FK_EfarganPagesSliders_EfarganPagesLanguage" Association="CustomMembership.Models.Store.FK_EfarganPagesSliders_EfarganPagesLanguage">
+            <End Role="EfarganPagesLanguage" EntitySet="EfarganPagesLanguage" />
+            <End Role="EfarganPagesSliders" EntitySet="EfarganPagesSliders" />
+          </AssociationSet>
           <AssociationSet Name="FK_EfarganPagesTickers_EfarganPages" Association="CustomMembership.Models.Store.FK_EfarganPagesTickers_EfarganPages">
             <End Role="EfarganPages" EntitySet="EfarganPages" />
+            <End Role="EfarganPagesTickers" EntitySet="EfarganPagesTickers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EfarganPagesTickers_EfarganPagesLanguage" Association="CustomMembership.Models.Store.FK_EfarganPagesTickers_EfarganPagesLanguage">
+            <End Role="EfarganPagesLanguage" EntitySet="EfarganPagesLanguage" />
             <End Role="EfarganPagesTickers" EntitySet="EfarganPagesTickers" />
           </AssociationSet>
           <AssociationSet Name="FK_GalleryImages_GalleryPages" Association="CustomMembership.Models.Store.FK_GalleryImages_GalleryPages">
@@ -78,7 +90,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Language" Type="nvarchar(max)" />
+          <Property Name="LanguageValue" Type="nvarchar(max)" />
+          <Property Name="LanguageName" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="EfarganPages">
           <Key>
@@ -88,6 +101,7 @@
           <Property Name="MetaTag" Type="nvarchar(max)" />
           <Property Name="DescriptionTag" Type="nvarchar(max)" />
           <Property Name="TitleTag" Type="nvarchar(max)" />
+          <Property Name="MenuText" Type="nvarchar(max)" />
           <Property Name="TicketTitle" Type="nvarchar(max)" />
           <Property Name="TicketLinkText" Type="nvarchar(max)" />
           <Property Name="TicketLinkURL" Type="nvarchar(max)" />
@@ -118,6 +132,7 @@
           <Property Name="MetaTag" Type="nvarchar(max)" />
           <Property Name="DescriptionTag" Type="nvarchar(max)" />
           <Property Name="TitleTag" Type="nvarchar(max)" />
+          <Property Name="MenuText" Type="nvarchar(max)" />
           <Property Name="TicketTitle" Type="nvarchar(max)" />
           <Property Name="TicketLinkText" Type="nvarchar(max)" />
           <Property Name="TicketLinkURL" Type="nvarchar(max)" />
@@ -133,8 +148,10 @@
           <Property Name="ParagraphText" Type="nvarchar(max)" />
           <Property Name="ParagraphLinkText" Type="nvarchar(max)" />
           <Property Name="ParagraphLinkURL" Type="nvarchar(max)" />
-          <Property Name="ParagraphImage" Type="nvarchar(max)" />
+          <Property Name="ParagraphImageURL" Type="nvarchar(max)" />
+          <Property Name="ParagraphImageFileName" Type="nvarchar(max)" />
           <Property Name="ParagraphEfarganPagesId" Type="int" />
+          <Property Name="ParagraphEfarganPagesLanguageId" Type="int" />
         </EntityType>
         <EntityType Name="EfarganPagesSliders">
           <Key>
@@ -145,8 +162,10 @@
           <Property Name="SliderText" Type="nvarchar(max)" />
           <Property Name="SliderLinkText" Type="nvarchar(max)" />
           <Property Name="SliderLinkURL" Type="nvarchar(max)" />
-          <Property Name="SliderImage" Type="nvarchar(max)" />
+          <Property Name="SliderImageURL" Type="nvarchar(max)" />
+          <Property Name="SliderImageFileName" Type="nvarchar(max)" />
           <Property Name="SliderEfarganPagesId" Type="int" />
+          <Property Name="SliderEfarganPagesLanguageId" Type="int" />
         </EntityType>
         <EntityType Name="EfarganPagesTickers">
           <Key>
@@ -157,7 +176,8 @@
           <Property Name="TickerText" Type="nvarchar(max)" />
           <Property Name="TickerLinkText" Type="nvarchar(max)" />
           <Property Name="TickerLinkURL" Type="nvarchar(max)" />
-          <Property Name="TickerEfarganPagesId" Type="int" Nullable="false" />
+          <Property Name="TickerEfarganPagesId" Type="int" />
+          <Property Name="TickerEfarganPagesLanguageId" Type="int" />
         </EntityType>
         <EntityType Name="FAQ">
           <Key>
@@ -359,6 +379,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EfarganPagesParagraphs_EfarganPagesLanguage">
+          <End Role="EfarganPagesLanguage" Type="CustomMembership.Models.Store.EfarganPagesLanguage" Multiplicity="0..1" />
+          <End Role="EfarganPagesParagraphs" Type="CustomMembership.Models.Store.EfarganPagesParagraphs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EfarganPagesLanguage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EfarganPagesParagraphs">
+              <PropertyRef Name="ParagraphEfarganPagesLanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_EfarganPagesSliders_EfarganPages">
           <End Role="EfarganPages" Type="CustomMembership.Models.Store.EfarganPages" Multiplicity="0..1" />
           <End Role="EfarganPagesSliders" Type="CustomMembership.Models.Store.EfarganPagesSliders" Multiplicity="*" />
@@ -371,8 +403,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EfarganPagesSliders_EfarganPagesLanguage">
+          <End Role="EfarganPagesLanguage" Type="CustomMembership.Models.Store.EfarganPagesLanguage" Multiplicity="0..1" />
+          <End Role="EfarganPagesSliders" Type="CustomMembership.Models.Store.EfarganPagesSliders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EfarganPagesLanguage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EfarganPagesSliders">
+              <PropertyRef Name="SliderEfarganPagesLanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_EfarganPagesTickers_EfarganPages">
-          <End Role="EfarganPages" Type="CustomMembership.Models.Store.EfarganPages" Multiplicity="1" />
+          <End Role="EfarganPages" Type="CustomMembership.Models.Store.EfarganPages" Multiplicity="0..1" />
           <End Role="EfarganPagesTickers" Type="CustomMembership.Models.Store.EfarganPagesTickers" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EfarganPages">
@@ -380,6 +424,18 @@
             </Principal>
             <Dependent Role="EfarganPagesTickers">
               <PropertyRef Name="TickerEfarganPagesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EfarganPagesTickers_EfarganPagesLanguage">
+          <End Role="EfarganPagesLanguage" Type="CustomMembership.Models.Store.EfarganPagesLanguage" Multiplicity="0..1" />
+          <End Role="EfarganPagesTickers" Type="CustomMembership.Models.Store.EfarganPagesTickers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EfarganPagesLanguage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EfarganPagesTickers">
+              <PropertyRef Name="TickerEfarganPagesLanguageId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -460,10 +516,22 @@
             <End Role="GalleryPages" EntitySet="GalleryPages" />
             <End Role="GalleryImages" EntitySet="GalleryImages" />
           </AssociationSet>
+          <EntitySet Name="EfarganPagesBlog" EntityType="CustomMembership.Models.EfarganPagesBlog" />
+          <EntitySet Name="EfarganPagesBlogReplies" EntityType="CustomMembership.Models.EfarganPagesBlogReplies" />
+          <EntitySet Name="EfarganLanguage" EntityType="CustomMembership.Models.EfarganLanguage" />
           <EntitySet Name="EfarganPages" EntityType="CustomMembership.Models.EfarganPages" />
+          <EntitySet Name="EfarganPagesLanguage" EntityType="CustomMembership.Models.EfarganPagesLanguage" />
           <EntitySet Name="EfarganPagesParagraphs" EntityType="CustomMembership.Models.EfarganPagesParagraphs" />
           <EntitySet Name="EfarganPagesSliders" EntityType="CustomMembership.Models.EfarganPagesSliders" />
           <EntitySet Name="EfarganPagesTickers" EntityType="CustomMembership.Models.EfarganPagesTickers" />
+          <AssociationSet Name="FK_EfarganPagesLanguage_EfarganLanguage" Association="CustomMembership.Models.FK_EfarganPagesLanguage_EfarganLanguage">
+            <End Role="EfarganLanguage" EntitySet="EfarganLanguage" />
+            <End Role="EfarganPagesLanguage" EntitySet="EfarganPagesLanguage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EfarganPagesLanguage_EfarganPages" Association="CustomMembership.Models.FK_EfarganPagesLanguage_EfarganPages">
+            <End Role="EfarganPages" EntitySet="EfarganPages" />
+            <End Role="EfarganPagesLanguage" EntitySet="EfarganPagesLanguage" />
+          </AssociationSet>
           <AssociationSet Name="FK_EfarganPagesParagraphs_EfarganPages" Association="CustomMembership.Models.FK_EfarganPagesParagraphs_EfarganPages">
             <End Role="EfarganPages" EntitySet="EfarganPages" />
             <End Role="EfarganPagesParagraphs" EntitySet="EfarganPagesParagraphs" />
@@ -476,17 +544,17 @@
             <End Role="EfarganPages" EntitySet="EfarganPages" />
             <End Role="EfarganPagesTickers" EntitySet="EfarganPagesTickers" />
           </AssociationSet>
-          <EntitySet Name="EfarganLanguage" EntityType="CustomMembership.Models.EfarganLanguage" />
-          <EntitySet Name="EfarganPagesBlog" EntityType="CustomMembership.Models.EfarganPagesBlog" />
-          <EntitySet Name="EfarganPagesBlogReplies" EntityType="CustomMembership.Models.EfarganPagesBlogReplies" />
-          <EntitySet Name="EfarganPagesLanguage" EntityType="CustomMembership.Models.EfarganPagesLanguage" />
-          <AssociationSet Name="FK_EfarganPagesLanguage_EfarganLanguage" Association="CustomMembership.Models.FK_EfarganPagesLanguage_EfarganLanguage">
-            <End Role="EfarganLanguage" EntitySet="EfarganLanguage" />
+          <AssociationSet Name="FK_EfarganPagesParagraphs_EfarganPagesLanguage" Association="CustomMembership.Models.FK_EfarganPagesParagraphs_EfarganPagesLanguage">
             <End Role="EfarganPagesLanguage" EntitySet="EfarganPagesLanguage" />
+            <End Role="EfarganPagesParagraphs" EntitySet="EfarganPagesParagraphs" />
           </AssociationSet>
-          <AssociationSet Name="FK_EfarganPagesLanguage_EfarganPages" Association="CustomMembership.Models.FK_EfarganPagesLanguage_EfarganPages">
-            <End Role="EfarganPages" EntitySet="EfarganPages" />
+          <AssociationSet Name="FK_EfarganPagesSliders_EfarganPagesLanguage" Association="CustomMembership.Models.FK_EfarganPagesSliders_EfarganPagesLanguage">
             <End Role="EfarganPagesLanguage" EntitySet="EfarganPagesLanguage" />
+            <End Role="EfarganPagesSliders" EntitySet="EfarganPagesSliders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EfarganPagesTickers_EfarganPagesLanguage" Association="CustomMembership.Models.FK_EfarganPagesTickers_EfarganPagesLanguage">
+            <End Role="EfarganPagesLanguage" EntitySet="EfarganPagesLanguage" />
+            <End Role="EfarganPagesTickers" EntitySet="EfarganPagesTickers" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Applications">
@@ -688,6 +756,33 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="EfarganPagesBlog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="MetaTag" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DescriptionTag" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TitleTag" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Text" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EfarganPagesBlogReplies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ReplyText" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ReplyEfarganBlogId" />
+        </EntityType>
+        <EntityType Name="EfarganLanguage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="LanguageValue" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LanguageName" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EfarganPagesLanguage" Relationship="CustomMembership.Models.FK_EfarganPagesLanguage_EfarganLanguage" FromRole="EfarganLanguage" ToRole="EfarganPagesLanguage" />
+        </EntityType>
         <EntityType Name="EfarganPages">
           <Key>
             <PropertyRef Name="Id" />
@@ -696,13 +791,34 @@
           <Property Type="String" Name="MetaTag" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="DescriptionTag" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="TitleTag" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="EfarganPagesParagraphs" Relationship="CustomMembership.Models.FK_EfarganPagesParagraphs_EfarganPages" FromRole="EfarganPages" ToRole="EfarganPagesParagraphs" />
-          <NavigationProperty Name="EfarganPagesSliders" Relationship="CustomMembership.Models.FK_EfarganPagesSliders_EfarganPages" FromRole="EfarganPages" ToRole="EfarganPagesSliders" />
-          <NavigationProperty Name="EfarganPagesTickers" Relationship="CustomMembership.Models.FK_EfarganPagesTickers_EfarganPages" FromRole="EfarganPages" ToRole="EfarganPagesTickers" />
           <Property Type="String" Name="TicketTitle" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="TicketLinkText" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="TicketLinkURL" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="EfarganPagesLanguage" Relationship="CustomMembership.Models.FK_EfarganPagesLanguage_EfarganPages" FromRole="EfarganPages" ToRole="EfarganPagesLanguage" />
+          <NavigationProperty Name="EfarganPagesParagraphs" Relationship="CustomMembership.Models.FK_EfarganPagesParagraphs_EfarganPages" FromRole="EfarganPages" ToRole="EfarganPagesParagraphs" />
+          <NavigationProperty Name="EfarganPagesSliders" Relationship="CustomMembership.Models.FK_EfarganPagesSliders_EfarganPages" FromRole="EfarganPages" ToRole="EfarganPagesSliders" />
+          <NavigationProperty Name="EfarganPagesTickers" Relationship="CustomMembership.Models.FK_EfarganPagesTickers_EfarganPages" FromRole="EfarganPages" ToRole="EfarganPagesTickers" />
+          <Property Type="String" Name="MenuText" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EfarganPagesLanguage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="MetaTag" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DescriptionTag" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TitleTag" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TicketTitle" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TicketLinkText" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TicketLinkURL" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="EfarganLanguageRef" />
+          <Property Type="Int32" Name="EfarganPagesIdRef" />
+          <NavigationProperty Name="EfarganLanguage" Relationship="CustomMembership.Models.FK_EfarganPagesLanguage_EfarganLanguage" FromRole="EfarganPagesLanguage" ToRole="EfarganLanguage" />
+          <NavigationProperty Name="EfarganPages" Relationship="CustomMembership.Models.FK_EfarganPagesLanguage_EfarganPages" FromRole="EfarganPagesLanguage" ToRole="EfarganPages" />
+          <NavigationProperty Name="EfarganPagesParagraphs" Relationship="CustomMembership.Models.FK_EfarganPagesParagraphs_EfarganPagesLanguage" FromRole="EfarganPagesLanguage" ToRole="EfarganPagesParagraphs" />
+          <NavigationProperty Name="EfarganPagesSliders" Relationship="CustomMembership.Models.FK_EfarganPagesSliders_EfarganPagesLanguage" FromRole="EfarganPagesLanguage" ToRole="EfarganPagesSliders" />
+          <NavigationProperty Name="EfarganPagesTickers" Relationship="CustomMembership.Models.FK_EfarganPagesTickers_EfarganPagesLanguage" FromRole="EfarganPagesLanguage" ToRole="EfarganPagesTickers" />
+          <Property Type="String" Name="MenuText" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="EfarganPagesParagraphs">
           <Key>
@@ -713,9 +829,12 @@
           <Property Type="String" Name="ParagraphText" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="ParagraphLinkText" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="ParagraphLinkURL" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="ParagraphImage" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ParagraphImageURL" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ParagraphImageFileName" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="ParagraphEfarganPagesId" />
+          <Property Type="Int32" Name="ParagraphEfarganPagesLanguageId" />
           <NavigationProperty Name="EfarganPages" Relationship="CustomMembership.Models.FK_EfarganPagesParagraphs_EfarganPages" FromRole="EfarganPagesParagraphs" ToRole="EfarganPages" />
+          <NavigationProperty Name="EfarganPagesLanguage" Relationship="CustomMembership.Models.FK_EfarganPagesParagraphs_EfarganPagesLanguage" FromRole="EfarganPagesParagraphs" ToRole="EfarganPagesLanguage" />
         </EntityType>
         <EntityType Name="EfarganPagesSliders">
           <Key>
@@ -726,9 +845,12 @@
           <Property Type="String" Name="SliderText" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="SliderLinkText" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="SliderLinkURL" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="SliderImage" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SliderImageURL" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SliderImageFileName" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="SliderEfarganPagesId" />
+          <Property Type="Int32" Name="SliderEfarganPagesLanguageId" />
           <NavigationProperty Name="EfarganPages" Relationship="CustomMembership.Models.FK_EfarganPagesSliders_EfarganPages" FromRole="EfarganPagesSliders" ToRole="EfarganPages" />
+          <NavigationProperty Name="EfarganPagesLanguage" Relationship="CustomMembership.Models.FK_EfarganPagesSliders_EfarganPagesLanguage" FromRole="EfarganPagesSliders" ToRole="EfarganPagesLanguage" />
         </EntityType>
         <EntityType Name="EfarganPagesTickers">
           <Key>
@@ -739,9 +861,35 @@
           <Property Type="String" Name="TickerText" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="TickerLinkText" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="TickerLinkURL" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="TickerEfarganPagesId" Nullable="false" />
+          <Property Type="Int32" Name="TickerEfarganPagesId" />
+          <Property Type="Int32" Name="TickerEfarganPagesLanguageId" />
           <NavigationProperty Name="EfarganPages" Relationship="CustomMembership.Models.FK_EfarganPagesTickers_EfarganPages" FromRole="EfarganPagesTickers" ToRole="EfarganPages" />
+          <NavigationProperty Name="EfarganPagesLanguage" Relationship="CustomMembership.Models.FK_EfarganPagesTickers_EfarganPagesLanguage" FromRole="EfarganPagesTickers" ToRole="EfarganPagesLanguage" />
         </EntityType>
+        <Association Name="FK_EfarganPagesLanguage_EfarganLanguage">
+          <End Type="CustomMembership.Models.EfarganLanguage" Role="EfarganLanguage" Multiplicity="0..1" />
+          <End Type="CustomMembership.Models.EfarganPagesLanguage" Role="EfarganPagesLanguage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EfarganLanguage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EfarganPagesLanguage">
+              <PropertyRef Name="EfarganLanguageRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EfarganPagesLanguage_EfarganPages">
+          <End Type="CustomMembership.Models.EfarganPages" Role="EfarganPages" Multiplicity="0..1" />
+          <End Type="CustomMembership.Models.EfarganPagesLanguage" Role="EfarganPagesLanguage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EfarganPages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EfarganPagesLanguage">
+              <PropertyRef Name="EfarganPagesIdRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_EfarganPagesParagraphs_EfarganPages">
           <End Type="CustomMembership.Models.EfarganPages" Role="EfarganPages" Multiplicity="0..1" />
           <End Type="CustomMembership.Models.EfarganPagesParagraphs" Role="EfarganPagesParagraphs" Multiplicity="*" />
@@ -767,7 +915,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_EfarganPagesTickers_EfarganPages">
-          <End Type="CustomMembership.Models.EfarganPages" Role="EfarganPages" Multiplicity="1" />
+          <End Type="CustomMembership.Models.EfarganPages" Role="EfarganPages" Multiplicity="0..1" />
           <End Type="CustomMembership.Models.EfarganPagesTickers" Role="EfarganPagesTickers" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EfarganPages">
@@ -778,69 +926,39 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="EfarganLanguage">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Language" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="EfarganPagesLanguage" Relationship="CustomMembership.Models.FK_EfarganPagesLanguage_EfarganLanguage" FromRole="EfarganLanguage" ToRole="EfarganPagesLanguage" />
-        </EntityType>
-        <EntityType Name="EfarganPagesBlog">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="MetaTag" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="DescriptionTag" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="TitleTag" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Text" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="EfarganPagesBlogReplies">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="ReplyText" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="ReplyEfarganBlogId" />
-        </EntityType>
-        <EntityType Name="EfarganPagesLanguage">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="MetaTag" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="DescriptionTag" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="TitleTag" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="TicketTitle" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="TicketLinkText" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="TicketLinkURL" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="EfarganLanguageRef" />
-          <Property Type="Int32" Name="EfarganPagesIdRef" />
-          <NavigationProperty Name="EfarganLanguage" Relationship="CustomMembership.Models.FK_EfarganPagesLanguage_EfarganLanguage" FromRole="EfarganPagesLanguage" ToRole="EfarganLanguage" />
-          <NavigationProperty Name="EfarganPages" Relationship="CustomMembership.Models.FK_EfarganPagesLanguage_EfarganPages" FromRole="EfarganPagesLanguage" ToRole="EfarganPages" />
-        </EntityType>
-        <Association Name="FK_EfarganPagesLanguage_EfarganLanguage">
-          <End Type="CustomMembership.Models.EfarganLanguage" Role="EfarganLanguage" Multiplicity="0..1" />
-          <End Type="CustomMembership.Models.EfarganPagesLanguage" Role="EfarganPagesLanguage" Multiplicity="*" />
+        <Association Name="FK_EfarganPagesParagraphs_EfarganPagesLanguage">
+          <End Type="CustomMembership.Models.EfarganPagesLanguage" Role="EfarganPagesLanguage" Multiplicity="0..1" />
+          <End Type="CustomMembership.Models.EfarganPagesParagraphs" Role="EfarganPagesParagraphs" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="EfarganLanguage">
+            <Principal Role="EfarganPagesLanguage">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="EfarganPagesLanguage">
-              <PropertyRef Name="EfarganLanguageRef" />
+            <Dependent Role="EfarganPagesParagraphs">
+              <PropertyRef Name="ParagraphEfarganPagesLanguageId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_EfarganPagesLanguage_EfarganPages">
-          <End Type="CustomMembership.Models.EfarganPages" Role="EfarganPages" Multiplicity="0..1" />
-          <End Type="CustomMembership.Models.EfarganPagesLanguage" Role="EfarganPagesLanguage" Multiplicity="*" />
+        <Association Name="FK_EfarganPagesSliders_EfarganPagesLanguage">
+          <End Type="CustomMembership.Models.EfarganPagesLanguage" Role="EfarganPagesLanguage" Multiplicity="0..1" />
+          <End Type="CustomMembership.Models.EfarganPagesSliders" Role="EfarganPagesSliders" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="EfarganPages">
+            <Principal Role="EfarganPagesLanguage">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="EfarganPagesLanguage">
-              <PropertyRef Name="EfarganPagesIdRef" />
+            <Dependent Role="EfarganPagesSliders">
+              <PropertyRef Name="SliderEfarganPagesLanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EfarganPagesTickers_EfarganPagesLanguage">
+          <End Type="CustomMembership.Models.EfarganPagesLanguage" Role="EfarganPagesLanguage" Multiplicity="0..1" />
+          <End Type="CustomMembership.Models.EfarganPagesTickers" Role="EfarganPagesTickers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EfarganPagesLanguage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EfarganPagesTickers">
+              <PropertyRef Name="TickerEfarganPagesLanguageId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1035,65 +1153,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="EfarganPages">
-            <EntityTypeMapping TypeName="CustomMembership.Models.EfarganPages">
-              <MappingFragment StoreEntitySet="EfarganPages">
-                <ScalarProperty Name="TicketLinkURL" ColumnName="TicketLinkURL" />
-                <ScalarProperty Name="TicketLinkText" ColumnName="TicketLinkText" />
-                <ScalarProperty Name="TicketTitle" ColumnName="TicketTitle" />
-                <ScalarProperty Name="TitleTag" ColumnName="TitleTag" />
-                <ScalarProperty Name="DescriptionTag" ColumnName="DescriptionTag" />
-                <ScalarProperty Name="MetaTag" ColumnName="MetaTag" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="EfarganPagesParagraphs">
-            <EntityTypeMapping TypeName="CustomMembership.Models.EfarganPagesParagraphs">
-              <MappingFragment StoreEntitySet="EfarganPagesParagraphs">
-                <ScalarProperty Name="ParagraphEfarganPagesId" ColumnName="ParagraphEfarganPagesId" />
-                <ScalarProperty Name="ParagraphImage" ColumnName="ParagraphImage" />
-                <ScalarProperty Name="ParagraphLinkURL" ColumnName="ParagraphLinkURL" />
-                <ScalarProperty Name="ParagraphLinkText" ColumnName="ParagraphLinkText" />
-                <ScalarProperty Name="ParagraphText" ColumnName="ParagraphText" />
-                <ScalarProperty Name="ParagraphTitle" ColumnName="ParagraphTitle" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="EfarganPagesSliders">
-            <EntityTypeMapping TypeName="CustomMembership.Models.EfarganPagesSliders">
-              <MappingFragment StoreEntitySet="EfarganPagesSliders">
-                <ScalarProperty Name="SliderEfarganPagesId" ColumnName="SliderEfarganPagesId" />
-                <ScalarProperty Name="SliderImage" ColumnName="SliderImage" />
-                <ScalarProperty Name="SliderLinkURL" ColumnName="SliderLinkURL" />
-                <ScalarProperty Name="SliderLinkText" ColumnName="SliderLinkText" />
-                <ScalarProperty Name="SliderText" ColumnName="SliderText" />
-                <ScalarProperty Name="SliderTitle" ColumnName="SliderTitle" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="EfarganPagesTickers">
-            <EntityTypeMapping TypeName="CustomMembership.Models.EfarganPagesTickers">
-              <MappingFragment StoreEntitySet="EfarganPagesTickers">
-                <ScalarProperty Name="TickerEfarganPagesId" ColumnName="TickerEfarganPagesId" />
-                <ScalarProperty Name="TickerLinkURL" ColumnName="TickerLinkURL" />
-                <ScalarProperty Name="TickerLinkText" ColumnName="TickerLinkText" />
-                <ScalarProperty Name="TickerText" ColumnName="TickerText" />
-                <ScalarProperty Name="TickerTitle" ColumnName="TickerTitle" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="EfarganLanguage">
-            <EntityTypeMapping TypeName="CustomMembership.Models.EfarganLanguage">
-              <MappingFragment StoreEntitySet="EfarganLanguage">
-                <ScalarProperty Name="Language" ColumnName="Language" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="EfarganPagesBlog">
             <EntityTypeMapping TypeName="CustomMembership.Models.EfarganPagesBlog">
               <MappingFragment StoreEntitySet="EfarganPagesBlog">
@@ -1114,9 +1173,33 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="EfarganLanguage">
+            <EntityTypeMapping TypeName="CustomMembership.Models.EfarganLanguage">
+              <MappingFragment StoreEntitySet="EfarganLanguage">
+                <ScalarProperty Name="LanguageName" ColumnName="LanguageName" />
+                <ScalarProperty Name="LanguageValue" ColumnName="LanguageValue" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EfarganPages">
+            <EntityTypeMapping TypeName="CustomMembership.Models.EfarganPages">
+              <MappingFragment StoreEntitySet="EfarganPages">
+                <ScalarProperty Name="MenuText" ColumnName="MenuText" />
+                <ScalarProperty Name="TicketLinkURL" ColumnName="TicketLinkURL" />
+                <ScalarProperty Name="TicketLinkText" ColumnName="TicketLinkText" />
+                <ScalarProperty Name="TicketTitle" ColumnName="TicketTitle" />
+                <ScalarProperty Name="TitleTag" ColumnName="TitleTag" />
+                <ScalarProperty Name="DescriptionTag" ColumnName="DescriptionTag" />
+                <ScalarProperty Name="MetaTag" ColumnName="MetaTag" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="EfarganPagesLanguage">
             <EntityTypeMapping TypeName="CustomMembership.Models.EfarganPagesLanguage">
               <MappingFragment StoreEntitySet="EfarganPagesLanguage">
+                <ScalarProperty Name="MenuText" ColumnName="MenuText" />
                 <ScalarProperty Name="EfarganPagesIdRef" ColumnName="EfarganPagesIdRef" />
                 <ScalarProperty Name="EfarganLanguageRef" ColumnName="EfarganLanguageRef" />
                 <ScalarProperty Name="TicketLinkURL" ColumnName="TicketLinkURL" />
@@ -1125,6 +1208,49 @@
                 <ScalarProperty Name="TitleTag" ColumnName="TitleTag" />
                 <ScalarProperty Name="DescriptionTag" ColumnName="DescriptionTag" />
                 <ScalarProperty Name="MetaTag" ColumnName="MetaTag" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EfarganPagesParagraphs">
+            <EntityTypeMapping TypeName="CustomMembership.Models.EfarganPagesParagraphs">
+              <MappingFragment StoreEntitySet="EfarganPagesParagraphs">
+                <ScalarProperty Name="ParagraphEfarganPagesLanguageId" ColumnName="ParagraphEfarganPagesLanguageId" />
+                <ScalarProperty Name="ParagraphEfarganPagesId" ColumnName="ParagraphEfarganPagesId" />
+                <ScalarProperty Name="ParagraphImageFileName" ColumnName="ParagraphImageFileName" />
+                <ScalarProperty Name="ParagraphImageURL" ColumnName="ParagraphImageURL" />
+                <ScalarProperty Name="ParagraphLinkURL" ColumnName="ParagraphLinkURL" />
+                <ScalarProperty Name="ParagraphLinkText" ColumnName="ParagraphLinkText" />
+                <ScalarProperty Name="ParagraphText" ColumnName="ParagraphText" />
+                <ScalarProperty Name="ParagraphTitle" ColumnName="ParagraphTitle" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EfarganPagesSliders">
+            <EntityTypeMapping TypeName="CustomMembership.Models.EfarganPagesSliders">
+              <MappingFragment StoreEntitySet="EfarganPagesSliders">
+                <ScalarProperty Name="SliderEfarganPagesLanguageId" ColumnName="SliderEfarganPagesLanguageId" />
+                <ScalarProperty Name="SliderEfarganPagesId" ColumnName="SliderEfarganPagesId" />
+                <ScalarProperty Name="SliderImageFileName" ColumnName="SliderImageFileName" />
+                <ScalarProperty Name="SliderImageURL" ColumnName="SliderImageURL" />
+                <ScalarProperty Name="SliderLinkURL" ColumnName="SliderLinkURL" />
+                <ScalarProperty Name="SliderLinkText" ColumnName="SliderLinkText" />
+                <ScalarProperty Name="SliderText" ColumnName="SliderText" />
+                <ScalarProperty Name="SliderTitle" ColumnName="SliderTitle" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EfarganPagesTickers">
+            <EntityTypeMapping TypeName="CustomMembership.Models.EfarganPagesTickers">
+              <MappingFragment StoreEntitySet="EfarganPagesTickers">
+                <ScalarProperty Name="TickerEfarganPagesLanguageId" ColumnName="TickerEfarganPagesLanguageId" />
+                <ScalarProperty Name="TickerEfarganPagesId" ColumnName="TickerEfarganPagesId" />
+                <ScalarProperty Name="TickerLinkURL" ColumnName="TickerLinkURL" />
+                <ScalarProperty Name="TickerLinkText" ColumnName="TickerLinkText" />
+                <ScalarProperty Name="TickerText" ColumnName="TickerText" />
+                <ScalarProperty Name="TickerTitle" ColumnName="TickerTitle" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

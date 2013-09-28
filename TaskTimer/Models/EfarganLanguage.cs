@@ -20,7 +20,8 @@ namespace TaskTimer.Models
         }
     
         public int Id { get; set; }
-        public string Language { get; set; }
+        public string LanguageValue { get; set; }
+        public string LanguageName { get; set; }
     
         public virtual ICollection<EfarganPagesLanguage> EfarganPagesLanguage { get; set; }
     }

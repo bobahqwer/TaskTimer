@@ -16,10 +16,10 @@ namespace TaskTimer.Models
     {
         public EfarganPages()
         {
+            this.EfarganPagesLanguage = new HashSet<EfarganPagesLanguage>();
             this.EfarganPagesParagraphs = new HashSet<EfarganPagesParagraphs>();
             this.EfarganPagesSliders = new HashSet<EfarganPagesSliders>();
             this.EfarganPagesTickers = new HashSet<EfarganPagesTickers>();
-            this.EfarganPagesLanguage = new HashSet<EfarganPagesLanguage>();
         }
     
         public int Id { get; set; }
@@ -29,10 +29,11 @@ namespace TaskTimer.Models
         public string TicketTitle { get; set; }
         public string TicketLinkText { get; set; }
         public string TicketLinkURL { get; set; }
+        public string MenuText { get; set; }
     
+        public virtual ICollection<EfarganPagesLanguage> EfarganPagesLanguage { get; set; }
         public virtual ICollection<EfarganPagesParagraphs> EfarganPagesParagraphs { get; set; }
         public virtual ICollection<EfarganPagesSliders> EfarganPagesSliders { get; set; }
         public virtual ICollection<EfarganPagesTickers> EfarganPagesTickers { get; set; }
-        public virtual ICollection<EfarganPagesLanguage> EfarganPagesLanguage { get; set; }
     }
 }

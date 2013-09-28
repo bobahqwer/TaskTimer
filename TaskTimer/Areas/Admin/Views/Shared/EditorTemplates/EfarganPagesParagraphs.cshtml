@@ -29,6 +29,9 @@
         </div>
         @Html.TextBoxFor(m => Model.ParagraphLinkURL)</td>
     <td>
+        @Html.ValueFor(m => Model.ParagraphImageFileName)
+        @Html.HiddenFor(m => Model.ParagraphImageFileName)
+        @Html.HiddenFor(m => Model.ParagraphImageURL)
         <input type="file" name="ParagraphImage_@Model.Id" />
     </td>
     <td>

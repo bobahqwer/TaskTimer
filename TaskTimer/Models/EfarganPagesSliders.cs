@@ -19,9 +19,12 @@ namespace TaskTimer.Models
         public string SliderText { get; set; }
         public string SliderLinkText { get; set; }
         public string SliderLinkURL { get; set; }
-        public string SliderImage { get; set; }
+        public string SliderImageURL { get; set; }
+        public string SliderImageFileName { get; set; }
         public Nullable<int> SliderEfarganPagesId { get; set; }
+        public Nullable<int> SliderEfarganPagesLanguageId { get; set; }
     
         public virtual EfarganPages EfarganPages { get; set; }
+        public virtual EfarganPagesLanguage EfarganPagesLanguage { get; set; }
     }
 }

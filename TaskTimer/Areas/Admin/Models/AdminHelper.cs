@@ -11,6 +11,8 @@ namespace TaskTimer.Areas.Admin.Models
         public static string GetUniqueFileName(string dirPath, string fileName)
         {
             var uniqueFileName = fileName;
+            if (!Directory.Exists(dirPath))
+                Directory.CreateDirectory(dirPath);
             var allSitePageImages = Directory.GetFiles(dirPath);
             var isFileAlreadyExist = false;
             foreach (var filePath in allSitePageImages)

@@ -20,19 +20,22 @@
         <EntityTypeShape EntityType="CustomMembership.Models.GalleryImages" Width="1.5" PointX="7.375" PointY="4.375" />
         <EntityTypeShape EntityType="CustomMembership.Models.GalleryPages" Width="1.5" PointX="4.375" PointY="4.375" />
         <AssociationConnector Association="CustomMembership.Models.FK_GalleryImages_GalleryPages" />
-        <EntityTypeShape EntityType="CustomMembership.Models.EfarganPages" Width="1.5" PointX="6.875" PointY="0.75" />
-        <EntityTypeShape EntityType="CustomMembership.Models.EfarganPagesParagraphs" Width="1.5" PointX="9.625" PointY="0.75" />
-        <EntityTypeShape EntityType="CustomMembership.Models.EfarganPagesSliders" Width="1.5" PointX="12.125" PointY="0.625" />
-        <EntityTypeShape EntityType="CustomMembership.Models.EfarganPagesTickers" Width="1.5" PointX="4.375" PointY="0.625" />
+        <EntityTypeShape EntityType="CustomMembership.Models.EfarganPagesBlog" Width="1.5" PointX="13.625" PointY="8.5" />
+        <EntityTypeShape EntityType="CustomMembership.Models.EfarganPagesBlogReplies" Width="1.5" PointX="11.875" PointY="6.375" />
+        <EntityTypeShape EntityType="CustomMembership.Models.EfarganLanguage" Width="1.5" PointX="5.1297498332009415" PointY="25.880757969748583" />
+        <EntityTypeShape EntityType="CustomMembership.Models.EfarganPages" Width="1.5" PointX="0.98187210270290826" PointY="24.760163706149982" />
+        <EntityTypeShape EntityType="CustomMembership.Models.EfarganPagesLanguage" Width="1.5" PointX="3.1817696239714368" PointY="30.030273585594387" />
+        <EntityTypeShape EntityType="CustomMembership.Models.EfarganPagesParagraphs" Width="1.5" PointX="5.9029166986713726" PointY="0.83970856705666919" />
+        <EntityTypeShape EntityType="CustomMembership.Models.EfarganPagesSliders" Width="1.5" PointX="10.730898923580954" PointY="27.481039045136907" />
+        <EntityTypeShape EntityType="CustomMembership.Models.EfarganPagesTickers" Width="1.5" PointX="2.725007349031515" PointY="28.940553395515565" />
+        <AssociationConnector Association="CustomMembership.Models.FK_EfarganPagesLanguage_EfarganLanguage" />
+        <AssociationConnector Association="CustomMembership.Models.FK_EfarganPagesLanguage_EfarganPages" />
         <AssociationConnector Association="CustomMembership.Models.FK_EfarganPagesParagraphs_EfarganPages" />
         <AssociationConnector Association="CustomMembership.Models.FK_EfarganPagesSliders_EfarganPages" />
         <AssociationConnector Association="CustomMembership.Models.FK_EfarganPagesTickers_EfarganPages" />
-        <EntityTypeShape EntityType="CustomMembership.Models.EfarganLanguage" Width="1.5" PointX="6.1072487952687071" PointY="21.823139737277824" />
-        <EntityTypeShape EntityType="CustomMembership.Models.EfarganPagesBlog" Width="1.5" PointX="2.2318241457603052" PointY="12.279666757341319" />
-        <EntityTypeShape EntityType="CustomMembership.Models.EfarganPagesBlogReplies" Width="1.5" PointX="11.843677382843419" PointY="0.33201628938876848" />
-        <EntityTypeShape EntityType="CustomMembership.Models.EfarganPagesLanguage" Width="1.5" PointX="0.84017801323913877" PointY="19.506221690916558" />
-        <AssociationConnector Association="CustomMembership.Models.FK_EfarganPagesLanguage_EfarganLanguage" />
-        <AssociationConnector Association="CustomMembership.Models.FK_EfarganPagesLanguage_EfarganPages" />
+        <AssociationConnector Association="CustomMembership.Models.FK_EfarganPagesParagraphs_EfarganPagesLanguage" />
+        <AssociationConnector Association="CustomMembership.Models.FK_EfarganPagesSliders_EfarganPagesLanguage" />
+        <AssociationConnector Association="CustomMembership.Models.FK_EfarganPagesTickers_EfarganPagesLanguage" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

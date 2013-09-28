@@ -28,6 +28,9 @@
         </div>
         @Html.TextBoxFor(m => Model.SliderLinkURL)</td>
     <td>
+        @Html.ValueFor(m => Model.SliderImageFileName)
+        @Html.HiddenFor(m => Model.SliderImageFileName)
+        @Html.HiddenFor(m => Model.SliderImageURL)
         <input type="file" name="SliderImage_@Model.Id" />
     </td>
     <td>

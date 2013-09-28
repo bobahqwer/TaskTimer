@@ -19,9 +19,12 @@ namespace TaskTimer.Models
         public string ParagraphText { get; set; }
         public string ParagraphLinkText { get; set; }
         public string ParagraphLinkURL { get; set; }
-        public string ParagraphImage { get; set; }
+        public string ParagraphImageURL { get; set; }
+        public string ParagraphImageFileName { get; set; }
         public Nullable<int> ParagraphEfarganPagesId { get; set; }
+        public Nullable<int> ParagraphEfarganPagesLanguageId { get; set; }
     
         public virtual EfarganPages EfarganPages { get; set; }
+        public virtual EfarganPagesLanguage EfarganPagesLanguage { get; set; }
     }
 }

@@ -74,7 +74,8 @@
 /* filter widget */
 .tablesorter-bootstrap .tablesorter-filter-row .tablesorter-filter {
 	width: 98%;
-	height: inherit;
+	/*height: inherit;*/
+    height: 19px;
 	margin: 0 auto;
 	padding: 4px 6px;
 	background-color: #fff;

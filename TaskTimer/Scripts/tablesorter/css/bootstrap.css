@@ -12,6 +12,7 @@
 .table-bordered td {
   border-left: 1px solid #dddddd;
   border-bottom: 1px solid #ddd;
+  border-right: 1px solid #dddddd;
 }
 
 .table-bordered caption + thead tr:first-child th,

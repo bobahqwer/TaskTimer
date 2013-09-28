@@ -82,12 +82,12 @@ table {
 .table td:hover {
     cursor: pointer;
 }
-.table td input[type="submit"],
+/*.table td input[type="submit"],
 .table td a {
     text-decoration: none;
     font-size: 14px;
     font-family: sans-serif;
-}
+}*/
 .table td input[type="submit"] {
     padding: 0;
     margin: 0;

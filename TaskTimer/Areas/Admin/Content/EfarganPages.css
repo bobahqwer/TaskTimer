@@ -6,3 +6,46 @@
     .actionSpan:hover {
         text-decoration: underline;
     }
+
+.addNewPage {
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+    .addNewPage table label {
+        margin-right: 5px;
+    }
+
+.defaultLangTable {
+    float: left;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+.customLang {
+    margin-left: 20px;
+}
+
+    .customLang input[type="submit"] {
+        clear: both;
+        display: block;
+        float: left;
+        margin: 0;
+    }
+
+.submitEditBtn {
+    float: left;
+    clear: both;
+}
+
+.pageLanguages {
+    margin-left: 0;
+    width: 153px;
+}
+.languageTable {
+    float: left;
+    margin-right: 10px;
+    padding-right: 10px;
+    border-right: 1px solid #F0F0F0;
+    display: inline;
+}

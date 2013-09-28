@@ -188,12 +188,16 @@
     </Compile>
     <Compile Include="Areas\Efargan.co.il\Controllers\PagesController.cs" />
     <Compile Include="Areas\Efargan.co.il\Efargan.co.ilAreaRegistration.cs" />
+    <Compile Include="Areas\Efargan.co.il\Models\PagesModel.cs" />
     <Compile Include="Areas\mmgtaabora.com\Controllers\IndexController.cs" />
     <Compile Include="Areas\mmgtaabora.com\mmgtaaboraAreaRegistration.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\MapsController.cs" />
     <Compile Include="Controllers\SitePagesController.cs" />
     <Compile Include="Controllers\VideoController.cs" />
+    <Compile Include="Models\Applications.cs">
+      <DependentUpon>CustomMembership.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\EfarganLanguage.cs">
       <DependentUpon>CustomMembership.tt</DependentUpon>
     </Compile>
@@ -218,10 +222,25 @@
     <Compile Include="Models\EfarganPagesTickers.cs">
       <DependentUpon>CustomMembership.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FAQ.cs">
+      <DependentUpon>CustomMembership.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GalleryImages.cs">
       <DependentUpon>CustomMembership.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GalleryPages.cs">
+      <DependentUpon>CustomMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Images.cs">
+      <DependentUpon>CustomMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Memberships.cs">
+      <DependentUpon>CustomMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Profiles.cs">
+      <DependentUpon>CustomMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Roles.cs">
       <DependentUpon>CustomMembership.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ShopItem.cs">
@@ -231,6 +250,9 @@
       <DependentUpon>CustomMembership.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>CustomMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Users.cs">
       <DependentUpon>CustomMembership.tt</DependentUpon>
     </Compile>
     <Compile Include="Resources\Models\Account\FieldsNames.he.Designer.cs">
@@ -258,9 +280,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\FAQController.cs" />
-    <Compile Include="Models\Applications.cs">
-      <DependentUpon>CustomMembership.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\CustomMembership.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -276,25 +295,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CustomMembership.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\FAQ.cs">
-      <DependentUpon>CustomMembership.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\FAQModels.cs" />
-    <Compile Include="Models\Images.cs">
-      <DependentUpon>CustomMembership.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Memberships.cs">
-      <DependentUpon>CustomMembership.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Profiles.cs">
-      <DependentUpon>CustomMembership.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Roles.cs">
-      <DependentUpon>CustomMembership.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Users.cs">
-      <DependentUpon>CustomMembership.tt</DependentUpon>
-    </Compile>
     <Compile Include="Resources\Views\Account\Strings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -356,6 +357,10 @@
     <Content Include="Areas\Admin_old\Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.cshtml" />
     <Content Include="Areas\Admin_old\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin_old\Views\Web.config" />
+    <Content Include="Areas\Efargan.co.il\Content\efarganLTR.css" />
+    <Content Include="Areas\Efargan.co.il\Content\Copy of efargan.min.css">
+      <DependentUpon>efarganLTR.css</DependentUpon>
+    </Content>
     <Content Include="Areas\Efargan.co.il\Content\efargan.css" />
     <Content Include="Areas\Efargan.co.il\Content\efargan.min.css">
       <DependentUpon>efargan.css</DependentUpon>
@@ -560,6 +565,10 @@
     <Content Include="Areas\mmgtaabora.com\Views\Web.config" />
     <Content Include="Areas\mmgtaabora.com\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\mmgtaabora.com\Views\Index\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\EfarganPagesLanguage.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\EfarganPagesLanguageTabs.cshtml" />
+    <Content Include="Areas\Efargan.co.il\Views\Pages\IndexLng.cshtml" />
+    <Content Include="Areas\Efargan.co.il\Views\Pages\_MainMenu.cshtml" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -569,6 +578,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </Content>
     <None Include="Properties\PublishProfiles\local.pubxml" />
+    <None Include="Properties\PublishProfiles\starsites.co.il.pubxml" />
     <None Include="Scripts\jquery-1.6.2-vsdoc.js" />
     <Content Include="Scripts\calendar-eightysix-v1.1\changes.txt" />
     <Content Include="Scripts\calendar-eightysix-v1.1\css\calendar-eightysix-v1.1-default.css" />
@@ -774,9 +784,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Efargan.co.il\Models\" />
     <Folder Include="Areas\mmgtaabora.com\Models\" />
     <Folder Include="Images\Gallery Pages\" />
+    <Folder Include="Images\Page Images\" />
     <Folder Include="Images\Site Pages\" />
     <Folder Include="Images\Uploaded\Temporary\" />
     <Folder Include="Resources\Global\" />
