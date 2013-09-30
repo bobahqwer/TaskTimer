@@ -1,0 +1,29 @@
+﻿@model TaskTimer.Models.MmgtaaboraPages
+@{
+    ViewBag.Title = "EfarganPagesEdit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<h2>Add new Efargan page</h2>
+@using (Html.BeginForm("EfarganPagesAddNew", "AdminEfargan", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary()
+    <fieldset class="addNewPage">
+        <legend>New Page Form</legend>
+        <table>
+            <tr>
+                <td>@Html.LabelFor(m => m.MetaTag)</td>
+                <td>@Html.TextBoxFor(m => m.MetaTag)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.DescriptionTag)</td>
+                <td>@Html.TextBoxFor(m => m.DescriptionTag)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.TitleTag)</td>
+                <td>@Html.TextBoxFor(m => m.TitleTag)</td>
+            </tr>
+
+        </table>
+          <input type="submit" value="Save new page" />
+    </fieldset>
+}

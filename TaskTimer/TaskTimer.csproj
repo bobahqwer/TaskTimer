@@ -174,6 +174,7 @@
     <Compile Include="Areas\Admin\Controllers\AdminGalleryController.cs" />
     <Compile Include="Areas\Admin\Models\AdminEfarganHelper.cs" />
     <Compile Include="Areas\Admin\Models\AdminHelper.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminMmgtaaboraController.cs" />
     <Compile Include="Areas\Admin_old\AdminAreaRegistration.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -235,6 +236,9 @@
       <DependentUpon>CustomMembership.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Memberships.cs">
+      <DependentUpon>CustomMembership.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MmgtaaboraPages.cs">
       <DependentUpon>CustomMembership.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Profiles.cs">
@@ -569,6 +573,11 @@
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\EfarganPagesLanguageTabs.cshtml" />
     <Content Include="Areas\Efargan.co.il\Views\Pages\IndexLng.cshtml" />
     <Content Include="Areas\Efargan.co.il\Views\Pages\_MainMenu.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminMmgtaabora\Pages.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\MmgtaaboraPages.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminMmgtaabora\PagesAddNew.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminMmgtaabora\PagesBlog.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminMmgtaabora\PagesEdit.cshtml" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>

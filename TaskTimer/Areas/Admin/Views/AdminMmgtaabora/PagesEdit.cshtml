@@ -1,0 +1,269 @@
+﻿@model TaskTimer.Models.MmgtaaboraPages
+@{
+    ViewBag.Title = "EfarganPagesEdit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+    $(function () {
+        $("#tabs").tabs();
+    });
+</script>
+@*<script type="text/javascript">
+    function UpdateSliderData(element, id)
+    {
+        var el = $(element);
+        var curVarNames = el.closest('table').find('label[for^="tmpSlider"]');
+        var curRow = el.closest('tr');
+        var curCellArr = curRow.find('td');
+        var data = {};
+        for (var i = 0; i < curVarNames.length; i++) {
+            var key = $(curVarNames[i]).html();
+            var value = "";
+            if (i == 0)
+                value = $(curCellArr[i]).html();
+            else
+                value = $(curCellArr[i]).find('input').attr('value');
+            data[key] = value;
+        }
+        data["EfarganPages"] = 0;
+        data["SliderEfarganPagesId"] = 0;
+        debugger;
+        $.ajax({
+            url: 'EfarganPagesAjaxSaveSliderData',
+            type: 'POST',
+            data: JSON.stringify(data),
+            success: function (result) {
+                //element.toggle("slow");
+            }
+        });
+    }
+    
+
+</script>*@
+
+<h2>Edit Efargan page</h2>
+@using (Html.BeginForm("EfarganPagesEdit", "AdminEfargan", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary()
+    <fieldset class="addNewPage">
+        <legend>Edit Page Form</legend>
+        <table class="defaultLangTable">
+            <tr>
+                <td>@Html.LabelFor(m => m.MetaTag)</td>
+                <td>@Html.TextBoxFor(m => m.MetaTag)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.DescriptionTag)</td>
+                <td>@Html.TextBoxFor(m => m.DescriptionTag)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.TitleTag)</td>
+                <td>@Html.TextBoxFor(m => m.TitleTag)</td>
+            </tr>
+             <tr>
+                <td>@Html.LabelFor(m => m.MenuText)</td>
+                <td>@Html.TextBoxFor(m => m.MenuText)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.TicketTitle)</td>
+                <td>@Html.TextBoxFor(m => m.TicketTitle)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.TicketLinkText)</td>
+                <td>@Html.TextBoxFor(m => m.TicketLinkText)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.TicketLinkURL)</td>
+                <td>@Html.TextBoxFor(m => m.TicketLinkURL)</td>
+            </tr>
+        </table>
+
+        <fieldset class="customLang">
+            <legend>Different language</legend>
+            <div>
+                @{
+    Model.EfarganPagesLanguage.Add(new TaskTimer.Models.EfarganPagesLanguage()
+    {
+        Id = -1
+    });
+                }
+                @using (Html.BeginForm("EfarganPagesEdit", "AdminEfargan", new { id = Model.Id }))
+                {
+                    @Html.EditorFor(m => Model.EfarganPagesLanguage)
+                    <input type="submit" value="Update" />
+                }
+            </div>
+        </fieldset>
+        <input type="submit" value="Edit page" class="submitEditBtn" />
+    </fieldset>
+}
+
+
+
+
+
+<div id="tabs">
+    <ul>
+        <li><a href="#tabs-1">Sliders</a></li>
+        <li><a href="#tabs-2">Pharagraphs</a></li>
+        <li><a href="#tabs-3">Tickers</a></li>
+        @{
+            var i = 4;
+            foreach (var item in Model.EfarganPagesLanguage)
+            {
+                if (item.EfarganLanguage != null)
+                { 
+            @Html.Raw("<li><a href='#tabs-" + i + "'>Sliders in " + item.EfarganLanguage.LanguageName + "</a></li>");
+                                                                                                                         i++;
+            @Html.Raw("<li><a href='#tabs-" + i + "'>Pharagraphs in " + item.EfarganLanguage.LanguageName + "</a></li>");
+                                                                                                                             i++;
+            @Html.Raw("<li><a href='#tabs-" + i + "'>Tickers in " + item.EfarganLanguage.LanguageName + "</a></li>");
+                                                                                                                         i++;
+                }
+                else
+                {
+                 @Html.Raw("<li><a href='#tabs-" + i + "'>Sliders in new language</a></li>");
+                                                                                                                              i++;
+            @Html.Raw("<li><a href='#tabs-" + i + "'>Pharagraphs in new language</a></li>");
+                                                                                                                             i++;
+            @Html.Raw("<li><a href='#tabs-" + i + "'>Tickers in new language</a></li>");
+                                                                                                                         i++;
+                }
+            }
+        }
+    </ul>
+    <div id="tabs-1">
+        @{
+            var tmpSlider = new TaskTimer.Models.EfarganPagesSliders();
+            tmpSlider.Id = -1;
+            Model.EfarganPagesSliders.Add(tmpSlider);
+            if (Model.EfarganPagesSliders.Count == 1)
+            {
+                tmpSlider = new TaskTimer.Models.EfarganPagesSliders();
+                tmpSlider.Id = -1;
+                Model.EfarganPagesSliders.Add(tmpSlider);
+            }
+        }
+        @using (Html.BeginForm("EfarganPagesEdit", "AdminEfargan", FormMethod.Post, new { id = Model.Id, enctype = "multipart/form-data" }))
+        {
+            <table class="tablesorter">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.LabelFor(m => tmpSlider.Id)
+                        </th>
+                        <th>
+                            @Html.LabelFor(m => tmpSlider.SliderTitle)
+                        </th>
+                        <th>
+                            @Html.LabelFor(m => tmpSlider.SliderText)
+                        </th>
+                        <th>
+                            @Html.LabelFor(m => tmpSlider.SliderLinkText)
+                        </th>
+                        <th>
+                            @Html.LabelFor(m => tmpSlider.SliderLinkURL)
+                        </th>
+                        <th>
+                            @Html.LabelFor(m => tmpSlider.SliderImageFileName)
+                        </th>
+                        <th>Actions
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @Html.EditorFor(m => Model.EfarganPagesSliders)
+                </tbody>
+            </table>
+        }
+    </div>
+    <div id="tabs-2">
+        @{
+            var tmpParagraph = new TaskTimer.Models.EfarganPagesParagraphs();
+            tmpParagraph.Id = -1;
+            Model.EfarganPagesParagraphs.Add(tmpParagraph);
+            if (Model.EfarganPagesParagraphs.Count == 1)
+            {
+                tmpParagraph = new TaskTimer.Models.EfarganPagesParagraphs();
+                tmpParagraph.Id = -1;
+                Model.EfarganPagesParagraphs.Add(tmpParagraph);
+            }
+        }
+        @using (Html.BeginForm("EfarganPagesEdit", "AdminEfargan", FormMethod.Post, new { id = Model.Id, enctype = "multipart/form-data" }))
+        {
+            <table class="tablesorter">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.LabelFor(m => tmpParagraph.Id)
+                        </th>
+                        <th>
+                            @Html.LabelFor(m => tmpParagraph.ParagraphTitle)
+                        </th>
+                        <th>
+                            @Html.LabelFor(m => tmpParagraph.ParagraphText)
+                        </th>
+                        <th>
+                            @Html.LabelFor(m => tmpParagraph.ParagraphLinkText)
+                        </th>
+                        <th>
+                            @Html.LabelFor(m => tmpParagraph.ParagraphLinkURL)
+                        </th>
+                        <th>
+                            @Html.LabelFor(m => tmpParagraph.ParagraphImageFileName)
+                        </th>
+                        <th>Actions
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @Html.EditorFor(m => Model.EfarganPagesParagraphs)
+                </tbody>
+            </table>
+        }
+    </div>
+    <div id="tabs-3">
+        @{
+            var tmpTicker = new TaskTimer.Models.EfarganPagesTickers();
+            tmpTicker.Id = -1;
+            Model.EfarganPagesTickers.Add(tmpTicker);
+            if (Model.EfarganPagesTickers.Count == 1)
+            {
+                tmpTicker = new TaskTimer.Models.EfarganPagesTickers();
+                tmpTicker.Id = -1;
+                Model.EfarganPagesTickers.Add(tmpTicker);
+            }
+        }
+        @using (Html.BeginForm("EfarganPagesEdit", "AdminEfargan", FormMethod.Post, new { id = Model.Id, enctype = "multipart/form-data" }))
+        {
+            <table class="tablesorter">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.LabelFor(m => tmpTicker.Id)
+                        </th>
+                        <th>
+                            @Html.LabelFor(m => tmpTicker.TickerTitle)
+                        </th>
+                        <th>
+                            @Html.LabelFor(m => tmpTicker.TickerText)
+                        </th>
+                        <th>
+                            @Html.LabelFor(m => tmpTicker.TickerLinkText)
+                        </th>
+                        <th>
+                            @Html.LabelFor(m => tmpTicker.TickerLinkURL)
+                        </th>
+                        <th>Actions
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @Html.EditorFor(m => Model.EfarganPagesTickers)
+                </tbody>
+            </table>
+        }
+    </div>
+    @Html.EditorFor(m => Model.EfarganPagesLanguage, "EfarganPagesLanguageTabs", new { i = 4 })
+</div>

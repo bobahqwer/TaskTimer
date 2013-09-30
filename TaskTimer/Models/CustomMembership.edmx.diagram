@@ -36,6 +36,7 @@
         <AssociationConnector Association="CustomMembership.Models.FK_EfarganPagesParagraphs_EfarganPagesLanguage" />
         <AssociationConnector Association="CustomMembership.Models.FK_EfarganPagesSliders_EfarganPagesLanguage" />
         <AssociationConnector Association="CustomMembership.Models.FK_EfarganPagesTickers_EfarganPagesLanguage" />
+        <EntityTypeShape EntityType="CustomMembership.Models.MmgtaaboraPages" Width="1.5" PointX="1.3063963545981778" PointY="27.997342718763903" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

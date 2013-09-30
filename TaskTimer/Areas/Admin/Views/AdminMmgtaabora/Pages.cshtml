@@ -1,0 +1,34 @@
+﻿@model System.Data.Entity.DbSet<TaskTimer.Models.MmgtaaboraPages>
+@{
+    ViewBag.Title = "EfarganPages";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>EfarganPages</h2>
+@{
+    var newPage = new TaskTimer.Models.MmgtaaboraPages();
+  }
+<table id="myTable2" class="tablesorter">
+    <thead>
+        <tr>
+            <th>
+                @Html.LabelFor(m => newPage.Id)
+            </th>
+            <th>
+                @Html.LabelFor(m => newPage.TitleTag)
+            </th>
+            <th>
+                @Html.LabelFor(m => newPage.MetaTag)
+            </th>
+            <th>
+                @Html.LabelFor(m => newPage.DescriptionTag)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @Html.EditorFor(m => Model)
+    </tbody>
+</table>

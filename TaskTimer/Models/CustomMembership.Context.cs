@@ -45,5 +45,6 @@ namespace TaskTimer.Models
         public DbSet<EfarganPagesParagraphs> EfarganPagesParagraphs { get; set; }
         public DbSet<EfarganPagesSliders> EfarganPagesSliders { get; set; }
         public DbSet<EfarganPagesTickers> EfarganPagesTickers { get; set; }
+        public DbSet<MmgtaaboraPages> MmgtaaboraPages { get; set; }
     }
 }

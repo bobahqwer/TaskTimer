@@ -20,6 +20,7 @@
           <EntitySet Name="GalleryPages" EntityType="CustomMembership.Models.Store.GalleryPages" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Images" EntityType="CustomMembership.Models.Store.Images" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Memberships" EntityType="CustomMembership.Models.Store.Memberships" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MmgtaaboraPages" EntityType="CustomMembership.Models.Store.MmgtaaboraPages" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Profiles" EntityType="CustomMembership.Models.Store.Profiles" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Roles" EntityType="CustomMembership.Models.Store.Roles" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ShopItem" EntityType="CustomMembership.Models.Store.ShopItem" store:Type="Tables" Schema="dbo" />
@@ -254,6 +255,19 @@
           <Property Name="FailedPasswordAnswerAttemptCount" Type="int" Nullable="false" />
           <Property Name="FailedPasswordAnswerAttemptWindowsStart" Type="datetime" Nullable="false" />
           <Property Name="Comment" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="MmgtaaboraPages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MetaTag" Type="nvarchar(max)" />
+          <Property Name="DescriptionTag" Type="nvarchar(max)" />
+          <Property Name="TitleTag" Type="nvarchar(max)" />
+          <Property Name="MenuText" Type="nvarchar(max)" />
+          <Property Name="TicketTitle" Type="nvarchar(max)" />
+          <Property Name="TicketLinkText" Type="nvarchar(max)" />
+          <Property Name="TicketLinkURL" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Profiles">
           <Key>
@@ -556,6 +570,7 @@
             <End Role="EfarganPagesLanguage" EntitySet="EfarganPagesLanguage" />
             <End Role="EfarganPagesTickers" EntitySet="EfarganPagesTickers" />
           </AssociationSet>
+          <EntitySet Name="MmgtaaboraPages" EntityType="CustomMembership.Models.MmgtaaboraPages" />
           </EntityContainer>
         <EntityType Name="Applications">
           <Key>
@@ -962,6 +977,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="MmgtaaboraPages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="MetaTag" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DescriptionTag" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TitleTag" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MenuText" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TicketTitle" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TicketLinkText" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TicketLinkURL" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1251,6 +1279,20 @@
                 <ScalarProperty Name="TickerLinkText" ColumnName="TickerLinkText" />
                 <ScalarProperty Name="TickerText" ColumnName="TickerText" />
                 <ScalarProperty Name="TickerTitle" ColumnName="TickerTitle" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MmgtaaboraPages">
+            <EntityTypeMapping TypeName="CustomMembership.Models.MmgtaaboraPages">
+              <MappingFragment StoreEntitySet="MmgtaaboraPages">
+                <ScalarProperty Name="TicketLinkURL" ColumnName="TicketLinkURL" />
+                <ScalarProperty Name="TicketLinkText" ColumnName="TicketLinkText" />
+                <ScalarProperty Name="TicketTitle" ColumnName="TicketTitle" />
+                <ScalarProperty Name="MenuText" ColumnName="MenuText" />
+                <ScalarProperty Name="TitleTag" ColumnName="TitleTag" />
+                <ScalarProperty Name="DescriptionTag" ColumnName="DescriptionTag" />
+                <ScalarProperty Name="MetaTag" ColumnName="MetaTag" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
