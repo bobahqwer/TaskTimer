@@ -78,7 +78,7 @@
                         }
                         <div class="sliderTextDiv">
                             <div class="sliderTitle">@slider.SliderTitle</div>
-                            <div class="sliderText">@slider.SliderText</div>
+                            <div class="sliderText">@Html.Raw(slider.SliderText)</div>
                             <div class="sliderLink"><a href="@slider.SliderLinkURL">@slider.SliderLinkText</a></div>
                         </div>
                     </li>
@@ -105,7 +105,7 @@
                 @item.ParagraphTitle
             </div>
             <div class="pharagraphText">
-                @item.ParagraphText
+                @Html.Raw(item.ParagraphText)
             </div>
             <div class="pharagraphLink">
                 <a href="@item.ParagraphLinkURL">@item.ParagraphLinkText</a>
@@ -122,7 +122,7 @@
                 {
                     <h3 class="ticketTitle">@item.TickerTitle</h3>
                     <p class="ticketText">
-                        @item.TickerText
+                        @Html.Raw(item.TickerText)
                         <div class="ticketLink">
                             <a href="@item.TickerLinkURL">@item.TickerLinkText</a>
                         </div>

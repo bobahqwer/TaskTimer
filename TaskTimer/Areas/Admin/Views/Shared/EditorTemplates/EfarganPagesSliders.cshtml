@@ -1,5 +1,6 @@
 ﻿@model TaskTimer.Models.EfarganPagesSliders
-<tr>
+
+<tr onclick="OpenRowEditor(this,event);">
     <td>
         @Model.Id
         @Html.HiddenFor(m => Model.Id)
@@ -14,8 +15,7 @@
         <div style="display: none;">
             @Html.ValueFor(m => Model.SliderText)
         </div>
-        @Html.TextBoxFor(m => Model.SliderText)
-
+        @Html.TextBoxFor(m => Model.SliderText, new { @class = "TextAreaEditor" })
     </td>
     <td>
         <div style="display: none;">
@@ -47,4 +47,18 @@
             }
         </div>
     </td>
+</tr>
+<tr style="display: none;" onclick="CloseRowEditor(this,event);">
+    <td>
+        <b>@Model.Id</b>
+    </td>
+    <td>
+    </td>
+    <td>
+        @Html.TextAreaFor(m => Model.SliderText, new { @class = "TextAreaFor_" + Model.Id, style="width: 500px; height:150px;"})
+    </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
 </tr>

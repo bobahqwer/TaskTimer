@@ -53,3 +53,42 @@
     $myDialog.dialog('open');
 }
 
+
+//toggle nicEditors areas
+function OpenRowEditor(element, e) {
+    e = e || window.event;
+    var targ = e.target || e.srcElement;
+    if (targ.className.indexOf("TextAreaEditor") != -1) {
+        var el = $(element);
+        var elTds = el.find('td');
+        var editorRow = el.next('tr').toggle('slow');
+        var i = 0;
+        editorRow.find('td').each(function () {
+            //var textarea = $(this).find('textarea');
+            var textarea = $(this).find('.nicEdit-main');
+            if (textarea.length > 0) {
+                $(elTds[i]).find('input[type="text"]').val(textarea.html());
+                $(this).css('cursor', 'default');
+            }
+            i++;
+        });
+    }
+}
+function CloseRowEditor(element, e) {
+    e = e || window.event;
+    var targ = e.target || e.srcElement;
+    if (targ.tagName == "TD") {
+        var el = $(element);
+        var elTds = el.prev('tr').find('td');
+        el.toggle('slow');
+        var i = 0;
+        el.find('td').each(function () {
+            //var textarea = $(this).find('textarea');
+            var textarea = $(this).find('.nicEdit-main');
+            if (textarea.length > 0)
+                $(elTds[i]).find('input[type="text"]').val(textarea.html());
+            i++;
+        });
+    }
+}
+

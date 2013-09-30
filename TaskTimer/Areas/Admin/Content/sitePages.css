@@ -15,17 +15,17 @@
         }
 /* Table sorter */
 .tablesorter-bootstrap tr td div {
-    overflow: hidden;
-    max-height: 20px;
+    /*overflow: hidden;
+    max-height: 20px;*/
 }
 .tablesorter td:nth-child(10) div {
-    max-width: 130px;
-    width: 130px;
+    /*max-width: 130px;
+    width: 130px;*/
 }
 .tablesorter td:nth-child(2) div,
 .tablesorter td:nth-child(3) div,
 .tablesorter td:nth-child(4) div,
 .tablesorter td:nth-child(5) div,
 .tablesorter td:nth-child(6) div {
-    max-width: 200px;
+    /*max-width: 200px;*/
 }

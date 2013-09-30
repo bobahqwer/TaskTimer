@@ -17,10 +17,13 @@
         "~/Scripts/jquery.validate.js",
         "~/Scripts/jquery.validate.unobtrusive.js",
         "~/Scripts/tablesorter/js",
-        "Scripts/admin.js")
+        "~/Scripts/nicEdit/nicEdit.js",
+        "~/Areas/Admin/Scripts/admin.js")
 
     <script>
         $(function () {
+            //apply editors to all textareas
+            nicEditors.allTextAreas();
             // call the tablesorter plugin and apply the uitheme widget
             $("#myTable").tablesorter({
                 theme: "bootstrap", // this will 

@@ -48,6 +48,7 @@ namespace TaskTimer.Areas.Admin.Controllers
             return View(curPage);
         }
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult EfarganPagesEdit(EfarganPages curPage, int id)
         {
             if (ModelState.IsValid)
