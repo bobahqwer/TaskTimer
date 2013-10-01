@@ -53,6 +53,9 @@
 }
 
 /* since bootstrap (table-striped) uses nth-child(), we just use this to add a zebra stripe color */
+    .tablesorter-bootstrap tr td {
+        background-color: #f9f9f9;
+    }
 .tablesorter-bootstrap tr.odd td {
 	background-color: #f9f9f9;
 }

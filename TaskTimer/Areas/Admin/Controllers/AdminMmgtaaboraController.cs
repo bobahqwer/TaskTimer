@@ -19,7 +19,20 @@ namespace TaskTimer.Areas.Admin.Models
 
         public ActionResult PagesAddNew()
         {
-
+            //var newPage = new EfarganPages();
+            //newPage.EfarganPagesSliders.Add(new EfarganPagesSliders());
+            return View(new MmgtaaboraPages());
+        }
+        [HttpPost]
+        public ActionResult PagesAddNew(MmgtaaboraPages newPage)
+        {
+            if (ModelState.IsValid)
+            {
+                var db = new CustomMembershipDB();
+                var newSavedPage = db.MmgtaaboraPages.Add(newPage);
+                db.SaveChanges();
+                return RedirectToAction("PagesEdit", new { id = newSavedPage.Id });
+            }
             return View();
         }
 

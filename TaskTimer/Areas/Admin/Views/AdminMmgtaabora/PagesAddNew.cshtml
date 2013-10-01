@@ -1,10 +1,10 @@
 ﻿@model TaskTimer.Models.MmgtaaboraPages
 @{
-    ViewBag.Title = "EfarganPagesEdit";
+    ViewBag.Title = "PagesEdit";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 <h2>Add new Efargan page</h2>
-@using (Html.BeginForm("EfarganPagesAddNew", "AdminEfargan", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("PagesAddNew", "AdminMmgtaabora", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.ValidationSummary()
     <fieldset class="addNewPage">
