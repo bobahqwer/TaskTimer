@@ -21,7 +21,8 @@
                 <span>| </span>
                 @Html.ActionLink("Edit", "EfarganPagesEdit", "AdminEfargan", new { id = Model.Id }, null)
                 <span>| </span>
-                <span class="actionSpan" onclick="DeleteSliderData(this, @Model.Id)">Delete</span>
+                @Html.ActionLink("Delete", "EfarganPagesDelete", "AdminEfargan", new { id = Model.Id }, new { onclick = "return OpenDialogEl('', $(this));" })
+                @*<span class="actionSpan" onclick="DeleteSliderData(this, @Model.Id)">Delete</span>*@
             }
             else
             {

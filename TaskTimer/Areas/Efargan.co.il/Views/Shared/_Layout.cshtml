@@ -11,7 +11,7 @@
         )
     @if (ViewBag.PageLng != "HE")
     { 
-      @Styles.Render(
+        @Styles.Render(
         "~/Areas/Efargan.co.il/Content/efarganLTR.css"
         )
     }
@@ -27,20 +27,28 @@
             //search field focus
             $('.searchFieldInput').focus(function () {
                 var el = $(this);
-                if (el.val() == "חיפוש")
+                if (el.val() == "@ViewBag.SearchBtn")
                     el.val("");
             }).focusout(function () {
                 var el = $(this);
                 if (el.val() == null || el.val() == "")
-                    el.val("חיפוש");
+                    el.val("@ViewBag.SearchBtn");
             });
         });
+        function SiteSearchEnter(event) {
+            if (event.which == 13)
+                SiteSearch();
+        }
         function SiteSearch() {
+            debugger;
             var key = $('.searchFieldInput').val();
+            var lng = '@ViewBag.PageLng';
+            var data = { key: key, lng: lng };
             $.ajax({
-                url: '../SiteSearch',
+                url: '@Url.Action("SiteSearch", "Page")',
                 type: 'POST',
-                data: { key: key },
+                dataType: 'json',
+                data: data,
                 success: function (result) {
                     debugger;
                     $('#body').html(result);
@@ -59,8 +67,8 @@
     js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1&appId=580743358639301";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-@*Page HTML*@
-<header>
+    @*Page HTML*@
+    <header>
         <div class="topLine">
             <div class="languageSelect">
                 <span class="selected">@Html.ActionLink("עברית", "Index", new { lng = "HE" })</span>
@@ -69,19 +77,21 @@
             </div>
             <div class="searchField">
                 <div class="searchFieldButton" onclick="SiteSearch();"></div>
-                <input type="text" class="searchFieldInput" value="חיפוש"/>
+                <input type="text" class="searchFieldInput" value="@ViewBag.SearchBtn" onkeypress="SiteSearchEnter(event);" />
             </div>
             <div class="fbButton">
-            <div class="fb-like" data-href="http://dirot.somee.com/" data-width="450" data-layout="button_count" data-show-faces="true" data-send="false"></div>
-                </div>
+                <div class="fb-like" data-href="http://dirot.somee.com/" data-width="450" data-layout="button_count" data-show-faces="true" data-send="false"></div>
+            </div>
         </div>
         <div class="headerBG"></div>
-        @Html.Action("_MainMenu", new { lng = ViewBag.PageLng })
+        <ul class="menu">
+            @Html.Action("_MainMenu", new { lng = ViewBag.PageLng })
+        </ul>
     </header>
     <div id="body">
         @*@Html.MvcSiteMap("AdminMvcSiteMapProvider").Menu(false, true, true)*@
-@RenderBody()
-</div>
+        @RenderBody()
+    </div>
     <footer>
         <div class="line"></div>
         <div>
@@ -89,33 +99,7 @@
             <div class="floatLeft">כל הזכויות שמורות 2013 ©</div>
             <div class="footerMenuDiv">
                 <ul class="footerMenu">
-                    <li class="menuTopItem">
-                        <div class="menuDrop">@Html.ActionLink("דפ הבית", "Index", "Pages")</div>
-                    </li>
-                    <li class="menuTopItem">
-                        <div class="menuDrop">@Html.ActionLink("אודות", "Index", "Pages")</div>
-                    </li>
-                    <li class="menuTopItem">
-                        <div class="menuDrop">@Html.ActionLink("אירועים", "Index", "Pages")</div>
-                    </li>
-                    <li class="menuTopItem">
-                        <div class="menuDrop">@Html.ActionLink("אירועים", "Index", "Pages")</div>
-                    </li>
-                    <li class="menuTopItem">
-                        <div class="menuDrop">@Html.ActionLink("אירועים", "Index", "Pages")</div>
-                    </li>
-                    <li class="menuTopItem">
-                        <div class="menuDrop">@Html.ActionLink("אירועים", "Index", "Pages")</div>
-                    </li>
-                    <li class="menuTopItem">
-                        <div class="menuDrop">@Html.ActionLink("אירועים", "Index", "Pages")</div>
-                    </li>
-                    <li class="menuTopItem">
-                        <div class="menuDrop">@Html.ActionLink("אירועים", "Index", "Pages")</div>
-                    </li>
-                    <li class="menuTopItem">
-                        <div class="menuDrop">@Html.ActionLink("אירועים", "Index", "Pages")</div>
-                    </li>
+                    @Html.Action("_MainMenu", new { lng = ViewBag.PageLng })
                 </ul>
             </div>
         </div>

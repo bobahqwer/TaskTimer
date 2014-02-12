@@ -1,14 +1,13 @@
 ﻿@model Dictionary<int, string>
 
-<ul class="menu">
-    @for (int i = 0; i < Model.Count; i++)
-    {
-        var item = Model.ElementAt(i);
-        if (!string.IsNullOrEmpty(item.Value))
-        { 
-        <li class="menuTopItem">
-            <div class="menuDrop">@Html.ActionLink(item.Value, "Index", "Pages", new { id = item.Key }, null)</div>
-        </li>
-        }
+@for (int i = 0; i < Model.Count; i++)
+{
+    var item = Model.ElementAt(i);
+    if (!string.IsNullOrEmpty(item.Value))
+    { 
+
+    <li class="menuTopItem">
+        <div class="menuDrop">@Html.ActionLink(item.Value, "Index", "Pages", new { id = item.Key }, null)</div>
+    </li>
     }
-</ul>
+}

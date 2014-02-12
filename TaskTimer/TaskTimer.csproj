@@ -371,6 +371,7 @@
     </Content>
     <Content Include="Areas\Efargan.co.il\Content\Images\header-bg.jpg" />
     <Content Include="Areas\Efargan.co.il\Content\Images\headerBG.png" />
+    <Content Include="Areas\Efargan.co.il\Content\Images\headerBGEng.png" />
     <Content Include="Areas\Efargan.co.il\Content\Images\pharagraphImg.png" />
     <Content Include="Areas\Efargan.co.il\Content\Images\searchField.png" />
     <Content Include="Areas\Efargan.co.il\Content\Images\searchFieldButton.png" />

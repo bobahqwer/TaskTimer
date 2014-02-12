@@ -1,3 +1,28 @@
 ﻿body {
     direction: ltr;
 }
+
+header .headerBG {
+    background: url(Images/headerBGEng.png) no-repeat;
+    }
+ul.menu{
+    padding-top: 5px;
+}
+
+ul.menu li:first-child{
+    padding-right: 43px;
+}
+#body .bottomPharagraps .pharagraphImage{
+    float: left;
+    margin-left: 0;
+    margin-right: 13px;
+}
+#body .bottomPharagraps .pharagraphLink{
+    clear: both;
+    margin-left: 98px;
+}
+
+#body .bottomTicketBorder .donateButton {
+    margin-right: 0;
+    margin-left: -9px;
+}

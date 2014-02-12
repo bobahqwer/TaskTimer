@@ -1,30 +1,13 @@
-﻿function OpenDialog(msg)
+﻿function OpenDialogEl(msg, el, returnVal)
 {
-    //$('#OpenDialogDiv').dialog(
-    //    {
-    //        title: 'Conformation',
-    //        autoOpen: false,
-    //        width: 300,
-    //        resizable: false,
-    //        modal: true,
-    //        buttons: {
-    //            "Delete": function () {
-    //                $.ajax({
-    //                    url: '/FAQ/Delete',
-    //                    type: 'POST',
-    //                    data: { id: id },
-    //                    success: function (result) {
-    //                        element.toggle("slow");
-    //                    }
-    //                });
-    //                $(this).dialog("close");
-    //            },
-    //            "Cancel": function () {
-    //                $(this).dialog("close");
-    //            }
-    //        },
-    //    }
-    //    );
+    if (returnVal != null)
+        return returnVal;
+    OpenDialogEl(msg, el);
+    return false;
+}
+
+function OpenDialogEl(msg, el)
+{
     var $myDialog = $('<div></div>')
     .html('Delete question?')
     .dialog({
@@ -33,17 +16,11 @@
         width: 300,
         resizable: false,
         modal: true,
+        position: { my: "left top", at: "left bottom", of: el },
         buttons: {
             "Delete": function () {
-                //$.ajax({
-                //    url: '/FAQ/Delete',
-                //    type: 'POST',
-                //    data: { id: id },
-                //    success: function (result) {
-                //        element.toggle("slow");
-                //    }
-                //});
                 $(this).dialog("close");
+                el.click(msg, el, true);
             },
             "Cancel": function () {
                 $(this).dialog("close");
@@ -52,6 +29,7 @@
     });
     $myDialog.dialog('open');
 }
+
 
 
 //toggle nicEditors areas
@@ -67,7 +45,9 @@ function OpenRowEditor(element, e) {
             //var textarea = $(this).find('textarea');
             var textarea = $(this).find('.nicEdit-main');
             if (textarea.length > 0) {
-                $(elTds[i]).find('input[type="text"]').val(textarea.html());
+                var inputText = $(elTds[i]).find('input[type="text"]');
+                inputText.attr('disabled',true);
+                inputText.val(textarea.html());
                 $(this).css('cursor', 'default');
             }
             i++;
@@ -86,9 +66,27 @@ function CloseRowEditor(element, e) {
             //var textarea = $(this).find('textarea');
             var textarea = $(this).find('.nicEdit-main');
             if (textarea.length > 0)
-                $(elTds[i]).find('input[type="text"]').val(textarea.html());
+                var inputText = $(elTds[i]).find('input[type="text"]');
+                inputText.attr('disabled', false);
+                inputText.val(textarea.html());
             i++;
         });
     }
 }
 
+function CloseAllRowEditor(element, e) {
+
+    e = e || window.event;
+    var targ = e.target || e.srcElement;
+
+    debugger;
+    var table = $(element).closest('.tablesorter');
+
+    var allEditRows = table.find('.textBoxEdit').filter(function (index) {
+        return $(this).css("display") === "table-row";
+    });
+    allEditRows.each(function () {
+        CloseRowEditor($(this), e);
+    });
+    return false;
+}

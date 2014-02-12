@@ -27,6 +27,7 @@ namespace TaskTimer.Areas.Admin.Controllers
             return View(new EfarganPages());
         }
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult EfarganPagesAddNew(EfarganPages newPage)
         {
             if (ModelState.IsValid)
@@ -47,8 +48,9 @@ namespace TaskTimer.Areas.Admin.Controllers
             //curPage.EfarganPagesSliders.Add(new EfarganPagesSliders());
             return View(curPage);
         }
-        [HttpPost]
+
         [ValidateInput(false)]
+        [HttpPost]
         public ActionResult EfarganPagesEdit(EfarganPages curPage, int id)
         {
             if (ModelState.IsValid)
@@ -261,6 +263,18 @@ namespace TaskTimer.Areas.Admin.Controllers
                 db.SaveChanges();
                 ModelState.Clear();
                 return View(curPage2);
+            }
+            return RedirectToAction("EfarganPages");
+        }
+
+        public ActionResult EfarganPagesDelete(EfarganPages curPage, int id)
+        {
+            var db = new CustomMembershipDB();
+            var pageToDelete = db.EfarganPages.FirstOrDefault(p => p.Id == id);
+            if (pageToDelete != null)
+            {
+                db.EfarganPages.Remove(pageToDelete);
+              //  db.SaveChanges();
             }
             return RedirectToAction("EfarganPages");
         }

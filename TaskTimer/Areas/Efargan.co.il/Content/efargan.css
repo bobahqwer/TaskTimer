@@ -215,7 +215,7 @@ ul.footerMenu {
             width: 250px;
             direction: rtl;
             text-align: right;
-            margin-top: 28px;
+            margin-top: 23px;
             margin-right: 33px;
             color: white;
         }
@@ -226,6 +226,7 @@ ul.footerMenu {
             }
 
             #body .middleSlider li .sliderTextDiv .sliderText {
+                margin-top: 10px;
             }
 
             #body .middleSlider li .sliderTextDiv .sliderLink a {
@@ -239,8 +240,9 @@ ul.footerMenu {
 
 #body .pharagraph {
     float: right;
-    width: 400px;
+    width: 390px;
     margin-bottom: 38px;
+    margin-left: 10px;
 }
 
 #body .bottomPharagraps .pharagraphImage {
@@ -252,14 +254,14 @@ ul.footerMenu {
 }
 
 #body .bottomPharagraps .pharagraphTitle {
-    width: 300px;
+    width: 290px;
     font-size: 22px;
     font-weight: bold;
     float: right;
 }
 
 #body .bottomPharagraps .pharagraphText {
-    width: 300px;
+    width: 290px;
     overflow: hidden;
     float: right;
 }
@@ -267,10 +269,11 @@ ul.footerMenu {
 #body .bottomTicketBorder {
     display: inline-block;
     vertical-align: top;
-    height: 200px;
+    /*height: 200px;*/
     width: 180px;
     background: #eaeaea;
     padding: 9px;
+    margin-bottom: 20px;
 }
 
 #body .bottomTicket {
@@ -332,6 +335,7 @@ ul.footerMenu {
         }
 
         #body .bottomTicket .bottomTicketContent .ticketTitle {
+            margin-top: 17px;
         }
 
         #body .bottomTicket .bottomTicketContent .ticketText {
@@ -344,7 +348,12 @@ ul.footerMenu {
 
 #body .bottomTicketBorder .donateButton {
     text-align: center;
-    padding-top: 17px;
+    margin-top: 10px;
+    background: white;
+    width: 198px;
+    margin-right: -9px;
+    margin-bottom: -9px;
+    padding-top: 13px;
 }
 
 

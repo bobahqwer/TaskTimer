@@ -2,11 +2,11 @@
     opacity: 0;
     filter: alpha(opacity=0);
     margin-top: 5px;
-     -webkit-transition: opacity 1s ease-in-out;
-       -moz-transition: opacity 1s ease-in-out;
-        -ms-transition: opacity 1s ease-in-out;
-         -o-transition: opacity 1s ease-in-out;
-            transition: opacity 1s ease-in-out;
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -ms-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
 }
 
 #login ul:hover .loginOpacity {
@@ -14,21 +14,26 @@
     filter: alpha(opacity=1);
     opacity: 1;
 }
-    .loginOpacity form {
-        display: inline-block;
-    }
-    .loginOpacity input[type="text"],
-    .loginOpacity input[type="password"] {
-        width: 75px;
-        vertical-align:middle;
-    }
-    .loginOpacity div a {
-        display:inline-block;
-        background:white;
-    }
+
+.loginOpacity form {
+    display: inline-block;
+}
+
+.loginOpacity input[type="text"],
+.loginOpacity input[type="password"] {
+    width: 75px;
+    vertical-align: middle;
+}
+
+.loginOpacity div a {
+    display: inline-block;
+    background: white;
+}
+
     .loginOpacity div a:hover {
-        background:white;
+        background: white;
     }
+
 .loginOpacity input[type="submit"] {
     border-top: 1px solid #96d1f8;
     background: #65a9d7;
@@ -36,7 +41,7 @@
     background: -moz-linear-gradient(top, #3e779d, #65a9d7);
     padding: 2px 3px;
     margin-top: 1px;
-    margin-top: 0px\0/; 
+    margin-top: 0px\0/;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
@@ -50,14 +55,92 @@
     font-family: Segoe;
     text-decoration: none;
     vertical-align: top;
-}
-.loginOpacity input[type="submit"]:hover {
-    background: #3e779d;
-    background: -webkit-gradient(linear, left top, left bottom, from(#65a9d7), to(#3e779d) );
-    background: -moz-linear-gradient(top, #65a9d7, #3e779d);
-}
+}f
+
+    .loginOpacity input[type="submit"]:hover {
+        background: #3e779d;
+        background: -webkit-gradient(linear, left top, left bottom, from(#65a9d7), to(#3e779d) );
+        background: -moz-linear-gradient(top, #65a9d7, #3e779d);
+    }
+
 .loginOpacity label {
     font-weight: bold;
     font-size: 13px;
-    vertical-align:middle;
+    vertical-align: middle;
+}
+
+.css3div {
+    height: 24px;
+    color: black;
+    font-size: 17px;
+    font-weight: normal;
+    position: relative;
+    animation: myfirst 2s;
+    -webkit-animation: myfirst 2s; /* Safari and Chrome */
+    -webkit-animation-play-state: running;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-fill-mode:backwards;
+    -webkit-animation-delay: 2s;
+    -webkit-animation-name:myfirst;
+}
+
+@-moz-keyframes myfirst {
+    0% {
+        color: black;
+        font-size: 17px;
+        font-weight:normal;
+    }
+
+    33% {
+        color: green;
+        font-size: 19px;
+        font-weight: bold;
+    }
+
+    100% {
+        color: black;
+        font-size: 17px;
+        font-weight:normal;
+    }
+}
+
+@keyframes myfirst {
+    0% {
+        color: black;
+        font-size: 17px;
+        font-weight:normal;
+    }
+
+    33% {
+        color: green;
+        font-size: 19px;
+        font-weight: bold;
+    }
+
+    100% {
+        color: black;
+        font-size: 17px;
+        font-weight:normal;
+    }
+}
+
+@-webkit-keyframes myfirst /* Safari and Chrome */
+{
+    0% {
+        color: black;
+        font-size: 17px;
+        font-weight: normal;
+    }
+
+    33% {
+        color: green;
+        font-size: 19px;
+        font-weight: bold;
+    }
+
+    100% {
+        color: black;
+        font-size: 17px;
+        font-weight: normal;
+    }
 }

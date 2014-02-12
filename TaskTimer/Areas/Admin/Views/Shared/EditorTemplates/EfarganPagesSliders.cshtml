@@ -18,7 +18,7 @@
         @Html.TextBoxFor(m => Model.SliderText, new { @class = "TextAreaEditor" })
     </td>
     <td>
-        <div style="display: none;">
+        <div style="display: none;">CustomMembershipDB
             @Html.ValueFor(m => Model.SliderLinkText)
         </div>
         @Html.TextBoxFor(m => Model.SliderLinkText)</td>
@@ -37,7 +37,7 @@
         <div>
             @if (Model.Id != -1)
             {
-                <input type="submit" value="Update" />
+                <input type="submit" value="Update" onclick="CloseAllRowEditor(this, event);" />
                 <span>| </span>
                 <span class="actionSpan" onclick="DeleteSliderData(this, @Model.Id)">Delete</span>
             }
@@ -48,7 +48,7 @@
         </div>
     </td>
 </tr>
-<tr style="display: none;" onclick="CloseRowEditor(this,event);">
+<tr style="display: none;" class="textBoxEdit" onclick="CloseRowEditor(this,event);">
     <td>
         <b>@Model.Id</b>
     </td>
